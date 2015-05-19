@@ -2,17 +2,17 @@ package mhrda.socialme.entities;
 
 public class User {
 	
-	private String id;
+	private String userId;
 	private String firstName;
 	private String lastName;
 	private String pwd;
     private String email;
     
-	public String getId() {
-		return id;
+	public String getUserId() {
+		return userId;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setUserId(String id) {
+		this.userId = id;
 	}
 	public String getFirstName() {
 		return firstName;

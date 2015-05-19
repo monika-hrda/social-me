@@ -27,7 +27,7 @@ public class LoginAction extends ActionSupport implements ModelDriven<User>, Ser
         User userDB = userDAO.getUserByCredentials(user.getEmail(), user.getPwd());
         if(userDB == null) return ERROR;
         else {
-            user.setId(userDB.getId());
+            user.setUserId(userDB.getUserId());
             user.setFirstName(userDB.getFirstName());
             user.setLastName(userDB.getLastName());
             return SUCCESS;
