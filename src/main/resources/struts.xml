@@ -12,12 +12,12 @@
 	
 	<package name="user" namespace="/User" extends="struts-default">
 	    <action name="home">
-	        <result>/login.jsp</result>
+	        <result>/pages/login.jsp</result>
 	    </action>
 	    <action name="login" class="mhrda.socialme.actions.LoginAction">
-		    <result name="success">/welcome.jsp</result>
-		    <result name="error">/error.jsp</result>
-		    <result name="input">/login.jsp</result>
+		    <result name="success">/pages/welcome.jsp</result>
+		    <result name="error">/pages/error.jsp</result>
+		    <result name="input">/pages/login.jsp</result>
 	    </action> 
 	</package>
 	
