@@ -6,19 +6,39 @@
     
 <struts>
 	<constant name="struts.devMode" value="true"></constant>
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
 	 
 	 <!-- constant to define result path locations to project root directory -->
 	<constant name="struts.convention.result.path" value="/"></constant>
 	
-	<package name="user" namespace="/User" extends="struts-default">
+	<package name="user" namespace="/" extends="struts-default">	
+		<interceptors>
+			<interceptor name="authentication" class="mhrda.socialme.interceptors.AuthenticationInterceptor"></interceptor>
+			<interceptor-stack name="authStack">
+				<interceptor-ref name="authentication"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		
+		<default-interceptor-ref name="authStack"></default-interceptor-ref>
+		
+		<global-results>
+			<result name="login" type="redirect">/home.action</result>
+		</global-results>
+		
 	    <action name="home">
+	    	<interceptor-ref name="defaultStack"></interceptor-ref>
 	        <result>/pages/login.jsp</result>
 	    </action>
 	    <action name="login" class="mhrda.socialme.actions.LoginAction">
+	    	<interceptor-ref name="defaultStack"></interceptor-ref>
 		    <result name="success">/pages/welcome.jsp</result>
 		    <result name="error">/pages/error.jsp</result>
 		    <result name="input">/pages/login.jsp</result>
-	    </action> 
+	    </action>
+	    <action name="test" class="mhrda.socialme.actions.TestAction">
+	    	<result name="success">/pages/welcome.jsp</result>
+	    </action>
 	</package>
 	
 </struts>
