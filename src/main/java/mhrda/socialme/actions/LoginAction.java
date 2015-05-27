@@ -47,8 +47,13 @@ public class LoginAction extends ActionSupport implements ModelDriven<User>, Ser
 	}
 	
 	public String logout() {
+		if (sessionAttributes.containsKey("USER")) {
+			sessionAttributes.remove("USER");
+		}
+		return SUCCESS;
+		
 //		sessionAttributes.clear();
-		sessionAttributes.remove("USER");
+//		sessionAttributes.remove("USER");
 //		if (sessionAttributes instanceof org.apache.struts2.dispatcher.SessionMap) {
 //			try {
 //				((org.apache.struts2.dispatcher.SessionMap) sessionAttributes).invalidate();
@@ -56,7 +61,6 @@ public class LoginAction extends ActionSupport implements ModelDriven<User>, Ser
 //				System.out.println("logout exception!: " + e);
 //			}
 //		}
-		return SUCCESS;
 	}
 
 	@Override
