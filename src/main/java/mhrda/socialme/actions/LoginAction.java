@@ -19,13 +19,20 @@ public class LoginAction extends ActionSupport implements ModelDriven<User>, Ser
 
 	private static final long serialVersionUID = -34963371525332562L;
 	
-	private User user = new User();	
+	private User user = new User();
 	private ServletContext context;
 	private Map<String, Object> sessionAttributes = null;
 
 	@Override
 	public String execute() throws Exception {
 		System.out.println("inside LoginAction execute");
+		
+//		if (sessionAttributes.containsKey("USER")) {		// check if the user is already stored in the session
+//			user = (User) sessionAttributes.get("USER");
+//			System.out.println("User logged in: " + user.getFirstName() + ", email: " + user.getEmail());
+//			return SUCCESS;		// return welcome page
+//		}
+		
 		SessionFactory sf = (SessionFactory) context.getAttribute("SessionFactory");
         UserDAO userDAO = new UserDAOImpl(sf);
         User userDB = userDAO.getUserByCredentials(user.getEmail(), user.getPwd());
@@ -37,6 +44,19 @@ public class LoginAction extends ActionSupport implements ModelDriven<User>, Ser
             sessionAttributes.put("USER", user);
             return SUCCESS;
         }
+	}
+	
+	public String logout() {
+//		sessionAttributes.clear();
+		sessionAttributes.remove("USER");
+//		if (sessionAttributes instanceof org.apache.struts2.dispatcher.SessionMap) {
+//			try {
+//				((org.apache.struts2.dispatcher.SessionMap) sessionAttributes).invalidate();
+//			} catch (IllegalStateException e) { //if attempting to invalidate an already-invalid session
+//				System.out.println("logout exception!: " + e);
+//			}
+//		}
+		return SUCCESS;
 	}
 
 	@Override
