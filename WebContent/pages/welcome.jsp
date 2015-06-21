@@ -11,10 +11,10 @@
 	
 	<body>
 		<h3>Welcome <s:property value="firstName"></s:property></h3>
- 		<h3>Your id is <s:property value="id"></s:property></h3>
+ 		<h3>Your id is <s:property value="userId"></s:property></h3>
 		<h3>Your email is <s:property value="email"></s:property></h3>
 		<h3>Your password is <s:property value="pwd"></s:property></h3>
 		
-		<h3><a href="<s:url action="logout"/>">Logout</a></h3>
+		<h3><a href="<s:url action="logout"/>">Log out</a></h3>
 	</body>
 </html>
