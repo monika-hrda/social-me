@@ -9,7 +9,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
-
+/*
+ * We will initialize Hibernate SessionFactory in the ServletContextListener implementation, 
+ * when application will be stopped, we will destroy the SessionFactory.
+ * http://www.journaldev.com/3557/struts2-hibernate-integration-example-tutorial
+ */
 public class HibernateServletContextListener implements ServletContextListener {
 
 	@Override

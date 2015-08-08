@@ -8,7 +8,7 @@ import mhrda.socialme.interceptors.UserAware;
 
 public class TestAction extends ActionSupport implements UserAware, ModelDriven<User> {
 
-	private static final long serialVersionUID = -5880348987400380291L;
+	private static final long serialVersionUID = 1L;
 	
 	private User user;
 	

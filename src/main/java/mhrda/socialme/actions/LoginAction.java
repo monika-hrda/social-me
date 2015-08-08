@@ -17,11 +17,11 @@ import com.opensymphony.xwork2.ModelDriven;
 
 public class LoginAction extends ActionSupport implements ModelDriven<User>, ServletContextAware, SessionAware {
 
-	private static final long serialVersionUID = -34963371525332562L;
+	private static final long serialVersionUID = 1L;
 	
 	private User user = new User();
 	private ServletContext context;
-	private Map<String, Object> sessionAttributes = null;
+	private Map<String, Object> sessionAttributes = null;  //get rid of = null ??
 
 	@Override
 	public String execute() throws Exception {
