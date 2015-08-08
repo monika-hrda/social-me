@@ -31,6 +31,11 @@
 	        <result>/pages/login.jsp</result>
 	    </action>
 	    
+	    <action name="signup">
+	    	<interceptor-ref name="defaultStack"></interceptor-ref>
+	        <result>/pages/register.jsp</result>
+	    </action>
+	    
 	    <action name="login" class="mhrda.socialme.actions.LoginAction">
 	    	<interceptor-ref name="defaultStack"></interceptor-ref>
 		    <result name="success">/pages/welcome.jsp</result>
@@ -39,8 +44,16 @@
 	    </action>
 	    
 	    <action name="logout" class="mhrda.socialme.actions.LoginAction" method="logout">
+	    	<interceptor-ref name="defaultStack"></interceptor-ref>
 	    	<result name="success">/pages/login.jsp</result>
 	    	<!-- <result name="success" type="redirect">/home.action</result> -->
+	    </action>
+	    
+	    <action name="register" class="mhrda.socialme.actions.RegisterAction">
+	    	<interceptor-ref name="defaultStack"></interceptor-ref>
+		    <result name="success">/pages/register-success.jsp</result>
+		    <result name="error">/pages/register-error.jsp</result>   <!-- zmen -->
+		    <result name="input">/pages/register.jsp</result>
 	    </action>
 	    
 	    <action name="test" class="mhrda.socialme.actions.TestAction">

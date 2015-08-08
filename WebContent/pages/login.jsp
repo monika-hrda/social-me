@@ -16,5 +16,7 @@
 			<s:textfield name="pwd" label="Password" type="password"></s:textfield>
 			<s:submit value="Login"></s:submit>
 		</s:form>
+		
+		<h3>Don't have an account yet? <a href="<s:url action="signup"/>">Register here.</a></h3>
 	</body>
 </html>

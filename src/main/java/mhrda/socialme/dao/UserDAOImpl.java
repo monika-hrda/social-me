@@ -17,7 +17,8 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public User getUserByCredentials(String email, String password) {
-		Session session = sf.openSession();
+		Session session = sf.openSession();     // we should open a new session for each request in multi-threaded environment
+		// Session session = sf.getCurrentSession();  this session object belongs to hibernate context and is not thread safe
         Transaction tx = session.beginTransaction();
         Query query = session.createQuery("from User where email=:email and pwd=:pwd");
         query.setString("email", email); 
@@ -29,6 +30,31 @@ public class UserDAOImpl implements UserDAO {
         tx.commit();
         session.close();
         return user;
+	}
+	
+	@Override
+	public long testUserExists(String email) { //returns count of existing users with the entered email address
+		Session session = sf.openSession();
+		Transaction tx = session.beginTransaction();
+		Query query = session.createQuery("select count(*) from User where email=:email");
+		query.setString("email", email);
+		long countExistingUsers = (long) query.uniqueResult();
+		tx.commit();
+		System.out.println("(inside UserDAOImpl) How many users with email " + email + " exist already? " + countExistingUsers);
+        session.close();
+		return countExistingUsers;
+	}
+
+	@Override
+	public int saveUser(User user) {
+		Session session = sf.openSession();
+		Transaction tx = session.beginTransaction();
+		int id = (int) session.save(user);  
+		// save method guarantees that the identifier value will be assigned to the persistent instance immediately; Returns the generated ID of the entity
+		tx.commit();
+		System.out.println("user saved witd id " + id);
+        session.close();
+		return id;
 	}
 
 }
