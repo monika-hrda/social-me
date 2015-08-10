@@ -1,5 +1,8 @@
 package mhrda.socialme.dao;
 
+import java.util.List;
+
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -49,12 +52,19 @@ public class UserDAOImpl implements UserDAO {
 	public int saveUser(User user) {
 		Session session = sf.openSession();
 		Transaction tx = session.beginTransaction();
-		int id = (int) session.save(user);  
+		int id = 0;
+		try {
+			id = (int) session.save(user);
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			tx.rollback();
+		}
 		// save method guarantees that the identifier value will be assigned to the persistent instance immediately; Returns the generated ID of the entity
 		tx.commit();
 		System.out.println("user saved witd id " + id);
         session.close();
 		return id;
 	}
+
 
 }
