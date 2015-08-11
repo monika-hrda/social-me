@@ -56,6 +56,13 @@
 		    <result name="input">/pages/register.jsp</result>
 	    </action>
 	    
+	    <action name="search" class="mhrda.socialme.actions.SearchAction">
+	    	<interceptor-ref name="defaultStack"></interceptor-ref>
+		    <result name="success">/pages/search-results.jsp</result>
+		    <result name="error">/pages/error.jsp</result>   <!-- zmen -->
+		    <result name="input">/pages/search.jsp</result>
+	    </action>
+	    
 	    <action name="test" class="mhrda.socialme.actions.TestAction">
 	    	<result name="success">/pages/welcome.jsp</result>
 	    </action>

@@ -1,5 +1,7 @@
 package mhrda.socialme.dao;
 
+import java.util.List;
+
 import mhrda.socialme.entities.User;
 
 public interface UserDAO {
@@ -9,6 +11,8 @@ public interface UserDAO {
 	long testUserExists(String email);
 	
 	int saveUser(User user);
+	
+	List<User> findUsers(String firstName, String lastName);
 	
 //	List<User> findAll();
 //    List<User> findById();

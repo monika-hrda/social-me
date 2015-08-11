@@ -66,5 +66,27 @@ public class UserDAOImpl implements UserDAO {
 		return id;
 	}
 
+	@Override
+	public List<User> findUsers(String firstName, String lastName) {
+		Session session = sf.openSession();
+		Transaction tx = session.beginTransaction();
+		Query query = session.createQuery("from User where firstName like :firstName and lastName like :lastName order by lastName ASC");
+		query.setParameter("firstName", firstName + "%");
+		query.setParameter("lastName", lastName + "%");
+		query.setMaxResults(20);
+		List<User> foundUsers = null;
+		try {
+			foundUsers = (List<User>) query.list();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			tx.rollback();
+		}
+		tx.commit();
+        session.close();
+        for (User foundUser : foundUsers) {
+        	System.out.println(foundUser.getFirstName() + " " + foundUser.getLastName());
+        }
+		return foundUsers;
+	}
 
 }
