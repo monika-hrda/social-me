@@ -2,25 +2,17 @@ package mhrda.socialme.actions;
 
 import java.util.Map;
 
-import javax.servlet.ServletContext;
-
 import org.apache.struts2.interceptor.SessionAware;
-import org.apache.struts2.util.ServletContextAware;
-import org.hibernate.SessionFactory;
 
-import mhrda.socialme.dao.UserDAO;
-import mhrda.socialme.dao.UserDAOImpl;
 import mhrda.socialme.entities.User;
 
-import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
-public class LoginAction extends ActionSupport implements ModelDriven<User>, ServletContextAware, SessionAware {
+public class LoginAction extends BaseAction implements ModelDriven<User>, SessionAware {
 
 	private static final long serialVersionUID = 1L;
 	
 	private User user = new User();
-	private ServletContext context;
 	private Map<String, Object> sessionAttributes = null;  //get rid of = null ??
 
 	@Override
@@ -32,10 +24,8 @@ public class LoginAction extends ActionSupport implements ModelDriven<User>, Ser
 //			System.out.println("User logged in: " + user.getFirstName() + ", email: " + user.getEmail());
 //			return SUCCESS;		// return welcome page
 //		}
-		
-		SessionFactory sf = (SessionFactory) context.getAttribute("SessionFactory");
-        UserDAO userDAO = new UserDAOImpl(sf);
-        User userDB = userDAO.getUserByCredentials(user.getEmail(), user.getPwd());
+
+        User userDB = getUserDAO().getUserByCredentials(user.getEmail(), user.getPwd());
         if(userDB == null) return ERROR;
         else {
             user.setUserId(userDB.getUserId());
@@ -68,11 +58,6 @@ public class LoginAction extends ActionSupport implements ModelDriven<User>, Ser
 		return user;
 	}
 	
-	@Override
-	public void setServletContext(ServletContext sc) {
-		this.context = sc;		
-	}
-
 	@Override
 	public void setSession(Map<String, Object> sessionAttributes) {
 		this.sessionAttributes = sessionAttributes;
