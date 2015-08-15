@@ -51,21 +51,25 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public int saveUser(User user) {
 		Session session = sf.openSession();
-		Transaction tx = session.beginTransaction();
-		int id = 0;
+		Transaction tx = null;
+		int userId = 0;
 		try {
-			id = (int) session.save(user);
+			tx = session.beginTransaction();
+			userId = (int) session.save(user);
+			// save method guarantees that the identifier value will be assigned to the persistent instance immediately; 
+			// Returns the generated ID of the entity
+			tx.commit();
 		} catch (HibernateException e) {
+			if (tx != null) tx.rollback();
 			e.printStackTrace();
-			tx.rollback();
+		} finally {
+			System.out.println("user saved witd id " + userId);
+	        session.close();
 		}
-		// save method guarantees that the identifier value will be assigned to the persistent instance immediately; Returns the generated ID of the entity
-		tx.commit();
-		System.out.println("user saved witd id " + id);
-        session.close();
-		return id;
+		return userId;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> findUsers(String firstName, String lastName) {
 		Session session = sf.openSession();
@@ -73,7 +77,8 @@ public class UserDAOImpl implements UserDAO {
 		Query query = session.createQuery("from User where firstName like :firstName and lastName like :lastName order by lastName ASC");
 		query.setParameter("firstName", firstName + "%");
 		query.setParameter("lastName", lastName + "%");
-		query.setMaxResults(20);
+		query.setFirstResult(0);
+		query.setMaxResults(10);
 		List<User> foundUsers = null;
 		try {
 			foundUsers = (List<User>) query.list();
