@@ -17,6 +17,9 @@ public class SearchAction extends BaseAction implements ModelDriven<User> {
 	public String execute() throws Exception {
 		System.out.println("inside SearchAction execute");
 		
+		if((user.getFirstName() == null || user.getFirstName().isEmpty()) && (user.getLastName() == null || user.getLastName().isEmpty())) 
+			return INPUT;
+		
         setFoundUsers(getUserDAO().findUsers(user.getFirstName(), user.getLastName()));
 		return SUCCESS;
 	}
