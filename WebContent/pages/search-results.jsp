@@ -17,12 +17,14 @@
 				<th>First Name</th>
 				<th>Last Name</th>
 				<th>Email</th>
+				<th> </th>
 			</tr>
 			<s:iterator value="foundUsers">
 				<tr>
 					<td><s:property value="firstName"/></td>
 					<td><s:property value="lastName"/></td>
 					<td><s:property value="email"/></td>
+					<td><s:form action="befriend" method="post"><s:submit value="Add Friend"></s:submit></s:form></td>
 				</tr>
 			</s:iterator>
 		</table>

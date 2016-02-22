@@ -16,7 +16,7 @@
 		<h3>Your email is <s:property value="email"></s:property></h3>
 		<h3>Your password is <s:property value="pwd"></s:property></h3>
 		
-		<p> You can now search for your friends on SocialMe. </p>
+		<p> You can now <a href="pages/search.jsp">search</a> for your friends on SocialMe. </p>
 		
 		<h3><a href="<s:url action="logout"/>">Log out</a></h3>
 	</body>
