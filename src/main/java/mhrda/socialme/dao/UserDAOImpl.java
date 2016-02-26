@@ -36,6 +36,21 @@ public class UserDAOImpl implements UserDAO {
 	}
 	
 	@Override
+	public User getUserById(int userId) {
+		Session session = sf.openSession();
+		Transaction tx = session.beginTransaction();
+		Query query = session.createQuery("from User where id=:userId");
+		query.setInteger("userId", userId);
+		User user = (User) query.uniqueResult();
+		
+		System.out.println("User Retrieved from DB:" + user);
+		
+		tx.commit();
+		session.close();
+		return user;
+	}
+	
+	@Override
 	public long testUserExists(String email) { //returns count of existing users with the entered email address
 		Session session = sf.openSession();
 		Transaction tx = session.beginTransaction();

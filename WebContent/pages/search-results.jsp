@@ -14,16 +14,21 @@
 		
 		<table>
 			<tr>
-				<th>First Name</th>
-				<th>Last Name</th>
+				<th>Name</th>
 				<th>Email</th>
+				<th>Id</th>
 				<th> </th>
 			</tr>
 			<s:iterator value="foundUsers">
+				<s:url action="showProfile" var="showProfileLink">
+					<s:param name="userId" value="%{userId}"></s:param>
+				</s:url>
 				<tr>
-					<td><s:property value="firstName"/></td>
-					<td><s:property value="lastName"/></td>
+					<td>
+					<s:a href="%{showProfileLink}"><s:property value="firstName"/><s:property value="lastName"/></s:a>
+					</td>
 					<td><s:property value="email"/></td>
+					<td><s:property value="userId"/></td>
 					<td><s:form action="befriend" method="post"><s:submit value="Add Friend"></s:submit></s:form></td>
 				</tr>
 			</s:iterator>

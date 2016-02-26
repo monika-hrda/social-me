@@ -63,6 +63,11 @@
 		    <result name="input">/pages/search.jsp</result>
 	    </action>
 	    
+	    <action name="showProfile" class="mhrda.socialme.actions.ShowProfileAction">
+	    	<interceptor-ref name="defaultStack"></interceptor-ref>
+		    <result name="success">/pages/welcome.jsp</result>
+	    </action>
+	    
 	    <action name="test" class="mhrda.socialme.actions.TestAction">
 	    	<result name="success">/pages/welcome.jsp</result>
 	    </action>
