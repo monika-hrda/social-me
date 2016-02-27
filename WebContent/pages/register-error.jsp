@@ -11,6 +11,6 @@
 	
 	<body>
 		<h4>Something went wrong. Please try again.</h4>
-		<s:include value="register.jsp"></s:include>
+		<s:include value="register.jsp" />
 	</body>
 </html>

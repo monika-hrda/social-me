@@ -10,11 +10,14 @@
 	</head>
 	
 	<body>
+	
+		<s:include value="hello-user.jsp" /> <%-- temporary --%>
+			
 		<h3>Welcome User, please login below</h3>
 		<s:form action="login" method="post">
-			<s:textfield name="email" label="Email"></s:textfield>
-			<s:textfield name="pwd" label="Password" type="password"></s:textfield>
-			<s:submit value="Login"></s:submit>
+			<s:textfield name="email" label="Email" />
+			<s:textfield name="pwd" label="Password" type="password" />
+			<s:submit value="Login" />
 		</s:form>
 		
 		<h3>Don't have an account yet? <a href="<s:url action="signup"/>">Register here.</a></h3>

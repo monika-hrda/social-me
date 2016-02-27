@@ -13,13 +13,13 @@
 		<h3>Register to start making friends on SocialMe</h3>
 		
 		<s:form action="register" method="post">
-			<s:textfield name="firstName" label="First Name"></s:textfield>
-			<s:textfield name="lastName" label="Last Name"></s:textfield>
-			<s:textfield name="email" label="Email"></s:textfield>
-			<s:password name="pwd" label="Password"></s:password>
-			<%-- <s:radio list="{'male','female'}" name="gender"></s:radio> --%>
+			<s:textfield name="firstName" label="First Name" />
+			<s:textfield name="lastName" label="Last Name" />
+			<s:textfield name="email" label="Email" />
+			<s:password name="pwd" label="Password" />
+			<%-- <s:radio list="{'male','female'}" name="gender" /> --%>
 			
-			<s:submit value="Register"></s:submit>
+			<s:submit value="Register" />
 		</s:form>
 	</body>
 </html>

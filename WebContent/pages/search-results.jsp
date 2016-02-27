@@ -10,6 +10,9 @@
 	</head>
 	
 	<body>
+		
+		<s:include value="hello-user.jsp" /> <%-- temporary --%>
+				
 		<h3>Search Results</h3>
 		
 		<table>
@@ -21,7 +24,7 @@
 			</tr>
 			<s:iterator value="foundUsers">
 				<s:url action="showProfile" var="showProfileLink">
-					<s:param name="userId" value="%{userId}"></s:param>
+					<s:param name="userId" value="%{userId}" />
 				</s:url>
 				<tr>
 					<td>
@@ -29,7 +32,7 @@
 					</td>
 					<td><s:property value="email"/></td>
 					<td><s:property value="userId"/></td>
-					<td><s:form action="befriend" method="post"><s:submit value="Add Friend"></s:submit></s:form></td>
+					<td><s:form action="befriend" method="post"><s:submit value="Add Friend" /></s:form></td>
 				</tr>
 			</s:iterator>
 		</table>

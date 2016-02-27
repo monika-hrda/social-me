@@ -10,11 +10,14 @@
 	</head>
 	
 	<body>
-		<h3>Welcome <s:property value="firstName"></s:property></h3>
+		
+		<s:include value="hello-user.jsp" /> <%-- temporary --%>
+				
+		<h3>Welcome <s:property value="firstName" /></h3>
 		<h3>Thank you for registering with SocialMe.</h3>
- 		<h3>Your id is <s:property value="userId"></s:property></h3>
-		<h3>Your email is <s:property value="email"></s:property></h3>
-		<h3>Your password is <s:property value="pwd"></s:property></h3>
+ 		<h3>Your id is <s:property value="userId" /></h3>
+		<h3>Your email is <s:property value="email" /></h3>
+		<h3>Your password is <s:property value="pwd" /></h3>
 		
 		<p> You can now <a href="pages/search.jsp">search</a> for your friends on SocialMe. </p>
 		

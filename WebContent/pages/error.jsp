@@ -11,6 +11,6 @@
 	
 	<body>
 		<h4>Invalid Email/Password. Please try again.</h4>
-		<s:include value="login.jsp"></s:include>
+		<s:include value="login.jsp" />
 	</body>
 </html>
