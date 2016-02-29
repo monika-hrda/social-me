@@ -13,13 +13,19 @@
 		
 		<s:include value="hello-user.jsp" /> <%-- temporary --%>
 		
-		<h3>Welcome <s:property value="firstName" /></h3>
- 		<h3>Your id is <s:property value="userId" /></h3>
-		<h3>Your email is <s:property value="email" /></h3>
-		<h3>Your password is <s:property value="pwd" /></h3>
+		<div align="center"><h4>PROFILE PAGE</h4></div>
+		
+		<s:push value="user">
+			<h3>Profile of user <s:property value="firstName" /></h3>
+ 			<h3>User's id is <s:property value="userId" /></h3>
+			<h3>User's email is <s:property value="email" /></h3>
+			<h3>User's password is <s:property value="pwd" /></h3>
+		</s:push>
 		
 		<%-- testing: --%>
-		JSP says your name in session is <s:property value="#session.USER.firstName" /> and your email is <s:property value="#session.USER.email" />.
+		JSP says your name in session is <s:property value="#session.USER.firstName" /> and your email is <s:property value="#session.USER.email" />.<br>
+		Value of 'user.firstName' is <s:property value="user.firstName" />. <%-- JSP uses the getUser() from ShowProfileAction (or LoginAction) --%><br>
+		Value of 'firstName' is <s:property value="firstName" />.
 		
 		<p> You can <a href="pages/search.jsp">search</a> for your friends on SocialMe. </p>
 		

@@ -14,28 +14,28 @@ public class LoginAction extends BaseAction implements ModelDriven<User>, Sessio
 	
 	private User user = new User();
 	private Map<String, Object> sessionAttributes = null;  //get rid of = null ??
-
+	
 	@Override
 	public String execute() throws Exception {
-		System.out.println("inside LoginAction execute");
-		
-//		if (sessionAttributes.containsKey("USER")) {		// check if the user is already stored in the session
-//			user = (User) sessionAttributes.get("USER");
-//			System.out.println("User logged in: " + user.getFirstName() + ", email: " + user.getEmail());
-//			return SUCCESS;		// return welcome page
-//		}
-
-        User userDB = getUserDAO().getUserByCredentials(user.getEmail(), user.getPwd());
-        if(userDB == null) return ERROR;
+		System.out.println("inside LoginAction execute");		
+		user = getUserDAO().getUserByCredentials(getUser().getEmail(), getUser().getPwd());
+        System.out.println("Logged in user's first name is " + getUser().getFirstName());
+        if(user == null) return ERROR;
         else {
-            user.setUserId(userDB.getUserId());
-            user.setFirstName(userDB.getFirstName());
-            user.setLastName(userDB.getLastName());
-            sessionAttributes.put("USER", user);
-            return SUCCESS;
+        	sessionAttributes.put("USER", user);
+        	return SUCCESS;
         }
+//        User userDB = getUserDAO().getUserByCredentials(user.getEmail(), user.getPwd());
+//        if(userDB == null) return ERROR;
+//        else {
+//            user.setUserId(userDB.getUserId());
+//            user.setFirstName(userDB.getFirstName());
+//            user.setLastName(userDB.getLastName());
+//            sessionAttributes.put("USER", user);
+//            return SUCCESS;
+//        }
 	}
-	
+
 	public String logout() {
 		if (sessionAttributes.containsKey("USER")) {
 			sessionAttributes.remove("USER");
@@ -51,8 +51,20 @@ public class LoginAction extends BaseAction implements ModelDriven<User>, Sessio
 //				System.out.println("logout exception!: " + e);
 //			}
 //		}
+// 
+//		if (sessionAttributes != null) {
+//			sessionAttributes.invalidate();
+//		}
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
 	@Override
 	public User getModel() {
 		return user;
