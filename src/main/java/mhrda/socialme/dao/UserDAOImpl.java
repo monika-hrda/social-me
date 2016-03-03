@@ -29,7 +29,7 @@ public class UserDAOImpl implements UserDAO {
         User user = (User) query.uniqueResult();
         if(user != null){
             System.out.println("User Retrieved from DB:" + user);
-        }
+        } else System.out.println("No user retrieved from DB");
         tx.commit();
         session.close();
         return user;

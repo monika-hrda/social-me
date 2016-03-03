@@ -19,9 +19,9 @@ public class LoginAction extends BaseAction implements ModelDriven<User>, Sessio
 	public String execute() throws Exception {
 		System.out.println("inside LoginAction execute");		
 		user = getUserDAO().getUserByCredentials(getUser().getEmail(), getUser().getPwd());
-        System.out.println("Logged in user's first name is " + getUser().getFirstName());
         if(user == null) return ERROR;
         else {
+        	System.out.println("Logged in user's first name is " + getUser().getFirstName());
         	sessionAttributes.put("USER", user);
         	return SUCCESS;
         }
