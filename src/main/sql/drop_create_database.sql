@@ -10,19 +10,19 @@ CREATE TABLE User (
     password CHAR(40) NOT NULL,
     first_name VARCHAR(30) NOT NULL,
     last_name VARCHAR(30) NOT NULL,
-    gender ENUM('M','F') NOT NULL,
+    gender ENUM('M','F') NOT NULL, #Consider changing to is_male BIT(1)
     avatar_filename VARCHAR(200),
     created_date TIMESTAMP,
     last_login_date TIMESTAMP, 
     UNIQUE (email)
 );
 
-CREATE TABLE Status (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE Friendship_Status (
+    id INT NOT NULL PRIMARY KEY,
     name VARCHAR(20)
 );
 
-INSERT INTO Status
+INSERT INTO Friendship_Status
     (id, name)
 VALUES
     (1, 'requested'),
@@ -30,19 +30,19 @@ VALUES
     (3, 'rejected');
 
 /*This table stores the relationships between pairs of users.
-user1_id stores the id of the user who initiated the relationship (made a friend request).
-user2_id stores the id of the other party in the relationship.
+user_a_id stores the id of the user who initiated the relationship (made a friend request).
+user_b_id stores the id of the other party in the relationship.
 */
 CREATE TABLE Friendship (
-    friendship_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     user_a_id INT NOT NULL,
     user_b_id INT NOT NULL,
-    status TINYINT NOT NULL,
+    friendship_status_id INT NOT NULL,
     request_time TIMESTAMP NOT NULL,
     response_time TIMESTAMP NOT NULL,
     FOREIGN KEY (user_a_id) REFERENCES User (id) ON DELETE CASCADE,
     FOREIGN KEY (user_b_id) REFERENCES User (id) ON DELETE CASCADE,
-    FOREIGN KEY (status) REFERENCES Status (id)
+    FOREIGN KEY (friendship_status_id) REFERENCES Friendship_Status (id)
 );
 
 /*
@@ -52,8 +52,8 @@ The web application should validate that one of the two is present (text or imag
 */
 CREATE TABLE Post (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL, --#This is the user who created the post.
-    for_user_id INT NOT NULL, --#This is the user the post is for, used in building a user's wall.
+    user_id INT NOT NULL, #This is the user who created the post.
+    for_user_id INT NOT NULL, #This is the user the post is for, used in building a user's wall.
     text VARCHAR(500),
     image_filename VARCHAR(200),
     created_date TIMESTAMP NOT NULL,

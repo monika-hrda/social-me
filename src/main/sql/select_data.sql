@@ -1,23 +1,25 @@
 USE SocialMe;
 
---#Get all the users
+#testing only
+
+#Get all the users
 SELECT * FROM User;
 
---#Get all the relationships and joins to show the email addresses of each user
+#Get all the relationships and joins to show the email addresses of each user
 SELECT
-    UF.user_a_id,
-    UF.user_b_id,
+    F.user_a_id,
+    F.user_b_id,
     U1.email AS FriendOne,
     U2.email AS FriendTwo,
-    UF.status
-FROM Friendship UF
-JOIN User U1 ON U1.id = UF.user_a_id
-JOIN User U2 ON U2.id = UF.user_b_id;
+    F.friendship_status_id
+FROM Friendship F
+JOIN User U1 ON U1.id = F.user_a_id
+JOIN User U2 ON U2.id = F.user_b_id;
 
---#Get all the Posts
+#Get all the Posts
 SELECT * FROM SocialMe.Post;
 
---#Build a wall for Michael (user_id 3)
+#Build a wall for Michael (user_id 3)
 SELECT
     P.id,
     U1.first_name AS PostedBy,
