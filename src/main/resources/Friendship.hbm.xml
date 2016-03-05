@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="mhrda.socialme.entities.Friendship" table="FRIENDSHIP">
+	
+		<id name="friendshipId" type="int">
+			<column name="id" />
+			<generator class="increment" />   <!-- assigned=default, the programmer is responsible for assigning the primary key value -->
+		</id>
+		
+		<many-to-one name="userA" class="mhrda.socialme.entities.User">
+			<column name="user_a_id" not-null="true" />
+		</many-to-one>
+		
+        <many-to-one name="userB" class="mhrda.socialme.entities.User">
+        	<column name="user_b_id" not-null="true" />
+        </many-to-one>
+        
+        <many-to-one name="friendshipStatus" class="mhrda.socialme.entities.FriendshipStatus">
+        	<column name="friendship_status_id" not-null="true" />
+        </many-to-one>
+        
+	</class>
+</hibernate-mapping>

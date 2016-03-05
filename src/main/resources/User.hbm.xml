@@ -7,21 +7,37 @@
 
 <hibernate-mapping>
     <class name="mhrda.socialme.entities.User" table="USER">
+    
         <id name="userId" type="int">
             <column name="id" />
             <generator class="increment" />   <!-- assigned=default, the programmer is responsible for assigning the primary key value -->
         </id>
+        
         <property name="firstName" type="java.lang.String">
             <column name="first_name" />
         </property>
+        
         <property name="lastName" type="java.lang.String">
             <column name="last_name" />
         </property>
+        
         <property name="pwd" type="java.lang.String">
             <column name="password" />
         </property>
+        
         <property name="email" type="java.lang.String">
             <column name="email" />
         </property>
+        
+        <set name="friendshipsInitiatedByUser" table="FRIENDSHIP" inverse="true" cascade="save-update"> <!-- cascade="save-update" ? -->
+        	<key column="user_a_id" />
+        	<one-to-many class="mhrda.socialme.entities.Friendship" />
+        </set>
+        
+        <set name="friendshipsInitiatedByAnotherUser" table="FRIENDSHIP" inverse="true" cascade="save-update"> <!-- cascade="save-update" ? -->
+        	<key column="user_b_id" />
+        	<one-to-many class="mhrda.socialme.entities.Friendship" />
+        </set>
+        
     </class>
 </hibernate-mapping>
