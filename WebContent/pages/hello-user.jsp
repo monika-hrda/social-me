@@ -14,7 +14,7 @@
 	
 	<body>
 		<div align="center" style="background-color:green; color:white; height:40px; padding-top:20px">
-			<s:if test="%{#session.USER != null}"><s:property value="#session.USER.firstName" />, you are in!!</s:if>
+			<s:if test="%{#session.LOGGEDINUSER != null}"><s:property value="#session.LOGGEDINUSER.firstName" />, you are in!!</s:if>
 			<s:else>Nobody is logged in at the moment :( </s:else>
 		</div>
 	</body>

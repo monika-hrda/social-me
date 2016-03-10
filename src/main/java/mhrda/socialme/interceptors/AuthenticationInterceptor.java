@@ -17,7 +17,7 @@ public class AuthenticationInterceptor extends AbstractInterceptor {  //implemen
 		System.out.println("inside auth interceptor");
 		Map<String, Object> sessionAttributes = actionInvocation.getInvocationContext().getSession();
 		
-		User user = (User) sessionAttributes.get("USER");
+		User user = (User) sessionAttributes.get("LOGGEDINUSER");
 		
 		if(user == null) {
 			return Action.LOGIN;

@@ -32,7 +32,7 @@ public class RegisterAction extends BaseAction implements ModelDriven<User>, Ses
 	        	e.printStackTrace();
 	        }
 	        if (id>0) {
-	        	sessionAttributes.put("USER", user);
+	        	sessionAttributes.put("LOGGEDINUSER", user);
 	    		return SUCCESS;
 	        } else return ERROR;
         }

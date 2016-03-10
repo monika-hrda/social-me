@@ -23,7 +23,7 @@
 		</s:push>
 		
 		<%-- testing: --%>
-		JSP says your name in session is <s:property value="#session.USER.firstName" /> and your email is <s:property value="#session.USER.email" />.<br>
+		JSP says your name in session is <s:property value="#session.LOGGEDINUSER.firstName" /> and your email is <s:property value="#session.LOGGEDINUSER.email" />.<br>
 		Value of 'user.firstName' is <s:property value="user.firstName" />. <%-- JSP uses the getUser() from ShowProfileAction (or LoginAction) --%><br>
 		Value of 'firstName' is <s:property value="firstName" />.
 		

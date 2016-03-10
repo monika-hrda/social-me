@@ -22,7 +22,7 @@ public class LoginAction extends BaseAction implements ModelDriven<User>, Sessio
         if(user == null) return ERROR;
         else {
         	System.out.println("Logged in user's first name is " + getUser().getFirstName());
-        	sessionAttributes.put("USER", user);
+        	sessionAttributes.put("LOGGEDINUSER", user);
         	return SUCCESS;
         }
 //        User userDB = getUserDAO().getUserByCredentials(user.getEmail(), user.getPwd());
@@ -37,8 +37,8 @@ public class LoginAction extends BaseAction implements ModelDriven<User>, Sessio
 	}
 
 	public String logout() {
-		if (sessionAttributes.containsKey("USER")) {
-			sessionAttributes.remove("USER");
+		if (sessionAttributes.containsKey("LOGGEDINUSER")) {
+			sessionAttributes.remove("LOGGEDINUSER");
 		}
 		return SUCCESS;
 		
