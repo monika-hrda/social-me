@@ -2,6 +2,8 @@ package mhrda.socialme.actions;
 
 import javax.servlet.ServletContext;
 
+import mhrda.socialme.dao.FriendshipDAO;
+import mhrda.socialme.dao.FriendshipDAOImpl;
 import mhrda.socialme.dao.UserDAO;
 import mhrda.socialme.dao.UserDAOImpl;
 
@@ -16,6 +18,7 @@ public class BaseAction extends ActionSupport implements ServletContextAware {
 	
 	protected ServletContext context;
 	private UserDAO userDAO;
+	private FriendshipDAO friendshipDAO;
 		
 	public UserDAO getUserDAO() {
 		if (userDAO == null) {
@@ -23,6 +26,14 @@ public class BaseAction extends ActionSupport implements ServletContextAware {
 		    userDAO = new UserDAOImpl(sf);
 		}
 		return userDAO;
+	}
+	
+	public FriendshipDAO getFriendshipDAO() {
+		if (friendshipDAO == null) {
+			SessionFactory sf = (SessionFactory) context.getAttribute("SessionFactory");
+			friendshipDAO = new FriendshipDAOImpl(sf);
+		}
+		return friendshipDAO;
 	}
 
 	@Override

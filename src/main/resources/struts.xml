@@ -66,7 +66,12 @@
 	    <action name="showProfile" class="mhrda.socialme.actions.ShowProfileAction">
 	    	<interceptor-ref name="defaultStack"></interceptor-ref>
 		    <result name="success">/pages/welcome.jsp</result>
-		    <result name="error">/pages/register-error.jsp</result>
+		    <result name="error">/pages/register-error.jsp</result> <!-- zmen, create interceptor for exceptions -->
+	    </action>
+	    
+	    <action name="showFriends" class="mhrda.socialme.actions.ShowFriendsAction">
+	    	<result name="success">/pages/show-friends.jsp</result>
+	    	<result name="error">/pages/register-error.jsp</result> <!-- zmen, create interceptor for exceptions -->
 	    </action>
 	    
 	    <action name="test" class="mhrda.socialme.actions.TestAction">
