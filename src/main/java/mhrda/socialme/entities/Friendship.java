@@ -3,9 +3,9 @@ package mhrda.socialme.entities;
 public class Friendship {
 
 	private int friendshipId;
-	private int userA;
-	private int userB;
-	private int friendshipStatus;
+	private User friendRequester;
+	private User friendResponder;
+	private FriendshipStatus friendshipStatus;
 	
 	public int getFriendshipId() {
 		return friendshipId;
@@ -13,22 +13,22 @@ public class Friendship {
 	public void setFriendshipId(int friendshipId) {
 		this.friendshipId = friendshipId;
 	}
-	public int getUserA() {
-		return userA;
+	public User getFriendRequester() {
+		return friendRequester;
 	}
-	public void setUserA(int userA) {
-		this.userA = userA;
+	public void setFriendRequester(User friendRequester) {
+		this.friendRequester = friendRequester;
 	}
-	public int getUserB() {
-		return userB;
+	public User getFriendResponder() {
+		return friendResponder;
 	}
-	public void setUserB(int userB) {
-		this.userB = userB;
+	public void setFriendResponder(User friendResponder) {
+		this.friendResponder = friendResponder;
 	}
-	public int getFriendshipStatus() {
+	public FriendshipStatus getFriendshipStatus() {
 		return friendshipStatus;
 	}
-	public void setFriendshipStatus(int friendshipStatus) {
+	public void setFriendshipStatus(FriendshipStatus friendshipStatus) {
 		this.friendshipStatus = friendshipStatus;
 	}
 	

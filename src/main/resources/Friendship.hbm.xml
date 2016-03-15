@@ -11,11 +11,11 @@
 			<generator class="increment" />   <!-- assigned=default, the programmer is responsible for assigning the primary key value -->
 		</id>
 		
-		<many-to-one name="userA" class="mhrda.socialme.entities.User">
+		<many-to-one name="friendRequester" class="mhrda.socialme.entities.User">
 			<column name="user_a_id" not-null="true" />
 		</many-to-one>
 		
-        <many-to-one name="userB" class="mhrda.socialme.entities.User">
+        <many-to-one name="friendResponder" class="mhrda.socialme.entities.User">
         	<column name="user_b_id" not-null="true" />
         </many-to-one>
         

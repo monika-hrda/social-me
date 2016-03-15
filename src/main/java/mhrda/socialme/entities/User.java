@@ -10,8 +10,8 @@ public class User {
 	private String lastName;
 	private String pwd;
     private String email;
-    private Set<Friendship> friendshipsInitiatedByUser = new HashSet<Friendship>(); //list of friendships initiated / requested by the user
-    private Set<Friendship> friendshipsInitiatedByAnotherUser = new HashSet<Friendship>(); //list of friendships where the user is a responder
+    private Set<Friendship> friendshipsWhereUserIsRequester = new HashSet<Friendship>(); //list of friendships initiated / requested by the user
+    private Set<Friendship> friendshipsWhereUserIsResponder = new HashSet<Friendship>(); //list of friendships where the user is a responder
     
 	public int getUserId() {
 		return userId;
@@ -43,22 +43,22 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Set<Friendship> getFriendshipsInitiatedByUser() {
-		return friendshipsInitiatedByUser;
+	public Set<Friendship> getFriendshipsWhereUserIsRequester() {
+		return friendshipsWhereUserIsRequester;
 	}
-	public void setFriendshipsInitiatedByUser(Set<Friendship> friendshipsInitiatedByUser) {
-		this.friendshipsInitiatedByUser = friendshipsInitiatedByUser;
+	public void setFriendshipsWhereUserIsRequester(Set<Friendship> friendshipsWhereUserIsRequester) {
+		this.friendshipsWhereUserIsRequester = friendshipsWhereUserIsRequester;
 	}
-	public Set<Friendship> getFriendshipsInitiatedByAnotherUser() {
-		return friendshipsInitiatedByAnotherUser;
+	public Set<Friendship> getFriendshipsWhereUserIsResponder() {
+		return friendshipsWhereUserIsResponder;
 	}
-	public void setFriendshipsInitiatedByAnotherUser(Set<Friendship> friendshipsInitiatedByAnotherUser) {
-		this.friendshipsInitiatedByAnotherUser = friendshipsInitiatedByAnotherUser;
+	public void setFriendshipsWhereUserIsResponder(Set<Friendship> friendshipsWhereUserIsResponder) {
+		this.friendshipsWhereUserIsResponder = friendshipsWhereUserIsResponder;
 	}
 
-//	//preferred way to add friendship to 'setFriendships..' or to 'getFriendships...add(..)'
-//	public void addFriendshipInitiatedByUser(Friendship friendship) {
-//		friendship.setUserA(this.getUserId());
-//		friendshipsInitiatedByUser.add(friendship);		
+//		//preferred way to add friendship to 'setFriendships..' or to 'getFriendships...add(..)'
+//		public void addFriendshipWhereUserIsRequester(Friendship friendship) {
+//		friendship.setFriendRequesterId(this.getUserId());
+//		friendshipsWhereUserIsRequester.add(friendship);		
 //	}
 }
