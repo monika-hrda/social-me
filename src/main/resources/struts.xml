@@ -30,12 +30,7 @@
 	    	<interceptor-ref name="defaultStack"></interceptor-ref>
 	        <result>/pages/login.jsp</result>
 	    </action>
-	    
-	    <action name="signup">
-	    	<interceptor-ref name="defaultStack"></interceptor-ref>
-	        <result>/pages/register.jsp</result>
-	    </action>
-	    
+	        
 	    <action name="login" class="mhrda.socialme.actions.LoginAction">
 	    	<interceptor-ref name="defaultStack"></interceptor-ref>
 		    <result name="success">/pages/welcome.jsp</result>
@@ -49,6 +44,11 @@
 	    	<!-- <result name="success" type="redirect">/home.action</result> -->
 	    </action>
 	    
+	    <action name="signup">
+	    	<interceptor-ref name="defaultStack"></interceptor-ref>
+	        <result>/pages/register.jsp</result>
+	    </action>
+	    
 	    <action name="register" class="mhrda.socialme.actions.RegisterAction">
 	    	<interceptor-ref name="defaultStack"></interceptor-ref>
 		    <result name="success">/pages/register-success.jsp</result>
@@ -57,14 +57,12 @@
 	    </action>
 	    
 	    <action name="search" class="mhrda.socialme.actions.SearchAction">
-	    	<interceptor-ref name="defaultStack"></interceptor-ref>
 		    <result name="success">/pages/search-results.jsp</result>
 		    <result name="error">/pages/error.jsp</result>   <!-- zmen -->
 		    <result name="input">/pages/search.jsp</result>
 	    </action>
 	    
 	    <action name="showProfile" class="mhrda.socialme.actions.ShowProfileAction">
-	    	<interceptor-ref name="defaultStack"></interceptor-ref>
 		    <result name="success">/pages/welcome.jsp</result>
 		    <result name="error">/pages/register-error.jsp</result> <!-- zmen, create interceptor for exceptions -->
 	    </action>
