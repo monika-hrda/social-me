@@ -6,7 +6,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Error Page</title>
+		<title>SocialMe | Error Page</title>
 	</head>
 	
 	<body>

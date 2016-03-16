@@ -6,7 +6,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Search Results</title>
+		<title>SocialMe | Search Results</title>
 	</head>
 	
 	<body>
@@ -28,7 +28,7 @@
 				</s:url>
 				<tr>
 					<td>
-					<s:a href="%{showProfileLink}"><s:property value="firstName"/><s:property value="lastName"/></s:a>
+					<s:a href="%{showProfileLink}"><s:property value="firstName"/>&nbsp;<s:property value="lastName"/></s:a>
 					</td>
 					<td><s:property value="email"/></td>
 					<td><s:property value="userId"/></td>

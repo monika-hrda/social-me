@@ -14,9 +14,10 @@ public class TestAction extends ActionSupport implements UserAware, ModelDriven<
 	
 	@Override
 	public String execute() {
-		if(user != null)
-		System.out.println("User detected as a logged in user is: " + user.getFirstName());
-		return SUCCESS;		
+		if(user != null) {
+			System.out.println("User detected as a logged in user is: " + user.getFirstName());
+		}
+		return SUCCESS;	
 	}
 
 	@Override

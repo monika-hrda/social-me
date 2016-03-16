@@ -20,16 +20,12 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public User getUserByCredentials(String email, String password) {
-		Session session = sf.openSession();     // we should open a new session for each request in multi-threaded environment
-		// Session session = sf.getCurrentSession();  this session object belongs to hibernate context and is not thread safe
+		Session session = sf.openSession();
         Transaction tx = session.beginTransaction();
         Query query = session.createQuery("from User where email=:email and pwd=:pwd");
         query.setString("email", email); 
         query.setString("pwd", password);
         User user = (User) query.uniqueResult();
-        if(user != null){
-            System.out.println("User Retrieved from DB:" + user);
-        } else System.out.println("No user retrieved from DB");
         tx.commit();
         session.close();
         return user;
@@ -41,24 +37,22 @@ public class UserDAOImpl implements UserDAO {
 		Transaction tx = session.beginTransaction();
 		Query query = session.createQuery("from User where id=:userId");
 		query.setInteger("userId", userId);
-		User user = (User) query.uniqueResult();
-		
-		System.out.println("User Retrieved from DB:" + user);
-		
+		User user = (User) query.uniqueResult();		
+		System.out.println("User Retrieved from DB:" + user);		
 		tx.commit();
 		session.close();
 		return user;
 	}
 	
 	@Override
-	public long testUserExists(String email) { //returns count of existing users with the entered email address
+	public long testUserExists(String email) {  //returns count of existing users with the entered email address
 		Session session = sf.openSession();
 		Transaction tx = session.beginTransaction();
 		Query query = session.createQuery("select count(*) from User where email=:email");
 		query.setString("email", email);
 		long countExistingUsers = (long) query.uniqueResult();
 		tx.commit();
-		System.out.println("(inside UserDAOImpl) How many users with email " + email + " exist already? " + countExistingUsers);
+		System.out.println("(inside UserDAOImpl) How many users with email " + email + " exist already? : " + countExistingUsers);
         session.close();
 		return countExistingUsers;
 	}
@@ -72,13 +66,13 @@ public class UserDAOImpl implements UserDAO {
 			tx = session.beginTransaction();
 			userId = (int) session.save(user);
 			// save method guarantees that the identifier value will be assigned to the persistent instance immediately; 
-			// Returns the generated ID of the entity
+			// returns the generated ID of the entity
 			tx.commit();
 		} catch (HibernateException e) {
 			if (tx != null) tx.rollback();
 			e.printStackTrace();
 		} finally {
-			System.out.println("user saved witd id " + userId);
+			System.out.println("new user saved witd id " + userId);
 	        session.close();
 		}
 		return userId;
@@ -98,12 +92,13 @@ public class UserDAOImpl implements UserDAO {
 		try {
 			foundUsers = (List<User>) query.list();
 		} catch (HibernateException e) {
-			e.printStackTrace();
 			tx.rollback();
+			e.printStackTrace();
 		}
 		tx.commit();
         session.close();
         for (User foundUser : foundUsers) {
+        	System.out.println("Users found by search: ");
         	System.out.println(foundUser.getFirstName() + " " + foundUser.getLastName());
         }
 		return foundUsers;

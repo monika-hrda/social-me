@@ -39,7 +39,7 @@
 		<field-validator type="requiredstring">
 			<param name="trim">true</param>
 			<message>
-				Please enter password.
+				Please enter your password.
 			</message>
 		</field-validator>
 		<field-validator type="stringlength">

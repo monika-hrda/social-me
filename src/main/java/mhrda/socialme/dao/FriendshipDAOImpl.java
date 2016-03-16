@@ -24,14 +24,10 @@ public class FriendshipDAOImpl implements FriendshipDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> getExistingFriendsOf(User user) {
-//		Session session = sf.openSession();
 		Session session = sf.getCurrentSession();
 		Transaction tx = session.beginTransaction();
 		Query query = session.createQuery("from Friendship f where (f.friendRequester.userId=:userId or f.friendResponder.userId=:userId)" + 
 				"and f.friendshipStatus.friendshipStatusName='accepted'");
-//		Query query = session.createQuery("SELECT f.friendRequester, f.friendResponder FROM Friendship f WHERE " + 
-//				"(f.friendRequester.userId=:userId OR f.friendResponder.userId=:userId) " + 
-//				"AND f.friendshipStatus.friendshipStatusName='accepted'");
 		query.setInteger("userId", user.getUserId());
 		query.setFirstResult(0);
 		query.setMaxResults(1000);
@@ -62,7 +58,6 @@ public class FriendshipDAOImpl implements FriendshipDAO {
 		}
 		
 		tx.commit();
-//		session.close();
 		return foundFriends;
 	}
 

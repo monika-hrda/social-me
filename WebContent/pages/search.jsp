@@ -6,7 +6,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Search for Friends on SocialMe</title>
+		<title>SocialMe | Search for Friends</title>
 	</head>
 	
 	<body>

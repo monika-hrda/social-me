@@ -18,21 +18,10 @@ public class ShowProfileAction extends BaseAction implements ModelDriven<User>, 
 	@Override
 	public String execute() throws Exception {
 		System.out.println("inside ShowProfileAction execute");
-//		String test = (String) requestAttributes.get("testing");
-//		System.out.println("value of testing is:" + test);
 		int userId = (int) requestAttributes.get("userId");
 		user = getUserDAO().getUserById(userId);
 		if(user == null) return ERROR;
 		return SUCCESS;
-//		User userDB = getUserDAO().getUserById(userId);
-//		if(userDB == null) return ERROR;
-//        else {
-//            user.setFirstName(userDB.getFirstName());
-//            user.setLastName(userDB.getLastName());
-//            user.setPwd(userDB.getPwd());
-//            user.setEmail(userDB.getEmail());
-//            return SUCCESS;
-//        }
 	}
 	
 	public User getUser() {

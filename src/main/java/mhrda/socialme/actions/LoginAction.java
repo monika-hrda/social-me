@@ -2,6 +2,7 @@ package mhrda.socialme.actions;
 
 import java.util.Map;
 
+import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
 
 import mhrda.socialme.entities.User;
@@ -12,49 +13,26 @@ public class LoginAction extends BaseAction implements ModelDriven<User>, Sessio
 
 	private static final long serialVersionUID = 1L;
 	
-	private User user = new User();
-	private Map<String, Object> sessionAttributes = null;  //get rid of = null ??
+	private User user = new User();   // instantiating because of model-driven approach to action class
+	private SessionMap<String, Object> sessionAttributes;
 	
 	@Override
 	public String execute() throws Exception {
-		System.out.println("inside LoginAction execute");		
+		System.out.println("inside LoginAction execute");
 		user = getUserDAO().getUserByCredentials(getUser().getEmail(), getUser().getPwd());
         if(user == null) return ERROR;
         else {
-        	System.out.println("Logged in user's first name is " + getUser().getFirstName());
+        	System.out.println("Logged in user's name: " + getUser().getFirstName() + " " + getUser().getLastName());
         	sessionAttributes.put("LOGGEDINUSER", user);
         	return SUCCESS;
         }
-//        User userDB = getUserDAO().getUserByCredentials(user.getEmail(), user.getPwd());
-//        if(userDB == null) return ERROR;
-//        else {
-//            user.setUserId(userDB.getUserId());
-//            user.setFirstName(userDB.getFirstName());
-//            user.setLastName(userDB.getLastName());
-//            sessionAttributes.put("USER", user);
-//            return SUCCESS;
-//        }
 	}
 
 	public String logout() {
 		if (sessionAttributes.containsKey("LOGGEDINUSER")) {
-			sessionAttributes.remove("LOGGEDINUSER");
+			sessionAttributes.invalidate();
 		}
 		return SUCCESS;
-		
-//		sessionAttributes.clear();
-//		sessionAttributes.remove("USER");
-//		if (sessionAttributes instanceof org.apache.struts2.dispatcher.SessionMap) {
-//			try {
-//				((org.apache.struts2.dispatcher.SessionMap) sessionAttributes).invalidate();
-//			} catch (IllegalStateException e) { //if attempting to invalidate an already-invalid session
-//				System.out.println("logout exception!: " + e);
-//			}
-//		}
-// 
-//		if (sessionAttributes != null) {
-//			sessionAttributes.invalidate();
-//		}
 	}
 
 	public User getUser() {
@@ -72,7 +50,7 @@ public class LoginAction extends BaseAction implements ModelDriven<User>, Sessio
 	
 	@Override
 	public void setSession(Map<String, Object> sessionAttributes) {
-		this.sessionAttributes = sessionAttributes;
+		this.sessionAttributes = (SessionMap<String, Object>) sessionAttributes;
 	}
 
 }

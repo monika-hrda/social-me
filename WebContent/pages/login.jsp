@@ -6,14 +6,15 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>SocialMe Login Page</title>
+		<title>SocialMe | Login</title>
 	</head>
 	
 	<body>
 	
 		<s:include value="hello-user.jsp" /> <%-- temporary --%>
 			
-		<h3>Welcome User, please login below</h3>
+		<h3>SocialMe Login</h3>
+		
 		<s:form action="login" method="post">
 			<s:textfield name="email" label="Email" />
 			<s:textfield name="pwd" label="Password" type="password" />

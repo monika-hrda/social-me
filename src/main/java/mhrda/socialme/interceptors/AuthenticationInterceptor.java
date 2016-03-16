@@ -1,6 +1,6 @@
 package mhrda.socialme.interceptors;
 
-import java.util.Map;
+import org.apache.struts2.dispatcher.SessionMap;
 
 import mhrda.socialme.entities.User;
 
@@ -8,25 +8,29 @@ import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 
-public class AuthenticationInterceptor extends AbstractInterceptor {  //implements Interceptor
+public class AuthenticationInterceptor extends AbstractInterceptor {
 
-	private static final long serialVersionUID = -2736371062123196564L;
+	private static final long serialVersionUID = 1L;
 
 	@Override
 	public String intercept(ActionInvocation actionInvocation) throws Exception {
 		System.out.println("inside auth interceptor");
-		Map<String, Object> sessionAttributes = actionInvocation.getInvocationContext().getSession();
+		SessionMap<String, Object> sessionAttributes = (SessionMap<String, Object>) actionInvocation.getInvocationContext().getSession();
 		
 		User user = (User) sessionAttributes.get("LOGGEDINUSER");
 		
 		if(user == null) {
+			System.out.println("AUTH INTERCEPTOR - No logged in user. Returning to Login.");
 			return Action.LOGIN;
 		} else {
 			Action action = (Action) actionInvocation.getAction();
-			if(action instanceof UserAware) {	// to make sure that action class is implementing UserAware interface
-				((UserAware) action).setUser(user);	// if session is valid, then user is injected into action class
+			
+			if(action instanceof UserAware) {  // to make sure that action class is implementing UserAware interface
+				System.out.println("AUTH INTERCEPTOR - Setting logged in user in action.");
+				((UserAware) action).setUser(user);  // if session is valid, then user is injected into action class
 			}
-			return actionInvocation.invoke();	// ActionInvocation invoke() method that will call the next interceptor or action class in the chain
+			
+			return actionInvocation.invoke();  // the invoke() method will call the next interceptor or action class in the chain
 		}
 	}
 

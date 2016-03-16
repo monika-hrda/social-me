@@ -2,6 +2,7 @@ package mhrda.socialme.actions;
 
 import java.util.Map;
 
+import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
 
 import mhrda.socialme.entities.User;
@@ -12,30 +13,33 @@ public class RegisterAction extends BaseAction implements ModelDriven<User>, Ses
 
 	private static final long serialVersionUID = 1L;
 	
-	private User user = new User();  // instantiating because of model-driven approach to action class
-	private Map<String, Object> sessionAttributes;
+	private User user = new User();   // instantiating because of model-driven approach to action class
+	private SessionMap<String, Object> sessionAttributes;
 	
 	@Override
 	public String execute() throws Exception {
 		System.out.println("inside RegisterAction execute");
  
-        long numberOfExistingUsers = getUserDAO().testUserExists(user.getEmail());  // checks if user with the email address already exists
+        long numberOfExistingUsers = getUserDAO().testUserExists(user.getEmail());  //checks whether user with the email address exists already
         
         if (numberOfExistingUsers>0) {
-        	System.out.println("inside RegisterAction: found existing user");
-        	return ERROR;   // add special note about email/user existing already
-        } else {
-        	int id = 0;
-	        try {
-        		id = getUserDAO().saveUser(getModel());
-	        } catch (Exception e) {
-	        	e.printStackTrace();
-	        }
-	        if (id>0) {
-	        	sessionAttributes.put("LOGGEDINUSER", user);
-	    		return SUCCESS;
-	        } else return ERROR;
+        	System.out.println("inside RegisterAction: user with given email address exists already; cannot register new user");
+        	return ERROR;   //TODO add special note about email/user existing already
         }
+        
+       	int id = 0;
+       	
+        try {
+        	id = getUserDAO().saveUser(getModel());
+        } catch (Exception e) {
+        	e.printStackTrace();
+        }
+        
+        if (id>0) {
+        	sessionAttributes.put("LOGGEDINUSER", user);
+        	System.out.println("inside RegisterAction: new user registered successfully");
+        	return SUCCESS;
+        } else return ERROR;
 	}
 
 	@Override
@@ -45,7 +49,7 @@ public class RegisterAction extends BaseAction implements ModelDriven<User>, Ses
 
 	@Override
 	public void setSession(Map<String, Object> sessionAttributes) {
-		this.sessionAttributes = sessionAttributes;	
+		this.sessionAttributes = (SessionMap<String, Object>) sessionAttributes;	
 	}
 
 }

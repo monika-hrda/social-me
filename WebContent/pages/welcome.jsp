@@ -27,7 +27,7 @@
 		Value of 'user.firstName' is <s:property value="user.firstName" />. <%-- JSP uses the getUser() from ShowProfileAction (or LoginAction) --%><br>
 		Value of 'firstName' is <s:property value="firstName" />.
 		
-		<p> You can <a href="pages/search.jsp">search</a> for your friends on SocialMe. </p>
+		<p> You can <a href="<s:url action="search"/>">search</a> for your friends on SocialMe. </p>
 		<p> Or view <a href="<s:url action="showFriends"/>">your friends</a> you are connected to on SocialMe. </p>
 		
 		<h3><a href="<s:url action="logout"/>">Log out</a></h3>

@@ -18,6 +18,7 @@ public class ShowFriendsAction extends BaseAction implements UserAware {
 		System.out.println("inside ShowFriendsAction execute");
 		setFoundFriends(getFriendshipDAO().getExistingFriendsOf(getLoggedInUser()));
 		setNumberOfFriends(foundFriends.size());
+		System.out.println("ShowFriendsAction - Found " + getNumberOfFriends() + " friends of " + getLoggedInUser().getFirstName() + ".");
 		return SUCCESS;
 	}
 
