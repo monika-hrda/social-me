@@ -6,8 +6,6 @@ import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-
 import mhrda.socialme.entities.User;
 
 public class UserDAOImpl implements UserDAO {
@@ -20,60 +18,46 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public User getUserByCredentials(String email, String password) {
-		Session session = sf.openSession();
-        Transaction tx = session.beginTransaction();
+		Session session = sf.getCurrentSession();
         Query query = session.createQuery("from User where email=:email and pwd=:pwd");
         query.setString("email", email); 
         query.setString("pwd", password);
         User user = (User) query.uniqueResult();
-        tx.commit();
-        session.close();
         return user;
 	}
 	
 	@Override
 	public User getUserById(int userId) {
-		Session session = sf.openSession();
-		Transaction tx = session.beginTransaction();
+		Session session = sf.getCurrentSession();
 		Query query = session.createQuery("from User where id=:userId");
 		query.setInteger("userId", userId);
 		User user = (User) query.uniqueResult();		
-		System.out.println("User Retrieved from DB:" + user);		
-		tx.commit();
-		session.close();
+		System.out.println("User Retrieved from DB:" + user);
 		return user;
 	}
 	
 	@Override
 	public long testUserExists(String email) {  //returns count of existing users with the entered email address
-		Session session = sf.openSession();
-		Transaction tx = session.beginTransaction();
+		Session session = sf.getCurrentSession();
 		Query query = session.createQuery("select count(*) from User where email=:email");
 		query.setString("email", email);
 		long countExistingUsers = (long) query.uniqueResult();
-		tx.commit();
 		System.out.println("(inside UserDAOImpl) How many users with email " + email + " exist already? : " + countExistingUsers);
-        session.close();
 		return countExistingUsers;
 	}
 
 	@Override
 	public int saveUser(User user) {
-		Session session = sf.openSession();
-		Transaction tx = null;
+		Session session = sf.getCurrentSession();
 		int userId = 0;
 		try {
-			tx = session.beginTransaction();
 			userId = (int) session.save(user);
 			// save method guarantees that the identifier value will be assigned to the persistent instance immediately; 
 			// returns the generated ID of the entity
-			tx.commit();
 		} catch (HibernateException e) {
-			if (tx != null) tx.rollback();
 			e.printStackTrace();
 		} finally {
 			System.out.println("new user saved witd id " + userId);
-	        session.close();
 		}
 		return userId;
 	}
@@ -81,8 +65,7 @@ public class UserDAOImpl implements UserDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> findUsers(String firstName, String lastName) {
-		Session session = sf.openSession();
-		Transaction tx = session.beginTransaction();
+		Session session = sf.getCurrentSession();
 		Query query = session.createQuery("from User where firstName like :firstName and lastName like :lastName order by lastName ASC");
 		query.setParameter("firstName", firstName + "%");
 		query.setParameter("lastName", lastName + "%");
@@ -92,11 +75,8 @@ public class UserDAOImpl implements UserDAO {
 		try {
 			foundUsers = (List<User>) query.list();
 		} catch (HibernateException e) {
-			tx.rollback();
 			e.printStackTrace();
 		}
-		tx.commit();
-        session.close();
         for (User foundUser : foundUsers) {
         	System.out.println("Users found by search: ");
         	System.out.println(foundUser.getFirstName() + " " + foundUser.getLastName());
