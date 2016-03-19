@@ -5,7 +5,7 @@ import java.util.List;
 import mhrda.socialme.entities.User;
 import mhrda.socialme.interceptors.UserAware;
 
-public class ShowFriendsAction extends BaseAction implements UserAware {
+public class FriendsAction extends BaseAction implements UserAware {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -13,9 +13,8 @@ public class ShowFriendsAction extends BaseAction implements UserAware {
 	private List<User> foundFriends;
 	private int numberOfFriends;
 	
-	@Override
-	public String execute() throws Exception {
-		System.out.println("inside ShowFriendsAction execute");
+	public String showFriends() throws Exception {
+		System.out.println("inside ShowFriends action");
 		setFoundFriends(getFriendshipDAO().getExistingFriendsOf(getLoggedInUser()));
 		setNumberOfFriends(foundFriends.size());
 		System.out.println("ShowFriendsAction - Found " + getNumberOfFriends() + " friends of " + getLoggedInUser().getFirstName() + ".");
