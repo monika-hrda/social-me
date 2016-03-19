@@ -23,9 +23,9 @@ public class FriendshipDAOImpl implements FriendshipDAO {
 	@Override
 	public List<User> getExistingFriendsOf(User user) {
 		Session session = sf.getCurrentSession();
-		Query query = session.createQuery("from Friendship f where (f.friendRequester.userId=:userId or f.friendResponder.userId=:userId)" + 
+		Query query = session.createQuery("from Friendship f where (f.friendRequester = :user or f.friendResponder = :user)" + 
 				"and f.friendshipStatus.friendshipStatusName='accepted'");
-		query.setInteger("userId", user.getUserId());
+		query.setParameter("user", user);
 		query.setFirstResult(0);
 		query.setMaxResults(1000);
 		
@@ -47,6 +47,27 @@ public class FriendshipDAOImpl implements FriendshipDAO {
 		}
 		
 		return foundFriends;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Friendship> getFriendRequests(User user) {
+		Session session = sf.getCurrentSession();
+		Query query = session.createQuery("from Friendship f where f.friendResponder = :user " + 
+				"and f.friendshipStatus.friendshipStatusName = 'requested'");
+		query.setParameter("user", user);
+		query.setFirstResult(0);
+		query.setMaxResults(1000);
+		
+		List<Friendship> friendshipRequests = null;
+		try {
+			friendshipRequests = (List<Friendship>) query.list();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+		return friendshipRequests;
 	}
 
 }

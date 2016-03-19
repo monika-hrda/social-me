@@ -72,6 +72,11 @@
 	    	<result name="error">/pages/register-error.jsp</result> <!-- zmen, create interceptor for exceptions -->
 	    </action>
 	    
+	    <action name="showFriendRequests" class="mhrda.socialme.actions.FriendsAction" method="showFriendRequests">
+	    	<result name="success">/pages/show-friend-requests.jsp</result>
+	    	<result name="error">/pages/register-error.jsp</result> <!-- zmen, create interceptor for exceptions -->
+	    </action>
+	    
 	    <action name="test" class="mhrda.socialme.actions.TestAction">
 	    	<result name="success">/pages/welcome.jsp</result>
 	    </action>

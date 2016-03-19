@@ -29,6 +29,8 @@
 		
 		<p> You can <a href="<s:url action="search"/>">search</a> for your friends on SocialMe. </p>
 		<p> Or view <a href="<s:url action="showFriends"/>">your friends</a> you are connected to on SocialMe. </p>
+		<p> Or view <a href="<s:url action="showFriendRequests"/>">friend requests</a> sent to you on SocialMe. </p>
+		<p> Or finally create a header file!</p>
 		
 		<h3><a href="<s:url action="logout"/>">Log out</a></h3>
 	</body>
