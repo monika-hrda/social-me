@@ -6,10 +6,14 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<link href="${pageContext.request.contextPath}/css/styling.css" type="text/css" rel="stylesheet">
 		<title>SocialMe | Register</title>
 	</head>
 	
 	<body>
+		
+		<s:include value="common/header.jsp" />
+		
 		<h3>Register to start making friends on SocialMe</h3>
 		
 		<s:form action="register" method="post">
@@ -21,5 +25,8 @@
 			
 			<s:submit value="Register" />
 		</s:form>
+		
+		<s:include value="common/footer.jsp" />
+		
 	</body>
 </html>

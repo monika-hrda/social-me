@@ -6,14 +6,14 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<link href="${pageContext.request.contextPath}/css/styling.css" type="text/css" rel="stylesheet">
 		<title>Welcome to SocialMe</title>
 	</head>
 	
 	<body>
+		<s:include value="common/header.jsp" />
 		
-		<s:include value="hello-user.jsp" /> <%-- temporary --%>
-		
-		<div align="center"><h4>PROFILE PAGE</h4></div>
+		<div><h4>PROFILE PAGE</h4></div>
 		
 		<s:push value="user">
 			<h3>Profile of user <s:property value="firstName" /></h3>
@@ -27,11 +27,7 @@
 		Value of 'user.firstName' is <s:property value="user.firstName" />. <%-- JSP uses the getUser() from ShowProfileAction (or LoginAction) --%><br>
 		Value of 'firstName' is <s:property value="firstName" />.
 		
-		<p> You can <a href="<s:url action="search"/>">search</a> for your friends on SocialMe. </p>
-		<p> Or view <a href="<s:url action="showFriends"/>">your friends</a> you are connected to on SocialMe. </p>
-		<p> Or view <a href="<s:url action="showFriendRequests"/>">friend requests</a> sent to you on SocialMe. </p>
-		<p> Or finally create a header file!</p>
+		<s:include value="common/footer.jsp" />
 		
-		<h3><a href="<s:url action="logout"/>">Log out</a></h3>
 	</body>
 </html>

@@ -6,12 +6,13 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<link href="${pageContext.request.contextPath}/css/styling.css" type="text/css" rel="stylesheet">
 		<title>SocialMe | Registration Successful</title>
 	</head>
 	
 	<body>
 		
-		<s:include value="hello-user.jsp" /> <%-- temporary --%>
+		<s:include value="common/header.jsp" />
 				
 		<h3>Welcome <s:property value="firstName" /></h3>
 		<h3>Thank you for registering with SocialMe.</h3>
@@ -22,5 +23,8 @@
 		<p> You can now <a href="<s:url action="search"/>">search</a> for your friends on SocialMe. </p>
 		
 		<h3><a href="<s:url action="logout"/>">Log out</a></h3>
+		
+		<s:include value="common/footer.jsp" />
+		
 	</body>
 </html>

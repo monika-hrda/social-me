@@ -5,12 +5,13 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<link href="${pageContext.request.contextPath}/css/styling.css" type="text/css" rel="stylesheet">
 		<title>SocialMe | Friend Requests</title>
 	</head>
 
 	<body>
 		
-		<s:include value="hello-user.jsp" /> <%-- temporary --%>
+		<s:include value="common/header.jsp" />
 				
 		<h3>Friend Requests (<s:property value="numberOfFriendRequests"/>):</h3>
 		
@@ -33,5 +34,8 @@
 				</tr>
 			</s:iterator>
 		</table>
+		
+		<s:include value="common/footer.jsp" />
+		
 	</body>
 </html>
