@@ -4,7 +4,7 @@ import mhrda.socialme.dao.FriendshipDAO;
 import mhrda.socialme.dao.FriendshipDAOImpl;
 import mhrda.socialme.dao.UserDAO;
 import mhrda.socialme.dao.UserDAOImpl;
-import mhrda.socialme.hibernate.HibernateUtil;
+import mhrda.socialme.utilities.HibernateUtil;
 
 import org.hibernate.SessionFactory;
 

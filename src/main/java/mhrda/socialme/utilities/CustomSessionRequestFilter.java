@@ -1,4 +1,4 @@
-package mhrda.socialme.hibernate;
+package mhrda.socialme.utilities;
 
 import java.io.IOException;
 

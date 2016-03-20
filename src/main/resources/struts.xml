@@ -23,10 +23,10 @@
 		<default-interceptor-ref name="authStack"></default-interceptor-ref>
 		
 		<global-results>
-			<result name="login" type="redirect">/home.action</result>
+			<result name="login" type="redirect">/showLogin.action</result>
 		</global-results>
 		
-	    <action name="home">  						<!-- or rather "showLogin" -->
+	    <action name="showLogin">
 	    	<interceptor-ref name="defaultStack"></interceptor-ref>
 	        <result>/pages/login.jsp</result>
 	    </action>
@@ -40,8 +40,7 @@
 	    
 	    <action name="logout" class="mhrda.socialme.actions.LoginAction" method="logout">
 	    	<interceptor-ref name="defaultStack"></interceptor-ref>
-	    	<result name="success">/pages/login.jsp</result>
-	    	<!-- <result name="success" type="redirect">/home.action</result> -->
+	    	<result name="success" type="redirect">/showLogin.action</result>
 	    </action>
 	    
 	    <action name="signup">

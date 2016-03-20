@@ -3,7 +3,7 @@
   <display-name>SocialMe</display-name>
   <filter>  
 	<filter-name>HibernateFilter</filter-name>  
-	<filter-class>mhrda.socialme.hibernate.CustomSessionRequestFilter</filter-class>  
+	<filter-class>mhrda.socialme.utilities.CustomSessionRequestFilter</filter-class>  
   </filter>
   <filter-mapping>  
 	<filter-name>HibernateFilter</filter-name>  
