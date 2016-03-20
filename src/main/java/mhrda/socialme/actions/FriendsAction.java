@@ -14,6 +14,7 @@ public class FriendsAction extends BaseAction implements UserAware {
 	private List<User> foundFriends;
 	private int numberOfFriends;
 	private List<Friendship> friendRequests;
+	private int numberOfFriendRequests;
 
 	public String showFriends() throws Exception {
 		System.out.println("inside ShowFriends action");
@@ -27,6 +28,7 @@ public class FriendsAction extends BaseAction implements UserAware {
 	public String showFriendRequests() throws Exception {
 		setFriendRequests(getFriendshipDAO().getFriendRequests(getLoggedInUser()));
 		//TODO add special note about having no friend requests
+		setNumberOfFriendRequests(friendRequests.size());
 		return SUCCESS;
 	}
 
@@ -61,6 +63,14 @@ public class FriendsAction extends BaseAction implements UserAware {
 
 	public void setFriendRequests(List<Friendship> friendRequests) {
 		this.friendRequests = friendRequests;
+	}
+
+	public int getNumberOfFriendRequests() {
+		return numberOfFriendRequests;
+	}
+
+	public void setNumberOfFriendRequests(int numberOfFriendRequests) {
+		this.numberOfFriendRequests = numberOfFriendRequests;
 	}
 
 }

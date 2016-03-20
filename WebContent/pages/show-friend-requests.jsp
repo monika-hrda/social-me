@@ -12,7 +12,7 @@
 		
 		<s:include value="hello-user.jsp" /> <%-- temporary --%>
 				
-		<h3>Friend Requests:</h3>
+		<h3>Friend Requests (<s:property value="numberOfFriendRequests"/>):</h3>
 		
 		<table>
 			<tr>
