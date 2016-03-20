@@ -10,28 +10,28 @@ public class TestAction extends ActionSupport implements UserAware, ModelDriven<
 
 	private static final long serialVersionUID = 1L;
 	
-	private User user;  //logged in user - injected into this action from Authentication Interceptor
+	private User loggedInUser;  //logged in user - injected into this action from Authentication Interceptor
 	
 	@Override
 	public String execute() {
-		if(user != null) {
-			System.out.println("User detected as a logged in user is: " + user.getFirstName());
+		if(loggedInUser != null) {
+			System.out.println("User detected as a logged in user is: " + loggedInUser.getFirstName());
 		}
 		return SUCCESS;	
 	}
 
 	@Override
 	public User getModel() {
-		return this.user;
+		return this.loggedInUser;
 	}
 
 	@Override
-	public void setUser(User user) {
-		this.user = user;
+	public void setLoggedInUser(User loggedInUser) {
+		this.loggedInUser = loggedInUser;
 	}
 	
 	public User getUser() {
-		return this.user;
+		return this.loggedInUser;
 	}
 
 }

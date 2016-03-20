@@ -17,9 +17,9 @@ public class AuthenticationInterceptor extends AbstractInterceptor {
 		System.out.println("inside auth interceptor");
 		SessionMap<String, Object> sessionAttributes = (SessionMap<String, Object>) actionInvocation.getInvocationContext().getSession();
 		
-		User user = (User) sessionAttributes.get("LOGGEDINUSER");
+		User loggedInUser = (User) sessionAttributes.get("LOGGEDINUSER");
 		
-		if(user == null) {
+		if(loggedInUser == null) {
 			System.out.println("AUTH INTERCEPTOR - No logged in user. Returning to Login.");
 			return Action.LOGIN;
 		} else {
@@ -27,7 +27,7 @@ public class AuthenticationInterceptor extends AbstractInterceptor {
 			
 			if(action instanceof UserAware) {  // to make sure that action class is implementing UserAware interface
 				System.out.println("AUTH INTERCEPTOR - Setting logged in user in action.");
-				((UserAware) action).setUser(user);  // if session is valid, then user is injected into action class
+				((UserAware) action).setLoggedInUser(loggedInUser);  // if session is valid, then user is injected into action class
 			}
 			
 			return actionInvocation.invoke();  // the invoke() method will call the next interceptor or action class in the chain

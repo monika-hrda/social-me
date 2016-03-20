@@ -33,8 +33,8 @@ public class FriendsAction extends BaseAction implements UserAware {
 	}
 
 	@Override
-	public void setUser(User user) {
-		this.loggedInUser = user;
+	public void setLoggedInUser(User loggedInUser) {
+		this.loggedInUser = loggedInUser;
 	}
 	
 	public User getLoggedInUser() {
