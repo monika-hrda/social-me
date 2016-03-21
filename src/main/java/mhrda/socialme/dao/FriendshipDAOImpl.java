@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mhrda.socialme.entities.Friendship;
+import mhrda.socialme.entities.FriendshipStatus;
 import mhrda.socialme.entities.User;
 
 import org.hibernate.HibernateException;
@@ -55,6 +56,7 @@ public class FriendshipDAOImpl implements FriendshipDAO {
 		Session session = sf.getCurrentSession();
 		Query query = session.createQuery("from Friendship f where f.friendResponder = :user " + 
 				"and f.friendshipStatus.friendshipStatusName = 'requested'");
+		//TODO order by date and time request was received
 		query.setParameter("user", user);
 		query.setFirstResult(0);
 		query.setMaxResults(1000);
@@ -68,6 +70,19 @@ public class FriendshipDAOImpl implements FriendshipDAO {
 		}
 		
 		return friendshipRequests;
+	}
+
+	@Override
+	public int sendFriendRequest(User loggedInUser, User addFriendUser, FriendshipStatus status) {
+		Session session = sf.getCurrentSession();
+		int friendshipId = 0;
+		try {
+			Friendship newFriendship = new Friendship(loggedInUser, addFriendUser, status);
+			friendshipId = (int) session.save(newFriendship);
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		}
+		return friendshipId;
 	}
 
 }

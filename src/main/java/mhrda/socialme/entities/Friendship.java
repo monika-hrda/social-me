@@ -7,6 +7,14 @@ public class Friendship {
 	private User friendResponder;
 	private FriendshipStatus friendshipStatus;
 	
+	public Friendship() {}
+	
+	public Friendship(User friendRequester, User friendResponder, FriendshipStatus friendshipStatus) {
+		this.friendRequester = friendRequester;
+		this.friendResponder = friendResponder;
+		this.friendshipStatus = friendshipStatus;
+	}
+	
 	public int getFriendshipId() {
 		return friendshipId;
 	}

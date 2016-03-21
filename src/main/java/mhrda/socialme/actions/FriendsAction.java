@@ -1,8 +1,9 @@
 package mhrda.socialme.actions;
 
 import java.util.List;
-
+import org.apache.struts2.ServletActionContext;
 import mhrda.socialme.entities.Friendship;
+import mhrda.socialme.entities.FriendshipStatus;
 import mhrda.socialme.entities.User;
 import mhrda.socialme.interceptors.UserAware;
 
@@ -29,6 +30,17 @@ public class FriendsAction extends BaseAction implements UserAware {
 		setFriendRequests(getFriendshipDAO().getFriendRequests(getLoggedInUser()));
 		//TODO add special note about having no friend requests
 		setNumberOfFriendRequests(friendRequests.size());
+		return SUCCESS;
+	}
+	
+	public String requestFriend() throws Exception {
+		System.out.println("inside requestFriend action");
+		String addFriendUserId = ServletActionContext.getRequest().getParameter("addFriendUserId");
+		User addFriendUser = getUserDAO().getUserById(Integer.parseInt(addFriendUserId));
+		FriendshipStatus status = getFriendshipStatusDAO().getFriendshipStatusByName("requested");
+		if (loggedInUser == null || addFriendUser == null || status == null)
+			return ERROR;
+		getFriendshipDAO().sendFriendRequest(loggedInUser, addFriendUser, status);
 		return SUCCESS;
 	}
 

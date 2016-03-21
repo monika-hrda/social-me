@@ -27,13 +27,18 @@
 				<s:url action="showProfile" var="showProfileLink">
 					<s:param name="userId" value="%{userId}" />
 				</s:url>
+				<s:url action="requestFriend" var="requestFriendLink">
+					<s:param name="addFriendUserId" value="%{userId}" />
+				</s:url>
 				<tr>
 					<td>
-					<s:a href="%{showProfileLink}"><s:property value="firstName"/>&nbsp;<s:property value="lastName"/></s:a>
+						<s:a href="%{showProfileLink}"><s:property value="firstName"/>&nbsp;<s:property value="lastName"/></s:a>
 					</td>
 					<td><s:property value="email"/></td>
 					<td><s:property value="userId"/></td>
-					<td><s:form action="befriend" method="post"><s:submit value="Add Friend" /></s:form></td>
+					<td>
+						<s:a href="%{requestFriendLink}">Add Friend</s:a>					
+					</td>
 				</tr>
 			</s:iterator>
 		</table>
