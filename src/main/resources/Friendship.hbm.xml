@@ -23,5 +23,13 @@
         	<column name="friendship_status_id" not-null="true" />
         </many-to-one>
         
+        <property name="requestTime" type="timestamp">
+            <column name="request_time" />
+        </property>
+        
+        <property name="responseTime" type="timestamp">
+            <column name="response_time" />
+        </property>
+        
 	</class>
 </hibernate-mapping>

@@ -1,7 +1,10 @@
 package mhrda.socialme.actions;
 
+import java.sql.Timestamp;
 import java.util.List;
+
 import org.apache.struts2.ServletActionContext;
+
 import mhrda.socialme.entities.Friendship;
 import mhrda.socialme.entities.FriendshipStatus;
 import mhrda.socialme.entities.User;
@@ -40,7 +43,7 @@ public class FriendsAction extends BaseAction implements UserAware {
 		FriendshipStatus status = getFriendshipStatusDAO().getFriendshipStatusByName("requested");
 		if (loggedInUser == null || addFriendUser == null || status == null)
 			return ERROR;
-		getFriendshipDAO().sendFriendRequest(loggedInUser, addFriendUser, status);
+		getFriendshipDAO().sendFriendRequest(loggedInUser, addFriendUser, status, new Timestamp(System.currentTimeMillis()));
 		return SUCCESS;
 	}
 

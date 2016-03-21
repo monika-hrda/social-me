@@ -14,10 +14,13 @@ VALUES
 INSERT INTO Friendship 
     (user_a_id, user_b_id, friendship_status_id, request_time, response_time)
 VALUES 
-    (1, 2, 1, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()), #John has requested to be Jane's friend
+    (1, 2, 1, CURRENT_TIMESTAMP(), NULL), #John has requested to be Jane's friend
     (1, 3, 2, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()), #John and Michael are friends (Michael accepted John's request)
-    (1, 4, 1, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
-	  (5, 1, 1, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
+    (4, 2, 2, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
+    (2, 3, 2, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
+    (2, 5, 1, CURRENT_TIMESTAMP(), NULL),
+    (1, 4, 1, CURRENT_TIMESTAMP(), NULL),
+	  (5, 1, 1, CURRENT_TIMESTAMP(), NULL);
 
 INSERT INTO Post 
     (user_id, for_user_id, text, created_date)

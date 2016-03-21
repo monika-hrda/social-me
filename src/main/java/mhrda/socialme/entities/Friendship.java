@@ -1,18 +1,23 @@
 package mhrda.socialme.entities;
 
+import java.sql.Timestamp;
+
 public class Friendship {
 
 	private int friendshipId;
 	private User friendRequester;
 	private User friendResponder;
 	private FriendshipStatus friendshipStatus;
+	private Timestamp requestTime;
+	private Timestamp responseTime;
 	
 	public Friendship() {}
 	
-	public Friendship(User friendRequester, User friendResponder, FriendshipStatus friendshipStatus) {
+	public Friendship(User friendRequester, User friendResponder, FriendshipStatus friendshipStatus, Timestamp requestTime) {
 		this.friendRequester = friendRequester;
 		this.friendResponder = friendResponder;
 		this.friendshipStatus = friendshipStatus;
+		this.requestTime = requestTime;
 	}
 	
 	public int getFriendshipId() {
@@ -38,6 +43,22 @@ public class Friendship {
 	}
 	public void setFriendshipStatus(FriendshipStatus friendshipStatus) {
 		this.friendshipStatus = friendshipStatus;
+	}
+
+	public Timestamp getRequestTime() {
+		return requestTime;
+	}
+
+	public void setRequestTime(Timestamp requestTime) {
+		this.requestTime = requestTime;
+	}
+
+	public Timestamp getResponseTime() {
+		return responseTime;
+	}
+
+	public void setResponseTime(Timestamp responseTime) {
+		this.responseTime = responseTime;
 	}
 	
 }

@@ -1,5 +1,6 @@
 package mhrda.socialme.dao;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,7 +56,7 @@ public class FriendshipDAOImpl implements FriendshipDAO {
 	public List<Friendship> getFriendRequests(User user) {
 		Session session = sf.getCurrentSession();
 		Query query = session.createQuery("from Friendship f where f.friendResponder = :user " + 
-				"and f.friendshipStatus.friendshipStatusName = 'requested'");
+				"and f.friendshipStatus.friendshipStatusName = 'requested' order by f.requestTime DESC");
 		//TODO order by date and time request was received
 		query.setParameter("user", user);
 		query.setFirstResult(0);
@@ -73,11 +74,11 @@ public class FriendshipDAOImpl implements FriendshipDAO {
 	}
 
 	@Override
-	public int sendFriendRequest(User loggedInUser, User addFriendUser, FriendshipStatus status) {
+	public int sendFriendRequest(User loggedInUser, User addFriendUser, FriendshipStatus status, Timestamp requestTime) {
 		Session session = sf.getCurrentSession();
 		int friendshipId = 0;
 		try {
-			Friendship newFriendship = new Friendship(loggedInUser, addFriendUser, status);
+			Friendship newFriendship = new Friendship(loggedInUser, addFriendUser, status, requestTime);
 			friendshipId = (int) session.save(newFriendship);
 		} catch (HibernateException e) {
 			e.printStackTrace();

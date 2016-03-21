@@ -39,7 +39,7 @@ CREATE TABLE Friendship (
     user_b_id INT NOT NULL,
     friendship_status_id INT NOT NULL,
     request_time TIMESTAMP NOT NULL,
-    response_time TIMESTAMP NOT NULL,
+    response_time TIMESTAMP,
     FOREIGN KEY (user_a_id) REFERENCES User (id) ON DELETE CASCADE,
     FOREIGN KEY (user_b_id) REFERENCES User (id) ON DELETE CASCADE,
     FOREIGN KEY (friendship_status_id) REFERENCES Friendship_Status (id)

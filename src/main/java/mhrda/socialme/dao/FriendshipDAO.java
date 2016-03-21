@@ -1,5 +1,6 @@
 package mhrda.socialme.dao;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import mhrda.socialme.entities.Friendship;
@@ -12,6 +13,6 @@ public interface FriendshipDAO {
 	
 	List<Friendship> getFriendRequests(User user);
 
-	int sendFriendRequest(User loggedInUser, User addFriendUser, FriendshipStatus status);
+	int sendFriendRequest(User loggedInUser, User addFriendUser, FriendshipStatus status, Timestamp requestTime);
 
 }

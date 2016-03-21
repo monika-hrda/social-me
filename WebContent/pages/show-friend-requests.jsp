@@ -20,6 +20,7 @@
 				<th>FriendshipId</th>
 				<th>UserId</th>
 				<th>Name</th>
+				<th>Requested on</th>
 			</tr>
 			<s:iterator value="friendRequests">
 				<s:url action="showProfile" var="showProfileLink">
@@ -30,6 +31,9 @@
 					<td><s:property value="friendRequester.userId"/></td>
 					<td>
 						<s:a href="%{showProfileLink}"><s:property value="friendRequester.firstName"/>&nbsp;<s:property value="friendRequester.lastName"/></s:a>
+					</td>
+					<td>
+						<s:date name="requestTime" format="dd/MM/yyyy hh:mm a" nice="true" />
 					</td>
 				</tr>
 			</s:iterator>
