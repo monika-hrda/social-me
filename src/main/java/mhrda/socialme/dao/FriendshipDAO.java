@@ -14,5 +14,9 @@ public interface FriendshipDAO {
 	List<Friendship> getFriendRequests(User user);
 
 	int sendFriendRequest(User loggedInUser, User addFriendUser, FriendshipStatus status, Timestamp requestTime);
+	
+	void actionFriendRequest(int requestedFriendshipId, FriendshipStatus newStatus, Timestamp responseTime);
+
+	Friendship getFriendshipById(int friendshipId);
 
 }

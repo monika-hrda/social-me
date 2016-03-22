@@ -22,10 +22,19 @@
 				<th>Name</th>
 				<th>Requested on</th>
 			</tr>
+			
 			<s:iterator value="friendRequests">
+			
 				<s:url action="showProfile" var="showProfileLink">
 					<s:param name="userId" value="%{friendRequester.userId}" />
 				</s:url>
+				<s:url action="acceptFriend" var="acceptFriendLink">
+					<s:param name="requestedFriendshipId" value="%{friendshipId}" />
+				</s:url>
+				<s:url action="rejectFriend" var="rejectFriendLink">
+					<s:param name="requestedFriendshipId" value="%{friendshipId}" />
+				</s:url>
+				
 				<tr>
 					<td><s:property value="friendshipId"/></td>
 					<td><s:property value="friendRequester.userId"/></td>
@@ -35,7 +44,14 @@
 					<td>
 						<s:date name="requestTime" format="dd/MM/yyyy hh:mm a" nice="true" />
 					</td>
+					<td>
+						<s:a href="%{acceptFriendLink}">Accept</s:a>
+					</td>
+					<td>
+						<s:a href="%{rejectFriendLink}">Reject</s:a>
+					</td>
 				</tr>
+				
 			</s:iterator>
 		</table>
 		

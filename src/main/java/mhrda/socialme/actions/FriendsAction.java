@@ -46,6 +46,20 @@ public class FriendsAction extends BaseAction implements UserAware {
 		getFriendshipDAO().sendFriendRequest(loggedInUser, addFriendUser, status, new Timestamp(System.currentTimeMillis()));
 		return SUCCESS;
 	}
+	
+	public String acceptFriend() throws Exception {
+		int requestedFriendshipId = Integer.parseInt(ServletActionContext.getRequest().getParameter("requestedFriendshipId"));
+		FriendshipStatus newStatus = getFriendshipStatusDAO().getFriendshipStatusByName("accepted");
+		getFriendshipDAO().actionFriendRequest(requestedFriendshipId, newStatus, new Timestamp(System.currentTimeMillis()));
+		return SUCCESS;
+	}
+	
+	public String rejectFriend() throws Exception {
+		int requestedFriendshipId = Integer.parseInt(ServletActionContext.getRequest().getParameter("requestedFriendshipId"));
+		FriendshipStatus newStatus = getFriendshipStatusDAO().getFriendshipStatusByName("rejected");
+		getFriendshipDAO().actionFriendRequest(requestedFriendshipId, newStatus, new Timestamp(System.currentTimeMillis()));
+		return SUCCESS;
+	}
 
 	@Override
 	public void setLoggedInUser(User loggedInUser) {

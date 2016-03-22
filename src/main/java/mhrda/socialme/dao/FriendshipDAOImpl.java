@@ -86,4 +86,20 @@ public class FriendshipDAOImpl implements FriendshipDAO {
 		return friendshipId;
 	}
 
+	@Override
+	public void actionFriendRequest(int requestedFriendshipId, FriendshipStatus newStatus, Timestamp responseTime) {
+		Session session = sf.getCurrentSession();
+		Friendship requestedFriendship = getFriendshipById(requestedFriendshipId);
+		requestedFriendship.setFriendshipStatus(newStatus);
+		requestedFriendship.setResponseTime(responseTime);
+		session.update(requestedFriendship);
+	}
+
+	@Override
+	public Friendship getFriendshipById(int friendshipId) {
+		Session session = sf.getCurrentSession();
+		Friendship friendship = (Friendship) session.load(Friendship.class, friendshipId);
+		return friendship;
+	}
+
 }
