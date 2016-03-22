@@ -15,6 +15,11 @@
 				
 		<h3>Friend Requests (<s:property value="numberOfFriendRequests"/>):</h3>
 		
+		<s:if test="%{friendRequests.isEmpty()}">
+			<em>You have no friend requests.</em><br/>
+		</s:if>
+		
+		<s:else>
 		<table>
 			<tr>
 				<th>FriendshipId</th>
@@ -54,6 +59,7 @@
 				
 			</s:iterator>
 		</table>
+		</s:else>
 		
 		<s:include value="common/footer.jsp" />
 		

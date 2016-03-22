@@ -16,6 +16,11 @@
 				
 		<h3>Search Results</h3>
 		
+		<s:if test="%{foundUsers.isEmpty()}">
+			<em>No results. Try to broaden your search criteria.</em><br/>
+		</s:if>
+		
+		<s:else>
 		<table>
 			<tr>
 				<th>Name</th>
@@ -23,13 +28,16 @@
 				<th>Id</th>
 				<th> </th>
 			</tr>
+			
 			<s:iterator value="foundUsers">
+			
 				<s:url action="showProfile" var="showProfileLink">
 					<s:param name="userId" value="%{userId}" />
 				</s:url>
 				<s:url action="requestFriend" var="requestFriendLink">
 					<s:param name="addFriendUserId" value="%{userId}" />
 				</s:url>
+				
 				<tr>
 					<td>
 						<s:a href="%{showProfileLink}"><s:property value="firstName"/>&nbsp;<s:property value="lastName"/></s:a>
@@ -42,8 +50,10 @@
 						</s:if>				
 					</td>
 				</tr>
+				
 			</s:iterator>
 		</table>
+		</s:else>
 		
 		<s:include value="common/footer.jsp" />
 		

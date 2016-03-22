@@ -25,13 +25,11 @@ public class FriendsAction extends BaseAction implements UserAware {
 		setFoundFriends(getFriendshipDAO().getExistingFriendsOf(getLoggedInUser()));
 		setNumberOfFriends(foundFriends.size());
 		System.out.println("ShowFriendsAction - Found " + getNumberOfFriends() + " friends of " + getLoggedInUser().getFirstName() + ".");
-		//TODO add special note about no existing friends / invite user to search for friends
 		return SUCCESS;
 	}
 	
 	public String showFriendRequests() throws Exception {
 		setFriendRequests(getFriendshipDAO().getFriendRequests(getLoggedInUser()));
-		//TODO add special note about having no friend requests
 		setNumberOfFriendRequests(friendRequests.size());
 		return SUCCESS;
 	}

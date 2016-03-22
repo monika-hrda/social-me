@@ -12,9 +12,14 @@
 	<body>
 		
 		<s:include value="common/header.jsp" />
-				
+		
 		<h3>Friends (<s:property value="numberOfFriends"/>):</h3>
 		
+		<s:if test="%{foundFriends.isEmpty()}">
+			<em>You are not connected to anyone on SocialMe. <a href="<s:url action="search"/>">Find friends.</a></em><br/>
+		</s:if>
+		
+		<s:else>
 		<table>
 			<tr>
 				<th>Id</th>
@@ -32,6 +37,7 @@
 				</tr>
 			</s:iterator>
 		</table>
+		</s:else>
 		
 		<s:include value="common/footer.jsp" />
 		

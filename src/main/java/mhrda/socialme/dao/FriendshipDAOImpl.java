@@ -57,7 +57,6 @@ public class FriendshipDAOImpl implements FriendshipDAO {
 		Session session = sf.getCurrentSession();
 		Query query = session.createQuery("from Friendship f where f.friendResponder = :user " + 
 				"and f.friendshipStatus.friendshipStatusName = 'requested' order by f.requestTime DESC");
-		//TODO order by date and time request was received
 		query.setParameter("user", user);
 		query.setFirstResult(0);
 		query.setMaxResults(1000);
