@@ -82,11 +82,11 @@
 	    </action>
 	    
 	    <action name="acceptFriend" class="mhrda.socialme.actions.FriendsAction" method="acceptFriend">
-	    	<result name="success" type="redirect">/showProfile.action</result> <!-- to be changed -->
+	    	<result name="success" type="redirect">/showFriendRequests.action</result> <!-- to be changed -->
 	    </action>
 	    
 	    <action name="rejectFriend" class="mhrda.socialme.actions.FriendsAction" method="rejectFriend">
-	    	<result name="success" type="redirect">/showProfile.action</result> <!-- to be changed -->
+	    	<result name="success" type="redirect">/showFriendRequests.action</result> <!-- to be changed -->
 	    </action>
 	    
 	    <action name="test" class="mhrda.socialme.actions.TestAction">
