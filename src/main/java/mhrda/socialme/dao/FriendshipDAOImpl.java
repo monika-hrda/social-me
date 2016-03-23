@@ -97,8 +97,13 @@ public class FriendshipDAOImpl implements FriendshipDAO {
 	@Override
 	public Friendship getFriendshipById(int friendshipId) {
 		Session session = sf.getCurrentSession();
-		Friendship friendship = (Friendship) session.load(Friendship.class, friendshipId);
-		return friendship;
+		return (Friendship) session.load(Friendship.class, friendshipId);
+	}
+
+	@Override
+	public void deleteFriendshipById(int friendshipId) {
+		Session session = sf.getCurrentSession();
+		session.delete(getFriendshipById(friendshipId));
 	}
 
 }

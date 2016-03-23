@@ -18,5 +18,7 @@ public interface FriendshipDAO {
 	void actionFriendRequest(int requestedFriendshipId, FriendshipStatus newStatus, Timestamp responseTime);
 
 	Friendship getFriendshipById(int friendshipId);
+	
+	void deleteFriendshipById(int friendshipId);
 
 }
