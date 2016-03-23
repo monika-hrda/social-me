@@ -29,7 +29,28 @@
 				<th> </th>
 			</tr>
 			
-			<s:iterator value="foundUsers">
+			<s:iterator value="foundUsersFriends">
+			
+				<s:url action="showProfile" var="showProfileLink">
+					<s:param name="userId" value="%{userId}" />
+				</s:url>
+				
+				<tr>
+					<td>
+						<s:a href="%{showProfileLink}"><s:property value="firstName"/>&nbsp;<s:property value="lastName"/></s:a>
+					</td>
+					<td><s:property value="email"/></td>
+					<td><s:property value="userId"/></td>
+					<td>
+						<s:if test="%{#session.LOGGEDINUSER.userId != userId}">
+							<strong>Friends</strong>
+						</s:if>				
+					</td>
+				</tr>
+				
+			</s:iterator>
+			
+			<s:iterator value="foundUsersNonFriends">
 			
 				<s:url action="showProfile" var="showProfileLink">
 					<s:param name="userId" value="%{userId}" />
