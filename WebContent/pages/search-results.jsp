@@ -66,9 +66,7 @@
 					<td><s:property value="email"/></td>
 					<td><s:property value="userId"/></td>
 					<td>
-						<s:if test="%{#session.LOGGEDINUSER.userId != userId}">
-							<s:a href="%{requestFriendLink}">Add Friend</s:a>
-						</s:if>				
+						<s:a href="%{requestFriendLink}">Add Friend</s:a>			
 					</td>
 				</tr>
 				
