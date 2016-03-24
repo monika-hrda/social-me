@@ -1,8 +1,9 @@
 package mhrda.socialme.actions;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 import mhrda.socialme.entities.User;
 import mhrda.socialme.interceptors.UserAware;
 
@@ -16,8 +17,10 @@ public class SearchAction extends BaseAction implements ModelDriven<User>, UserA
 	private User loggedInUser;
 	private List<User> foundUsers;
 	
-	private List<User> foundUsersFriends = new ArrayList<User>();
-	private List<User> foundUsersNonFriends = new ArrayList<User>();
+	private List<User> foundUsersFriends = new ArrayList<User>(); //icon 'Friend' in search-results.jsp
+	private Map<User, Integer> foundUsersRequestersMap = new HashMap<User, Integer>(); //buttons 'Accept' or 'Reject' in search-results.jsp
+	private List<User> foundUsersResponders = new ArrayList<User>(); //icon 'Awaits Response' in search-results.jsp
+	private List<User> foundUsersNoRelationship = new ArrayList<User>(); //button 'Add Friend' in search-results.jsp
 
 	@Override
 	public String execute() throws Exception {
@@ -34,14 +37,26 @@ public class SearchAction extends BaseAction implements ModelDriven<User>, UserA
 	}
 	
 	private void populateRelationships(List<User> foundUsers) {
-		List<User> existingFriends = getFriendshipDAO().getExistingFriendsOf(loggedInUser);
-		for (User foundUser : foundUsers) {
-			if(foundUser.getUserId() == loggedInUser.getUserId()) {
-				foundUsersFriends.add(0, foundUser);
+		if(!foundUsers.isEmpty()) {
+			List<User> existingFriends = getFriendshipDAO().getExistingFriendsOf(loggedInUser);
+			Map<User, Integer> requestersMap = getFriendshipDAO().getRequestersFor(loggedInUser);
+			List<User> responders = getFriendshipDAO().getRespondersFor(loggedInUser);
+			
+			for (User foundUser : foundUsers) {
+				if(foundUser.getUserId() == loggedInUser.getUserId()) {
+					foundUsersFriends.add(0, foundUser);
+				} 
+				else if(!existingFriends.isEmpty() && existingFriends.contains(foundUser)) {
+					foundUsersFriends.add(foundUser);
+				} 
+				else if(!requestersMap.isEmpty() && requestersMap.containsKey(foundUser)) {
+					foundUsersRequestersMap.put(foundUser, requestersMap.get(foundUser));
+				} 
+				else if(!responders.isEmpty() && responders.contains(foundUser)) {
+					foundUsersResponders.add(foundUser);
+				}
+				else foundUsersNoRelationship.add(foundUser);
 			}
-			else if(existingFriends.contains(foundUser)) {
-				foundUsersFriends.add(foundUser);
-			} else foundUsersNonFriends.add(foundUser);
 		}
 	}
 	
@@ -58,6 +73,10 @@ public class SearchAction extends BaseAction implements ModelDriven<User>, UserA
 		return this.user;
 	}
 
+	public User getLoggedInUser() {
+		return loggedInUser;
+	}
+	
 	@Override
 	public void setLoggedInUser(User loggedInUser) {
 		this.loggedInUser = loggedInUser;
@@ -67,8 +86,16 @@ public class SearchAction extends BaseAction implements ModelDriven<User>, UserA
 		return foundUsersFriends;
 	}
 
-	public List<User> getFoundUsersNonFriends() {
-		return foundUsersNonFriends;
+	public Map<User, Integer> getFoundUsersRequestersMap() {
+		return foundUsersRequestersMap;
+	}
+
+	public List<User> getFoundUsersResponders() {
+		return foundUsersResponders;
+	}
+
+	public List<User> getFoundUsersNoRelationship() {
+		return foundUsersNoRelationship;
 	}
 	
 }

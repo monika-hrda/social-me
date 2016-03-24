@@ -50,7 +50,54 @@
 				
 			</s:iterator>
 			
-			<s:iterator value="foundUsersNonFriends">
+			<s:iterator value="foundUsersRequestersMap">
+			
+				<s:url action="showProfile" var="showProfileLink">
+					<s:param name="userId" value="%{key.userId}" />
+				</s:url>
+				<s:url action="acceptFriend" var="acceptFriendLink">
+					<s:param name="requestedFriendshipId" value="%{value}" />
+				</s:url>
+				<s:url action="rejectFriend" var="rejectFriendLink">
+					<s:param name="requestedFriendshipId" value="%{value}" />
+				</s:url>
+				
+				<tr>
+					<td>
+						<s:a href="%{showProfileLink}"><s:property value="key.firstName"/>&nbsp;<s:property value="key.lastName"/></s:a>
+					</td>
+					<td><s:property value="key.email"/></td>
+					<td><s:property value="key.userId"/></td>
+					<td>
+						<s:a href="%{acceptFriendLink}">Accept</s:a>
+					</td>
+					<td>
+						<s:a href="%{rejectFriendLink}">Reject</s:a>
+					</td>
+				</tr>
+				
+			</s:iterator>
+			
+			<s:iterator value="foundUsersResponders">
+			
+				<s:url action="showProfile" var="showProfileLink">
+					<s:param name="userId" value="%{userId}" />
+				</s:url>
+				
+				<tr>
+					<td>
+						<s:a href="%{showProfileLink}"><s:property value="firstName"/>&nbsp;<s:property value="lastName"/></s:a>
+					</td>
+					<td><s:property value="email"/></td>
+					<td><s:property value="userId"/></td>
+					<td>
+						<strong>Awaits Response</strong>			
+					</td>
+				</tr>
+				
+			</s:iterator>
+			
+			<s:iterator value="foundUsersNoRelationship">
 			
 				<s:url action="showProfile" var="showProfileLink">
 					<s:param name="userId" value="%{userId}" />

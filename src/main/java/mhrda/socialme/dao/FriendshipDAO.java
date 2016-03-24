@@ -2,6 +2,7 @@ package mhrda.socialme.dao;
 
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Map;
 
 import mhrda.socialme.entities.Friendship;
 import mhrda.socialme.entities.FriendshipStatus;
@@ -20,5 +21,9 @@ public interface FriendshipDAO {
 	Friendship getFriendshipById(int friendshipId);
 	
 	void deleteFriendshipById(int friendshipId);
+	
+	List<User> getRespondersFor(User user);
+	
+	Map<User, Integer> getRequestersFor(User user); //mapping Users (friendRequesters) to friendshipId
 
 }

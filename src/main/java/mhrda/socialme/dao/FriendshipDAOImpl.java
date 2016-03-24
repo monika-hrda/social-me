@@ -2,8 +2,9 @@ package mhrda.socialme.dao;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 import mhrda.socialme.entities.Friendship;
 import mhrda.socialme.entities.FriendshipStatus;
 import mhrda.socialme.entities.User;
@@ -104,6 +105,50 @@ public class FriendshipDAOImpl implements FriendshipDAO {
 	public void deleteFriendshipById(int friendshipId) {
 		Session session = sf.getCurrentSession();
 		session.delete(getFriendshipById(friendshipId));
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<User> getRespondersFor(User user) {
+		Session session = sf.getCurrentSession();
+		Query query = session.createQuery("select f.friendResponder from Friendship f where f.friendRequester = :user " +
+				"order by f.friendResponder.lastName ASC");
+		query.setParameter("user", user);
+		query.setFirstResult(0);
+		query.setMaxResults(1000);
+		
+		List<User> responders = new ArrayList<User>();
+		try {
+			responders = (List<User>) query.list();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		}
+		return responders;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public Map<User, Integer> getRequestersFor(User user) {
+		Session session = sf.getCurrentSession();
+		Query query = session.createQuery("from Friendship f where f.friendResponder = :user " +
+				"order by f.friendRequester.lastName ASC");
+		query.setParameter("user", user);
+		query.setFirstResult(0);
+		query.setMaxResults(1000);
+		
+		List<Friendship> requestersFriendships = null;
+		try {
+			requestersFriendships = (List<Friendship>) query.list();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		}
+		
+		Map<User, Integer> requestersMap = new HashMap<User, Integer>();
+		for (Friendship requestersFriendship : requestersFriendships) {
+			requestersMap.put(requestersFriendship.getFriendRequester(), requestersFriendship.getFriendshipId());
+		}
+		
+		return requestersMap;
 	}
 
 }
