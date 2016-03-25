@@ -89,6 +89,10 @@
 	    	<result name="success" type="redirect">/showFriendRequests.action</result> <!-- to be changed -->
 	    </action>
 	    
+	    <action name="createPost" class="mhrda.socialme.actions.PostAction" method="createPost">
+	    	<result name="success" type="redirect">/showProfile.action</result>
+	    </action>
+	    
 	    <action name="test" class="mhrda.socialme.actions.TestAction">
 	    	<result name="success">/pages/welcome.jsp</result>
 	    </action>

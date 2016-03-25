@@ -29,14 +29,24 @@
             <column name="email" />
         </property>
         
-        <set name="friendshipsWhereUserIsRequester" table="FRIENDSHIP" inverse="true" cascade="save-update"> <!-- cascade="save-update" ? -->
+        <set name="friendshipsWhereUserIsRequester" table="FRIENDSHIP" inverse="true" cascade="save-update"> 
         	<key column="user_a_id" />
         	<one-to-many class="mhrda.socialme.entities.Friendship" />
         </set>
         
-        <set name="friendshipsWhereUserIsResponder" table="FRIENDSHIP" inverse="true" cascade="save-update"> <!-- cascade="save-update" ? -->
+        <set name="friendshipsWhereUserIsResponder" table="FRIENDSHIP" inverse="true" cascade="save-update">
         	<key column="user_b_id" />
         	<one-to-many class="mhrda.socialme.entities.Friendship" />
+        </set>
+        
+        <set name="postsCreatedByUser" table="POST" inverse="true" cascade="save-update">
+        	<key column="by_user_id" />
+        	<one-to-many class="mhrda.socialme.entities.Post" />
+        </set>
+        
+        <set name="postsCreatedForUser" table="POST" inverse="true" cascade="save-update">
+        	<key column="for_user_id" />
+        	<one-to-many class="mhrda.socialme.entities.Post" />
         </set>
         
     </class>

@@ -26,8 +26,7 @@ INSERT INTO Friendship_Status
     (id, name)
 VALUES
     (1, 'requested'),
-    (2, 'accepted'),
-    (3, 'rejected');
+    (2, 'accepted');
 
 /*This table stores the relationships between pairs of users.
 user_a_id stores the id of the user who initiated the relationship (made a friend request).
@@ -52,11 +51,11 @@ The web application should validate that one of the two is present (text or imag
 */
 CREATE TABLE Post (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL, #This is the user who created the post.
+    by_user_id INT NOT NULL, #This is the user who created the post.
     for_user_id INT NOT NULL, #This is the user the post is for, used in building a user's wall.
-    text VARCHAR(500),
-    image_filename VARCHAR(200),
-    created_date TIMESTAMP NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES User (id),
+    post_text VARCHAR(500),
+    post_image_filename VARCHAR(200),
+    created_time TIMESTAMP NOT NULL,
+    FOREIGN KEY (by_user_id) REFERENCES User (id),
     FOREIGN KEY (for_user_id) REFERENCES User (id)
 );

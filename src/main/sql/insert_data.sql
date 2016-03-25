@@ -23,7 +23,7 @@ VALUES
 	  (5, 1, 1, CURRENT_TIMESTAMP(), NULL);
 
 INSERT INTO Post 
-    (user_id, for_user_id, text, created_date)
+    (by_user_id, for_user_id, post_text, created_time)
 VALUES 
     (1, 1, 'Heading to the hospital today - eek!', CURRENT_TIMESTAMP()),
     (2, 2, 'This is my first post!', CURRENT_TIMESTAMP()),

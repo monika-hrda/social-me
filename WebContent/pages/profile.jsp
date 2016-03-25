@@ -21,6 +21,13 @@
 			<div>Password: <s:property value="pwd" /></div>
 		</s:push>
 		
+		<div><h5>Write something..</h5></div>
+		<s:form action="createPost" method="post">
+			<s:textarea name="postText" rows="5" />
+			<s:hidden name="currentProfileUserId" value="%{user.userId}" />
+			<s:submit value="Post" />
+		</s:form>
+		
 		<s:include value="common/footer.jsp" />
 		
 	</body>

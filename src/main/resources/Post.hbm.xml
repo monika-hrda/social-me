@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Hibernate Mapping XML file -->
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="mhrda.socialme.entities.Post" table="POST">
+		
+		<id name="postId" type="int">
+			<column name="id" />
+			<generator class="increment" />
+		</id>
+		
+		<many-to-one name="byUser" class="mhrda.socialme.entities.User">
+			<column name="by_user_id" not-null="true" />
+		</many-to-one>
+		
+		<many-to-one name="forUser" class="mhrda.socialme.entities.User">
+			<column name="for_user_id" not-null="true" />
+		</many-to-one>
+		
+		<property name="postText" type="java.lang.String">
+            <column name="post_text" />
+        </property>
+        
+        <property name="createdTime" type="timestamp">
+            <column name="created_time" />
+        </property>
+		
+	</class>
+</hibernate-mapping>

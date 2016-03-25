@@ -33,5 +33,6 @@
         <mapping resource="User.hbm.xml" />
         <mapping resource="Friendship.hbm.xml" />
         <mapping resource="FriendshipStatus.hbm.xml" />
+        <mapping resource="Post.hbm.xml" />
     </session-factory>
 </hibernate-configuration>

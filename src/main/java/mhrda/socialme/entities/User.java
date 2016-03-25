@@ -12,6 +12,8 @@ public class User {
     private String email;
     private Set<Friendship> friendshipsWhereUserIsRequester = new HashSet<Friendship>(); //list of friendships initiated / requested by the user
     private Set<Friendship> friendshipsWhereUserIsResponder = new HashSet<Friendship>(); //list of friendships where the user is a responder
+    private Set<Post> postsCreatedByUser = new HashSet<Post>();
+    private Set<Post> postsCreatedForUser = new HashSet<Post>();
     
 	public int getUserId() {
 		return userId;
@@ -54,6 +56,18 @@ public class User {
 	}
 	public void setFriendshipsWhereUserIsResponder(Set<Friendship> friendshipsWhereUserIsResponder) {
 		this.friendshipsWhereUserIsResponder = friendshipsWhereUserIsResponder;
+	}
+	public Set<Post> getPostsCreatedByUser() {
+		return postsCreatedByUser;
+	}
+	public void setPostsCreatedByUser(Set<Post> postsCreatedByUser) {
+		this.postsCreatedByUser = postsCreatedByUser;
+	}
+	public Set<Post> getPostsCreatedForUser() {
+		return postsCreatedForUser;
+	}
+	public void setPostsCreatedForUser(Set<Post> postsCreatedForUser) {
+		this.postsCreatedForUser = postsCreatedForUser;
 	}
 
 //		//preferred way to add friendship to 'setFriendships..' or to 'getFriendships...add(..)'
