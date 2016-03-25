@@ -90,7 +90,10 @@
 	    </action>
 	    
 	    <action name="createPost" class="mhrda.socialme.actions.PostAction" method="createPost">
-	    	<result name="success" type="redirect">/showProfile.action</result>
+	    	<result name="success" type="redirect">
+	    		<param name="userId">${currentProfileUserId}</param>
+	    		<param name="location">/showProfile.action</param>
+	    	</result>
 	    </action>
 	    
 	    <action name="test" class="mhrda.socialme.actions.TestAction">
