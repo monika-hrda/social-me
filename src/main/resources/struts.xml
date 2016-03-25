@@ -33,7 +33,7 @@
 	        
 	    <action name="login" class="mhrda.socialme.actions.LoginAction">
 	    	<interceptor-ref name="defaultStack"></interceptor-ref>
-		    <result name="success">/pages/welcome.jsp</result>
+		    <result name="success" type="redirect">/showProfile.action</result>
 		    <result name="error">/pages/error.jsp</result>
 		    <result name="input">/pages/login.jsp</result>
 	    </action>
@@ -62,7 +62,7 @@
 	    </action>
 	    
 	    <action name="showProfile" class="mhrda.socialme.actions.ShowProfileAction">
-		    <result name="success">/pages/welcome.jsp</result>
+		    <result name="success">/pages/profile.jsp</result>
 		    <result name="error">/pages/register-error.jsp</result> <!-- zmen, create interceptor for exceptions -->
 	    </action>
 	    
