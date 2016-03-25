@@ -26,7 +26,8 @@ public class SearchAction extends BaseAction implements ModelDriven<User>, UserA
 	public String execute() throws Exception {
 		System.out.println("inside SearchAction execute");
 		
-		if((user.getFirstName() == null || user.getFirstName().isEmpty()) && (user.getLastName() == null || user.getLastName().isEmpty())) 
+		if((user.getFirstName() == null || user.getFirstName().trim().isEmpty()) && 
+				(user.getLastName() == null || user.getLastName().trim().isEmpty())) 
 			return INPUT;
 		
         setFoundUsers(getUserDAO().findUsers(user.getFirstName(), user.getLastName()));
@@ -37,26 +38,24 @@ public class SearchAction extends BaseAction implements ModelDriven<User>, UserA
 	}
 	
 	private void populateRelationships(List<User> foundUsers) {
-		if(!foundUsers.isEmpty()) {
-			List<User> existingFriends = getFriendshipDAO().getExistingFriendsOf(loggedInUser);
-			Map<User, Integer> requestersMap = getFriendshipDAO().getRequestersFor(loggedInUser);
-			List<User> responders = getFriendshipDAO().getRespondersFor(loggedInUser);
-			
-			for (User foundUser : foundUsers) {
-				if(foundUser.getUserId() == loggedInUser.getUserId()) {
-					foundUsersFriends.add(0, foundUser);
-				} 
-				else if(!existingFriends.isEmpty() && existingFriends.contains(foundUser)) {
-					foundUsersFriends.add(foundUser);
-				} 
-				else if(!requestersMap.isEmpty() && requestersMap.containsKey(foundUser)) {
-					foundUsersRequestersMap.put(foundUser, requestersMap.get(foundUser));
-				} 
-				else if(!responders.isEmpty() && responders.contains(foundUser)) {
-					foundUsersResponders.add(foundUser);
-				}
-				else foundUsersNoRelationship.add(foundUser);
+		List<User> existingFriends = getFriendshipDAO().getExistingFriendsOf(loggedInUser);
+		Map<User, Integer> requestersMap = getFriendshipDAO().getRequestersFor(loggedInUser);
+		List<User> responders = getFriendshipDAO().getRespondersFor(loggedInUser);
+		
+		for (User foundUser : foundUsers) {
+			if(foundUser.getUserId() == loggedInUser.getUserId()) {
+				foundUsersFriends.add(0, foundUser);
+			} 
+			else if(!existingFriends.isEmpty() && existingFriends.contains(foundUser)) {
+				foundUsersFriends.add(foundUser);
+			} 
+			else if(!requestersMap.isEmpty() && requestersMap.containsKey(foundUser)) {
+				foundUsersRequestersMap.put(foundUser, requestersMap.get(foundUser));
+			} 
+			else if(!responders.isEmpty() && responders.contains(foundUser)) {
+				foundUsersResponders.add(foundUser);
 			}
+			else foundUsersNoRelationship.add(foundUser);
 		}
 	}
 	
