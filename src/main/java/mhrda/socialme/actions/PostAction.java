@@ -1,5 +1,7 @@
 package mhrda.socialme.actions;
 
+import java.util.List;
+import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ModelDriven;
 
 import mhrda.socialme.entities.Post;
@@ -13,12 +15,23 @@ public class PostAction extends BaseAction implements UserAware, ModelDriven<Pos
 	private User loggedInUser;
 	private int currentProfileUserId;
 	private Post post = new Post();
-	
+	private List<Post> profileUserPosts;	
 	
 	public String createPost() throws Exception {
 		post.setByUser(loggedInUser);
 		post.setForUser(getUserDAO().getUserById(currentProfileUserId));
 		getPostDAO().createPost(post);
+		return SUCCESS;
+	}
+	
+	public String showProfilePosts() throws Exception {
+		String userId = ServletActionContext.getRequest().getParameter("userId");
+		if(userId != null) {
+			currentProfileUserId = Integer.parseInt(userId);
+		} else {
+			currentProfileUserId = loggedInUser.getUserId();
+		}
+		setProfileUserPosts(getPostDAO().getPostsForProfile(getUserDAO().getUserById(currentProfileUserId)));
 		return SUCCESS;
 	}
 
@@ -42,6 +55,14 @@ public class PostAction extends BaseAction implements UserAware, ModelDriven<Pos
 	@Override
 	public Post getModel() {
 		return this.post;
+	}
+
+	public List<Post> getProfileUserPosts() {
+		return profileUserPosts;
+	}
+
+	public void setProfileUserPosts(List<Post> profileUserPosts) {
+		this.profileUserPosts = profileUserPosts;
 	}
 
 }

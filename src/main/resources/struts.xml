@@ -96,6 +96,10 @@
 	    	</result>
 	    </action>
 	    
+	    <action name="showProfilePosts" class="mhrda.socialme.actions.PostAction" method="showProfilePosts">
+	    	<result name="success">/pages/show-profile-posts.jsp</result>
+	    </action>
+	    
 	    <action name="test" class="mhrda.socialme.actions.TestAction">
 	    	<result name="success">/pages/welcome.jsp</result>
 	    </action>
