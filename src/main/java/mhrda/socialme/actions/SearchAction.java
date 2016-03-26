@@ -19,7 +19,7 @@ public class SearchAction extends BaseAction implements ModelDriven<User>, UserA
 	
 	private List<User> foundUsersFriends = new ArrayList<User>(); //icon 'Friend' in search-results.jsp
 	private Map<User, Integer> foundUsersRequestersMap = new HashMap<User, Integer>(); //buttons 'Accept' or 'Reject' in search-results.jsp
-	private List<User> foundUsersResponders = new ArrayList<User>(); //icon 'Awaits Response' in search-results.jsp
+	private List<User> foundUsersResponders = new ArrayList<User>(); //icon 'Friend request sent' in search-results.jsp
 	private List<User> foundUsersNoRelationship = new ArrayList<User>(); //button 'Add Friend' in search-results.jsp
 
 	@Override

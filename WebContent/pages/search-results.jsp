@@ -91,7 +91,7 @@
 					<td><s:property value="email"/></td>
 					<td><s:property value="userId"/></td>
 					<td>
-						<strong>Awaits Response</strong>			
+						<strong>Friend request sent</strong>			
 					</td>
 				</tr>
 				

@@ -13,28 +13,26 @@ public class ShowProfileAction extends BaseAction implements ModelDriven<User>, 
 
 	private static final long serialVersionUID = 1L;
 	
-	private User user = new User();
+	private User profileUser = new User();
 	private User loggedInUser;
 	private Map<String,Object> requestAttributes;
 
 	@Override
 	public String execute() throws Exception {
-		System.out.println("inside ShowProfileAction execute");
 		int userId = (int) requestAttributes.get("userId");
 		if (userId == 0) {
 			userId = loggedInUser.getUserId();
 		}
-		user = getUserDAO().getUserById(userId);
-		if(user == null) return ERROR;
+		profileUser = getUserDAO().getUserById(userId);
 		return SUCCESS;
 	}
 	
-	public User getUser() {
-		return user;
+	public User getProfileUser() {
+		return profileUser;
 	}
-	
-	public void setUser(User user) {
-		this.user = user;
+
+	public void setProfileUser(User profileUser) {
+		this.profileUser = profileUser;
 	}
 
 	@Override
@@ -44,7 +42,7 @@ public class ShowProfileAction extends BaseAction implements ModelDriven<User>, 
 	
 	@Override
 	public User getModel() {
-		return this.user;
+		return this.profileUser;
 	}
 	
 	@Override

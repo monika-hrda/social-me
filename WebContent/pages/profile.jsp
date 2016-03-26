@@ -13,9 +13,9 @@
 	<body>
 		<s:include value="common/header.jsp" />
 		
-		<div><h4><s:property value="user.firstName" />&nbsp;<s:property value="user.lastName" />'s Profile</h4></div>
+		<s:push value="profileUser">
+			<div><h4><s:property value="firstName" />&nbsp;<s:property value="lastName" />'s Profile</h4></div>
 		
-		<s:push value="user">
  			<div>Id: <s:property value="userId" /></div>
 			<div>Email: <s:property value="email" /></div>
 			<div>Password: <s:property value="pwd" /></div>
@@ -24,7 +24,7 @@
 		<div><h5>Write something..</h5></div>
 		<s:form action="createPost" method="post">
 			<s:textarea name="postText" rows="5" />
-			<s:hidden name="currentProfileUserId" value="%{user.userId}" />
+			<s:hidden name="currentProfileUserId" value="%{profileUser.userId}" />
 			<s:submit value="Post" />
 		</s:form>
 		
