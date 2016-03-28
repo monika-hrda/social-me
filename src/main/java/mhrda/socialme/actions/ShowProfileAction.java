@@ -32,6 +32,11 @@ public class ShowProfileAction extends BaseAction implements UserAware, SessionA
 	@Override
 	public String execute() throws Exception {
 		configureProfileToView();
+		if (profileUser != loggedInUser) {
+			if (!isFriend(getProfileUser())) {
+				return ERROR;
+			}
+		}
 		return SUCCESS;
 	}
 	
@@ -57,6 +62,11 @@ public class ShowProfileAction extends BaseAction implements UserAware, SessionA
 		configureProfileToView();
 		setFriendRequests(getFriendshipDAO().getFriendRequests(getProfileUser()));
 		setNumberOfFriendRequests(getFriendRequests().size());
+		return SUCCESS;
+	}
+	
+	public String showSimpleProfile() throws Exception {
+		configureProfileToView();
 		return SUCCESS;
 	}
 	
@@ -89,10 +99,16 @@ public class ShowProfileAction extends BaseAction implements UserAware, SessionA
 			if (sessionContainsProfileToView) {
 				setProfileUser(getUserDAO().getUserById((int) sessionAttributes.get(lastViewedUserProfileKey)));
 			} else {
-				setProfileUser(loggedInUser);
-				sessionAttributes.put(lastViewedUserProfileKey, loggedInUser.getUserId());
+				setProfileUser(getLoggedInUser());
+				sessionAttributes.put(lastViewedUserProfileKey, getLoggedInUser().getUserId());
 			}
 		}
+	}
+	
+	private boolean isFriend(User profileUser) {
+		if (getFriendshipDAO().getExistingFriendsOf(getLoggedInUser()).contains(profileUser)) {
+			return true;
+		} else return false;
 	}
 	
 	public User getProfileUser() {
@@ -106,6 +122,10 @@ public class ShowProfileAction extends BaseAction implements UserAware, SessionA
 	@Override
 	public void setLoggedInUser(User loggedInUser) {
 		this.loggedInUser = loggedInUser;
+	}
+
+	public User getLoggedInUser() {
+		return loggedInUser;
 	}
 
 	public String getProfileId() {

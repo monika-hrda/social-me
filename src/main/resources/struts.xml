@@ -67,6 +67,11 @@
 	    
 	    <action name="showProfile" class="mhrda.socialme.actions.ShowProfileAction">
 		    <result name="success" type="redirect">/showProfilePosts.action</result>
+		    <result name="error" type="redirect">/showSimpleProfile.action</result>
+	    </action>
+	    
+	    <action name="showSimpleProfile" class="mhrda.socialme.actions.ShowProfileAction" method="showSimpleProfile">
+		    <result name="success">/pages/show-simple-profile.jsp</result>
 	    </action>
 	    
 	    <action name="showProfilePosts" class="mhrda.socialme.actions.ShowProfileAction" method="showProfilePosts">
