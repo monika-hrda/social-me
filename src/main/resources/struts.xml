@@ -61,19 +61,32 @@
 		    <result name="input">/pages/search.jsp</result>
 	    </action>
 	    
+	    <action name="showOwnProfile" class="mhrda.socialme.actions.ShowProfileAction" method="clearSessionProfile">
+		    <result name="success" type="redirect">/showProfile.action</result>
+	    </action>
+	    
 	    <action name="showProfile" class="mhrda.socialme.actions.ShowProfileAction">
-		    <result name="success">/pages/profile.jsp</result>
-		    <result name="error">/pages/register-error.jsp</result> <!-- zmen, create interceptor for exceptions -->
+		    <result name="success" type="redirect">/showProfilePosts.action</result>
 	    </action>
 	    
-	    <action name="showFriends" class="mhrda.socialme.actions.FriendsAction" method="showFriends">
+	    <action name="showProfilePosts" class="mhrda.socialme.actions.ShowProfileAction" method="showProfilePosts">
+	    	<result name="success">/pages/show-profile-posts.jsp</result>
+	    </action>
+	    
+	    <action name="createPost" class="mhrda.socialme.actions.PostAction" method="createPost">
+	    	<result name="success" type="redirect">/showProfile.action</result>
+	    </action>
+	    
+	    <action name="showProfileAbout" class="mhrda.socialme.actions.ShowProfileAction" method="showProfileAbout">
+		    <result name="success">/pages/show-profile-about.jsp</result>
+	    </action>
+	    
+	    <action name="showProfileFriends" class="mhrda.socialme.actions.ShowProfileAction" method="showProfileFriends">
 	    	<result name="success">/pages/show-friends.jsp</result>
-	    	<result name="error">/pages/register-error.jsp</result> <!-- zmen, create interceptor for exceptions -->
 	    </action>
 	    
-	    <action name="showFriendRequests" class="mhrda.socialme.actions.FriendsAction" method="showFriendRequests">
+	    <action name="showFriendRequests" class="mhrda.socialme.actions.ShowProfileAction" method="showFriendRequests">
 	    	<result name="success">/pages/show-friend-requests.jsp</result>
-	    	<result name="error">/pages/register-error.jsp</result> <!-- zmen, create interceptor for exceptions -->
 	    </action>
 	    
 	    <action name="requestFriend" class="mhrda.socialme.actions.FriendsAction" method="requestFriend">
@@ -87,17 +100,6 @@
 	    
 	    <action name="rejectFriend" class="mhrda.socialme.actions.FriendsAction" method="rejectFriend">
 	    	<result name="success" type="redirect">/showFriendRequests.action</result> <!-- to be changed -->
-	    </action>
-	    
-	    <action name="createPost" class="mhrda.socialme.actions.PostAction" method="createPost">
-	    	<result name="success" type="redirect">
-	    		<param name="userId">${currentProfileUserId}</param>
-	    		<param name="location">/showProfile.action</param>
-	    	</result>
-	    </action>
-	    
-	    <action name="showProfilePosts" class="mhrda.socialme.actions.PostAction" method="showProfilePosts">
-	    	<result name="success">/pages/show-profile-posts.jsp</result>
 	    </action>
 	    
 	    <action name="test" class="mhrda.socialme.actions.TestAction">

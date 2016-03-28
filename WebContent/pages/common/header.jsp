@@ -25,20 +25,21 @@
 		</tr>
 	</table>
 	<br/>
-	<ul id="headerMenu">
-		<s:if test="%{#session.LOGGEDINUSER != null}">
-			<li>
-				<a href="<s:url action="showProfile"/>">Profile</a>
-			</li>
-			<li>
-				<a href="<s:url action="showFriends"/>">Friends</a>
-			</li>
-			<li>
-				<a href="<s:url action="showFriendRequests"/>">Friend Requests</a>
-			</li>
-			<li>
-				<a href="<s:url action="search"/>">Search</a>
-			</li>
-		</s:if>
-	</ul>
+	
+	<s:if test="%{#session.LOGGEDINUSER != null}">
+		<ul id="headerMenu">
+			<li><a href="<s:url action="showOwnProfile"/>">Profile</a></li>
+			<li><a href="<s:url action="search"/>">Search</a></li>
+		</ul>
+		
+		<ul id="profileMenu">
+			<li><a href="<s:url action="showProfile"/>">Profile</a></li>
+			<li><a href="<s:url action="showProfileAbout"/>">About</a></li>
+			<li><a href="<s:url action="showProfileFriends"/>">Friends</a></li>
+			<s:if test="%{#session.ACTIVEUSERPROFILE == #session.LOGGEDINUSER.userId}">
+				<li><a href="<s:url action="showFriendRequests"/>">Friend Requests</a></li>
+			</s:if>
+		</ul>
+	</s:if>
+	
 </div>

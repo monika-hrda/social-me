@@ -7,7 +7,7 @@
 }
 
 #headerDiv {
-	height: 150px;
+	height: 200px;
 }
 
 #headerLogo {
@@ -19,7 +19,6 @@
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
-	position: fixed; /* needs work */
 	width: 100%;
 }
 
@@ -48,6 +47,33 @@
 	background-color: #e7e7e7;
 }
 */
+
+#profileMenu {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	width: 100%;
+}
+
+#profileMenu li {
+	float: left;
+	border: 1px solid #e7e7e7;
+}
+
+#profileMenu li a {
+	display: block;
+	background-color: #f3f3f3;
+	color: #666;
+	text-align: center;
+	padding: 14px 20px;
+	text-decoration: none;
+}
+
+#profileMenu li a:hover:not(.active) {
+	background-color: lightblue;
+	color: white;
+}
 
 #headerTop {
 	

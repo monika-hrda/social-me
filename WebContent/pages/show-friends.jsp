@@ -13,9 +13,14 @@
 		
 		<s:include value="common/header.jsp" />
 		
-		<h3>Friends (<s:property value="numberOfFriends"/>):</h3>
+		<h3>
+			<s:property value="profileUser.firstName" />&nbsp;<s:property value="profileUser.lastName" />
+			<small> - Friends</small>
+		</h3>
 		
-		<s:if test="%{foundFriends.isEmpty()}">
+		<h4>Friends (<s:property value="numberOfFriends"/>):</h4>
+		
+		<s:if test="%{profileUserFriends.isEmpty()}">
 			<em>You are not connected to anyone on SocialMe. <a href="<s:url action="search"/>">Find friends.</a></em><br/>
 		</s:if>
 		
@@ -25,9 +30,9 @@
 				<th>Id</th>
 				<th>Name</th>
 			</tr>
-			<s:iterator value="foundFriends">
+			<s:iterator value="profileUserFriends">
 				<s:url action="showProfile" var="showProfileLink">
-					<s:param name="userId" value="%{userId}" />
+					<s:param name="profileId" value="%{userId}" />
 				</s:url>
 				<tr>
 					<td><s:property value="userId"/></td>

@@ -7,11 +7,27 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<link href="${pageContext.request.contextPath}/css/styling.css" type="text/css" rel="stylesheet">
+		<title>SocialMe | Posts</title>
 	</head>
 	
 	<body>
+		
+		<s:include value="common/header.jsp" />
+		
+		<h3>
+			<s:property value="profileUser.firstName" />&nbsp;<s:property value="profileUser.lastName" />
+			<small> - Profile</small>
+		</h3>
+		
+		<div><h4>Write something..</h4></div>
+		
+		<s:form action="createPost" method="post">
+			<s:textarea name="postText" rows="5" />
+			<s:hidden name="currentProfileUserId" value="%{profileUser.userId}" />
+			<s:submit value="Post" />
+		</s:form>
 			
-		<h3>Profile Posts:</h3>
+		<h4>Profile Posts:</h4>
 		
 		<table>
 		<s:iterator value="profileUserPosts">
@@ -30,6 +46,8 @@
 			</tr>
 		</s:iterator>
 		</table>
+		
+		<s:include value="common/footer.jsp" />
 		
 	</body>
 </html>

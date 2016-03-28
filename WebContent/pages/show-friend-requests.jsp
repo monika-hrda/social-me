@@ -12,8 +12,13 @@
 	<body>
 		
 		<s:include value="common/header.jsp" />
-				
-		<h3>Friend Requests (<s:property value="numberOfFriendRequests"/>):</h3>
+		
+		<h3>
+			<s:property value="profileUser.firstName" />&nbsp;<s:property value="profileUser.lastName" />
+			<small> - Friend Requests</small>
+		</h3>
+		
+		<h4>Friend Requests (<s:property value="numberOfFriendRequests"/>):</h4>
 		
 		<s:if test="%{friendRequests.isEmpty()}">
 			<em>You have no friend requests.</em><br/>
@@ -31,7 +36,7 @@
 			<s:iterator value="friendRequests">
 			
 				<s:url action="showProfile" var="showProfileLink">
-					<s:param name="userId" value="%{friendRequester.userId}" />
+					<s:param name="profileId" value="%{friendRequester.userId}" />
 				</s:url>
 				<s:url action="acceptFriend" var="acceptFriendLink">
 					<s:param name="requestedFriendshipId" value="%{friendshipId}" />

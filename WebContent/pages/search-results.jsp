@@ -32,7 +32,7 @@
 			<s:iterator value="foundUsersFriends">
 			
 				<s:url action="showProfile" var="showProfileLink">
-					<s:param name="userId" value="%{userId}" />
+					<s:param name="profileId" value="%{userId}" />
 				</s:url>
 				
 				<tr>
@@ -53,7 +53,7 @@
 			<s:iterator value="foundUsersRequestersMap">
 			
 				<s:url action="showProfile" var="showProfileLink">
-					<s:param name="userId" value="%{key.userId}" />
+					<s:param name="profileId" value="%{key.userId}" />
 				</s:url>
 				<s:url action="acceptFriend" var="acceptFriendLink">
 					<s:param name="requestedFriendshipId" value="%{value}" />
@@ -81,7 +81,7 @@
 			<s:iterator value="foundUsersResponders">
 			
 				<s:url action="showProfile" var="showProfileLink">
-					<s:param name="userId" value="%{userId}" />
+					<s:param name="profileId" value="%{userId}" />
 				</s:url>
 				
 				<tr>
@@ -100,7 +100,7 @@
 			<s:iterator value="foundUsersNoRelationship">
 			
 				<s:url action="showProfile" var="showProfileLink">
-					<s:param name="userId" value="%{userId}" />
+					<s:param name="profileId" value="%{userId}" />
 				</s:url>
 				<s:url action="requestFriend" var="requestFriendLink">
 					<s:param name="addFriendUserId" value="%{userId}" />
