@@ -102,9 +102,6 @@
 	    	<result name="success" type="redirect">/showFriendRequests.action</result> <!-- to be changed -->
 	    </action>
 	    
-	    <action name="test" class="mhrda.socialme.actions.TestAction">
-	    	<result name="success">/pages/welcome.jsp</result>
-	    </action>
 	</package>
 	
 </struts>
