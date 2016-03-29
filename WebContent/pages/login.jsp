@@ -18,7 +18,7 @@
 		
 		<s:form action="login" method="post">
 			<s:textfield name="email" label="Email" />
-			<s:textfield name="pwd" label="Password" type="password" />
+			<s:password name="pwd" label="Password" />
 			<s:submit value="Login" />
 		</s:form>
 		
