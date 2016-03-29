@@ -48,5 +48,11 @@ public class PostDAOImpl implements PostDAO {
 		
 		return posts;
 	}
+
+	@Override
+	public Post getPostById(int postId) {
+		Session session = sf.getCurrentSession();
+		return (Post) session.load(Post.class, postId);
+	}
 		
 }

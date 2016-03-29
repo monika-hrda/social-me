@@ -1,6 +1,8 @@
 package mhrda.socialme.entities;
 
 import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Post {
 	
@@ -9,6 +11,8 @@ public class Post {
 	private User forUser;
 	private String postText;
 	private Timestamp createdTime;
+	
+	private Set<Comment> commentsWrittenOnPost = new HashSet<Comment>();
 
 	public int getPostId() {
 		return postId;
@@ -48,6 +52,14 @@ public class Post {
 
 	public void setCreatedTime(Timestamp createdTime) {
 		this.createdTime = createdTime;
+	}
+
+	public Set<Comment> getCommentsWrittenOnPost() {
+		return commentsWrittenOnPost;
+	}
+
+	public void setCommentsWrittenOnPost(Set<Comment> commentsWrittenOnPost) {
+		this.commentsWrittenOnPost = commentsWrittenOnPost;
 	}
 	
 }

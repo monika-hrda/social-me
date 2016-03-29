@@ -1,5 +1,7 @@
 package mhrda.socialme.actions;
 
+import mhrda.socialme.dao.CommentDAO;
+import mhrda.socialme.dao.CommentDAOImpl;
 import mhrda.socialme.dao.FriendshipDAO;
 import mhrda.socialme.dao.FriendshipDAOImpl;
 import mhrda.socialme.dao.FriendshipStatusDAO;
@@ -22,6 +24,7 @@ public class BaseAction extends ActionSupport {
 	private FriendshipDAO friendshipDAO;
 	private FriendshipStatusDAO friendshipStatusDAO;
 	private PostDAO postDAO;
+	private CommentDAO commentDAO;
 		
 	public UserDAO getUserDAO() {
 		if (userDAO == null) {
@@ -53,6 +56,14 @@ public class BaseAction extends ActionSupport {
 			postDAO = new PostDAOImpl(sf);
 		}
 		return postDAO;
+	}
+	
+	public CommentDAO getCommentDAO() {
+		if (commentDAO == null) {
+			SessionFactory sf = HibernateUtil.getSessionFactory();
+			commentDAO = new CommentDAOImpl(sf);
+		}
+		return commentDAO;
 	}
 
 }

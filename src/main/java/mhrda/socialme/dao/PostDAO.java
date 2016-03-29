@@ -11,4 +11,6 @@ public interface PostDAO {
 	
 	List<Post> getPostsForProfile(User profileUser);
 	
+	Post getPostById(int postId);
+	
 }

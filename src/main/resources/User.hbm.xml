@@ -49,5 +49,10 @@
         	<one-to-many class="mhrda.socialme.entities.Post" />
         </set>
         
+        <set name="commentsWrittenByUser" table="COMMENTS" inverse="true" cascade="save-update">
+        	<key column="user_id" />
+        	<one-to-many class="mhrda.socialme.entities.Comment" />
+        </set>
+        
     </class>
 </hibernate-mapping>

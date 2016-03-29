@@ -107,6 +107,10 @@
 	    	<result name="success" type="redirect">/showFriendRequests.action</result> <!-- to be changed -->
 	    </action>
 	    
+	    <action name="createComment" class="mhrda.socialme.actions.CommentAction" method="createComment">
+	    	<result name="success" type="redirect">/showProfile.action</result>
+	    </action>
+	    
 	</package>
 	
 </struts>

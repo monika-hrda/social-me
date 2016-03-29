@@ -20,13 +20,19 @@ VALUES
     (2, 3, 2, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
     (2, 5, 1, CURRENT_TIMESTAMP(), NULL),
     (1, 4, 1, CURRENT_TIMESTAMP(), NULL),
-	  (5, 1, 1, CURRENT_TIMESTAMP(), NULL);
+	  (5, 1, 1, CURRENT_TIMESTAMP(), NULL),
+    (2, 7, 1, CURRENT_TIMESTAMP(), NULL),
+    (3, 5, 1, CURRENT_TIMESTAMP(), NULL);
 
 INSERT INTO Post 
     (by_user_id, for_user_id, post_text, created_time)
 VALUES 
-    (1, 1, 'Heading to the hospital today - eek!', CURRENT_TIMESTAMP()),
-    (2, 2, 'This is my first post. I love SocialMe!', CURRENT_TIMESTAMP()),
-    (1, 3, 'Check out my x-ray.', CURRENT_TIMESTAMP()),
-    (3, 1, 'Hope you get better soon, John!', CURRENT_TIMESTAMP()),
-    (3, 3, 'I hope I can find some school friends on SocialMe', CURRENT_TIMESTAMP());
+    (1, 1, 'Heading to the hospital today - eek!', '2016-03-25 07:23:54'),
+    (2, 2, 'This is my first post. I love SocialMe!', '2016-03-25 20:24:50'),
+    (1, 3, 'Michael, check out my x-ray.', '2016-03-25 20:40:05'),
+    (3, 1, 'Hope you get better soon, John!', '2016-03-25 21:30:55'),
+    (3, 3, 'I hope I can find some school friends on SocialMe', '2016-03-25 22:42:14'),
+    (2, 4, 'Hi Paul, glad to have found you on here! Jane', '2016-03-25 22:45:24'),
+    (2, 2, 'My own wall, la la la.', '2016-03-26 00:46:57'),
+    (2, 3, 'Hi Michael, long time no see..! Jane', '2016-03-26 00:48:58'),
+    (3, 2, 'Hi Jane, it has been way too long. What are you up to these days? Miss you!', '2016-03-26 09:06:18');

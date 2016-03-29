@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="mhrda.socialme.entities.Comment" table="COMMENTS">
+		
+		<id name="commentId" type="int">
+			<column name="id" />
+			<generator class="increment" />
+		</id>
+		
+		<many-to-one name="post" class="mhrda.socialme.entities.Post">
+			<column name="post_id" not-null="true" />
+		</many-to-one>
+		
+		<many-to-one name="commentUser" class="mhrda.socialme.entities.User">
+			<column name="user_id" not-null="true" />
+		</many-to-one>
+		
+		<property name="commentText" type="java.lang.String">
+            <column name="comment_text" />
+        </property>
+        
+        <property name="createdTime" type="timestamp">
+            <column name="created_time" />
+        </property>
+        
+	</class>
+</hibernate-mapping>

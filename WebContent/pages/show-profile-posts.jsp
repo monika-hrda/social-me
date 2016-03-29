@@ -44,6 +44,15 @@
 				"<s:property value="postText"/>"
 				</td>
 			</tr>
+			<tr>
+				<td>
+					<s:form action="createComment" method="post">
+						<s:textarea name="commentText" rows="2" />
+						<s:hidden name="currentPostId" value="%{postId}" />
+						<s:submit value="Comment" />
+					</s:form>
+				</td>
+			</tr>
 		</s:iterator>
 		</table>
 		

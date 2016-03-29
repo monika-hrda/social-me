@@ -59,3 +59,18 @@ CREATE TABLE Post (
     FOREIGN KEY (by_user_id) REFERENCES User (id),
     FOREIGN KEY (for_user_id) REFERENCES User (id)
 );
+
+/*
+This table stores comments made by users on posts.
+It is purposely plural because 'comment' is a reserved keyword.
+Only text comments are available for now.
+*/
+CREATE TABLE Comments (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    post_id INT NOT NULL,
+    user_id INT NOT NULL,
+    comment_text VARCHAR(500) NOT NULL,
+    created_time TIMESTAMP NOT NULL,
+    FOREIGN KEY (post_id) REFERENCES Post (id),
+    FOREIGN KEY (user_id) REFERENCES User (id)
+);
