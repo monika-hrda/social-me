@@ -32,7 +32,7 @@ public class ShowProfileAction extends BaseAction implements UserAware, SessionA
 	@Override
 	public String execute() throws Exception {
 		configureProfileToView();
-		if (profileUser != loggedInUser) {
+		if (profileUser.getUserId() != loggedInUser.getUserId()) {
 			if (!isFriend(getProfileUser())) {
 				return ERROR;
 			}
