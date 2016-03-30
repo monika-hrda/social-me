@@ -6,6 +6,7 @@ import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
 
 import mhrda.socialme.entities.User;
+import mhrda.socialme.utilities.GeneralUtilities;
 
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -18,11 +19,11 @@ public class LoginAction extends BaseAction implements ModelDriven<User>, Sessio
 	
 	@Override
 	public String execute() throws Exception {
-		System.out.println("inside LoginAction execute");
+		//Hash the entered password before checking credentials against the database.
+		user.setPwd(GeneralUtilities.toSHA1(user.getPwd()));
 		user = getUserDAO().getUserByCredentials(getUser().getEmail(), getUser().getPwd());
         if(user == null) return ERROR;
         else {
-        	System.out.println("Logged in user's name: " + getUser().getFirstName() + " " + getUser().getLastName());
         	sessionAttributes.put("LOGGEDINUSER", user);
         	return SUCCESS;
         }
