@@ -30,18 +30,37 @@
 		<h4>Profile Posts:</h4>
 		
 		<table>
-		<s:iterator value="profileUserPosts">
+		<s:iterator var="post" value="profileUserPosts">
 			<tr>
 				<td>
-				From: <s:property value="byUser.firstName"/>&nbsp;<s:property value="byUser.lastName"/>
+				From: <s:property value="#post.byUser.firstName"/>&nbsp;<s:property value="#post.byUser.lastName"/>
 				</td>
 				<td>
-				On: <s:date name="createdTime" format="dd/MM/yyyy hh:mm a" />
+				On: <s:date name="#post.createdTime" format="dd/MM/yyyy hh:mm a" />
 				</td>
 			</tr>
 			<tr>
 				<td>
-				"<s:property value="postText"/>"
+				"<s:property value="#post.postText"/>"
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<s:iterator var="comment" value="#post.commentsWrittenOnPost">
+						<tr>
+							<td>
+							<s:property value="#comment.commentUser.firstName"/>&nbsp;<s:property value="#comment.commentUser.lastName"/>&nbsp;commented:
+							</td>
+							<td>
+							On: <s:date name="#comment.createdTime" format="dd/MM/yyyy hh:mm a" />
+							</td>
+						</tr>
+						<tr>
+							<td>
+							"<s:property value="#comment.commentText"/>"
+							</td>
+						</tr>
+					</s:iterator>
 				</td>
 			</tr>
 			<tr>
@@ -51,6 +70,11 @@
 						<s:hidden name="currentPostId" value="%{postId}" />
 						<s:submit value="Comment" />
 					</s:form>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<hr/>
 				</td>
 			</tr>
 		</s:iterator>
