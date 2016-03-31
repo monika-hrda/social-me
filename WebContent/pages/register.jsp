@@ -1,32 +1,41 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="/struts-tags" prefix="s"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="/struts-tags" prefix="s" %>
+<%@ taglib uri="/struts-bootstrap-tags" prefix="sb" %>
+<!DOCTYPE html>
 
-<html>
+<html lang="en">
 	<head>
+		<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+		<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->		
+		<sb:head/>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<link href="${pageContext.request.contextPath}/css/styling.css" type="text/css" rel="stylesheet">
 		<title>SocialMe | Register</title>
 	</head>
 	
 	<body>
+		<div id="page">
 		
 		<s:include value="common/header.jsp" />
 		
-		<h3>Register to start making friends on SocialMe</h3>
+			<section id="body" class="container">
 		
-		<s:form action="register" method="post">
-			<s:textfield name="firstName" label="First Name" />
-			<s:textfield name="lastName" label="Last Name" />
-			<s:textfield name="email" label="Email" />
-			<s:password name="pwd" label="Password" />
-			<%-- <s:radio list="{'male','female'}" name="gender" /> --%>
+				<h3>Register to start making friends on SocialMe</h3>
+				
+				<s:form action="register" method="post">
+					<s:textfield name="firstName" label="First Name" />
+					<s:textfield name="lastName" label="Last Name" />
+					<s:textfield name="email" label="Email" />
+					<s:password name="pwd" label="Password" />
+					<%-- <s:radio list="{'male','female'}" name="gender" /> --%>
+					
+					<s:submit value="Register" />
+				</s:form>
+		
+			</section>
 			
-			<s:submit value="Register" />
-		</s:form>
-		
 		<s:include value="common/footer.jsp" />
-		
+		</div>
 	</body>
 </html>
