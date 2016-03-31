@@ -1,3 +1,26 @@
 #body { padding-top: 150px; }
 
 #menu { background-color: #c80000; }
+
+#menu .navbar-brand {
+    color: white;
+    font-size: 25px;
+    padding-top: 20px;
+}
+
+#menu .navbar-text {
+    color: white;
+}
+
+#signed-in {
+	padding-top: 5px;
+}
+
+#menu .navbar-nav li a {
+    color: #f2f2f2;
+}
+
+#menu .navbar-nav li a:hover {
+    color: white;
+}
+
