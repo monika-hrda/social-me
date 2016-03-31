@@ -3,7 +3,7 @@
 <%@ taglib uri="/struts-bootstrap-tags" prefix="sb" %>
 
 <header class="container-fluid">
-	<div id="menu" class="navbar navbar-inverse">
+	<div id="menu" class="navbar navbar-inverse navbar-fixed-top">
 	
 		<div class="navbar-header">
 			<span class="navbar-brand">SocialMe</span>

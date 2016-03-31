@@ -2,8 +2,8 @@
 <%@ taglib uri="/struts-tags" prefix="s" %>
 <%@ taglib uri="/struts-bootstrap-tags" prefix="sb" %>
 
-<footer class="container">
-	<nav class="navbar navbar-default navbar-fixed-bottom">
+<footer class="container-fluid">
+	<nav class="navbar navbar-default">
 		<div class="span12 text-center">
 			SocialMe &copy; 2016
 		</div>
