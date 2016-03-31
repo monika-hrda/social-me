@@ -19,66 +19,74 @@
 	<body>
 		<div id="page">
 		
-		<s:include value="common/header.jsp" />
+			<s:include value="common/header.jsp" />
 		
 			<section id="body" class="container">
+			
+				<section id="sidebar" role="navigation" class="col-md-2">
+					<s:include value="common/profileMenu.jsp" />
+				</section>
+				
+				<section id="main" class="col-md-10">
 		
-				<h3>
-					<s:property value="profileUser.firstName" />&nbsp;<s:property value="profileUser.lastName" />
-					<small> - Friend Requests</small>
-				</h3>
-				
-				<h4>Friend Requests (<s:property value="numberOfFriendRequests"/>):</h4>
-				
-				<s:if test="%{friendRequests.isEmpty()}">
-					<em>You have no friend requests.</em><br/>
-				</s:if>
-				
-				<s:else>
-				<table>
-					<tr>
-						<th>FriendshipId</th>
-						<th>UserId</th>
-						<th>Name</th>
-						<th>Requested on</th>
-					</tr>
+					<h3>
+						<s:property value="profileUser.firstName" />&nbsp;<s:property value="profileUser.lastName" />
+						<small> - Friend Requests</small>
+					</h3>
 					
-					<s:iterator value="friendRequests">
+					<h4>Friend Requests (<s:property value="numberOfFriendRequests"/>):</h4>
 					
-						<s:url action="showProfile" var="showProfileLink">
-							<s:param name="profileId" value="%{friendRequester.userId}" />
-						</s:url>
-						<s:url action="acceptFriend" var="acceptFriendLink">
-							<s:param name="requestedFriendshipId" value="%{friendshipId}" />
-						</s:url>
-						<s:url action="rejectFriend" var="rejectFriendLink">
-							<s:param name="requestedFriendshipId" value="%{friendshipId}" />
-						</s:url>
-						
+					<s:if test="%{friendRequests.isEmpty()}">
+						<em>You have no friend requests.</em><br/>
+					</s:if>
+					
+					<s:else>
+					<table>
 						<tr>
-							<td><s:property value="friendshipId"/></td>
-							<td><s:property value="friendRequester.userId"/></td>
-							<td>
-								<s:a href="%{showProfileLink}"><s:property value="friendRequester.firstName"/>&nbsp;<s:property value="friendRequester.lastName"/></s:a>
-							</td>
-							<td>
-								<s:date name="requestTime" format="dd/MM/yyyy hh:mm a" nice="true" />
-							</td>
-							<td>
-								<s:a href="%{acceptFriendLink}">Accept</s:a>
-							</td>
-							<td>
-								<s:a href="%{rejectFriendLink}">Reject</s:a>
-							</td>
+							<th>FriendshipId</th>
+							<th>UserId</th>
+							<th>Name</th>
+							<th>Requested on</th>
 						</tr>
 						
-					</s:iterator>
-				</table>
-				</s:else>
+						<s:iterator value="friendRequests">
+						
+							<s:url action="showProfile" var="showProfileLink">
+								<s:param name="profileId" value="%{friendRequester.userId}" />
+							</s:url>
+							<s:url action="acceptFriend" var="acceptFriendLink">
+								<s:param name="requestedFriendshipId" value="%{friendshipId}" />
+							</s:url>
+							<s:url action="rejectFriend" var="rejectFriendLink">
+								<s:param name="requestedFriendshipId" value="%{friendshipId}" />
+							</s:url>
+							
+							<tr>
+								<td><s:property value="friendshipId"/></td>
+								<td><s:property value="friendRequester.userId"/></td>
+								<td>
+									<s:a href="%{showProfileLink}"><s:property value="friendRequester.firstName"/>&nbsp;<s:property value="friendRequester.lastName"/></s:a>
+								</td>
+								<td>
+									<s:date name="requestTime" format="dd/MM/yyyy hh:mm a" nice="true" />
+								</td>
+								<td>
+									<s:a href="%{acceptFriendLink}">Accept</s:a>
+								</td>
+								<td>
+									<s:a href="%{rejectFriendLink}">Reject</s:a>
+								</td>
+							</tr>
+							
+						</s:iterator>
+					</table>
+					</s:else>
+					
+				</section>
 				
 			</section>
 		
-		<s:include value="common/footer.jsp" />
+			<s:include value="common/footer.jsp" />
 		
 		</div>
 	</body>

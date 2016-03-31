@@ -3,7 +3,7 @@
 <%@ taglib uri="/struts-bootstrap-tags" prefix="sb" %>
 
 <footer class="container-fluid">
-	<nav class="navbar navbar-default">
+	<nav class="navbar navbar-default navbar-fixed-bottom">
 		<div class="span12 text-center">
 			SocialMe &copy; 2016
 		</div>

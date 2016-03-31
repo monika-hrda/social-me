@@ -19,24 +19,32 @@
 	<body>
 		<div id="page">
 		
-		<s:include value="common/header.jsp" />
+			<s:include value="common/header.jsp" />
 		
 			<section id="body" class="container">
+			
+				<section id="sidebar" role="navigation" class="col-md-2">
+					<s:include value="common/profileMenu.jsp" />
+				</section>
+				
+				<section id="main" class="col-md-10">
 		
-				<h3>
-					<s:property value="profileUser.firstName" />&nbsp;<s:property value="profileUser.lastName" />
-					<small> - About</small>
-				</h3>
-				
-				<s:push value="profileUser">		
-		 			<div>Id: <s:property value="userId" /></div>
-					<div>Email: <s:property value="email" /></div>
-					<div>Password: <s:property value="pwd" /></div>
-				</s:push>
-				
-				<s:include value="common/footer.jsp" />
+					<h3>
+						<s:property value="profileUser.firstName" />&nbsp;<s:property value="profileUser.lastName" />
+						<small> - About</small>
+					</h3>
+					
+					<s:push value="profileUser">		
+			 			<div>Id: <s:property value="userId" /></div>
+						<div>Email: <s:property value="email" /></div>
+						<div>Password: <s:property value="pwd" /></div>
+					</s:push>
+					
+				</section>
 				
 			</section>
+			
+			<s:include value="common/footer.jsp" />
 		
 		</div>
 	</body>

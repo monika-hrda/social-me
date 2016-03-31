@@ -19,7 +19,7 @@
 	<body>
 		<div id="page">
 	
-		<s:include value="common/header.jsp" />
+			<s:include value="common/header.jsp" />
 
 			<section id="body" class="container">
 			
@@ -27,7 +27,7 @@
 					<s:include value="common/profileMenu.jsp" />
 				</section>
 				
-				<section id="main" class="col-md-10">		
+				<section id="main" class="col-md-10">
 					<h3>
 						<s:property value="profileUser.firstName" />&nbsp;<s:property value="profileUser.lastName" />
 						<small> - Profile</small>
@@ -96,7 +96,8 @@
 				</section>
 			</section>
 
-		<s:include value="common/footer.jsp" />
+			<s:include value="common/footer.jsp" />
+		
 		</div>
 	</body>
 </html>

@@ -19,44 +19,52 @@
 	<body>
 		<div id="page">
 		
-		<s:include value="common/header.jsp" />
-		
+			<s:include value="common/header.jsp" />
+			
 			<section id="body" class="container">
+			
+				<section id="sidebar" role="navigation" class="col-md-2">
+					<s:include value="common/profileMenu.jsp" />
+				</section>
+				
+				<section id="main" class="col-md-10">
 		
-				<h3>
-					<s:property value="profileUser.firstName" />&nbsp;<s:property value="profileUser.lastName" />
-					<small> - Friends</small>
-				</h3>
-				
-				<h4>Friends (<s:property value="numberOfFriends"/>):</h4>
-				
-				<s:if test="%{profileUserFriends.isEmpty()}">
-					<em>You are not connected to anyone on SocialMe. <a href="<s:url action="search"/>">Find friends.</a></em><br/>
-				</s:if>
-				
-				<s:else>
-				<table>
-					<tr>
-						<th>Id</th>
-						<th>Name</th>
-					</tr>
-					<s:iterator value="profileUserFriends">
-						<s:url action="showProfile" var="showProfileLink">
-							<s:param name="profileId" value="%{userId}" />
-						</s:url>
+					<h3>
+						<s:property value="profileUser.firstName" />&nbsp;<s:property value="profileUser.lastName" />
+						<small> - Friends</small>
+					</h3>
+					
+					<h4>Friends (<s:property value="numberOfFriends"/>):</h4>
+					
+					<s:if test="%{profileUserFriends.isEmpty()}">
+						<em>You are not connected to anyone on SocialMe. <a href="<s:url action="search"/>">Find friends.</a></em><br/>
+					</s:if>
+					
+					<s:else>
+					<table>
 						<tr>
-							<td><s:property value="userId"/></td>
-							<td>
-								<s:a href="%{showProfileLink}"><s:property value="firstName"/>&nbsp;<s:property value="lastName"/></s:a>
-							</td>
+							<th>Id</th>
+							<th>Name</th>
 						</tr>
-					</s:iterator>
-				</table>
-				</s:else>
+						<s:iterator value="profileUserFriends">
+							<s:url action="showProfile" var="showProfileLink">
+								<s:param name="profileId" value="%{userId}" />
+							</s:url>
+							<tr>
+								<td><s:property value="userId"/></td>
+								<td>
+									<s:a href="%{showProfileLink}"><s:property value="firstName"/>&nbsp;<s:property value="lastName"/></s:a>
+								</td>
+							</tr>
+						</s:iterator>
+					</table>
+					</s:else>
+					
+				</section>
 		
 			</section>
-		
-		<s:include value="common/footer.jsp" />
+			
+			<s:include value="common/footer.jsp" />
 		
 		</div>
 	</body>
