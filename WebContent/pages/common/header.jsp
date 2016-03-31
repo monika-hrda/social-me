@@ -2,8 +2,8 @@
 <%@ taglib uri="/struts-tags" prefix="s" %>
 <%@ taglib uri="/struts-bootstrap-tags" prefix="sb" %>
 
-<header class="container-fluid">
-	<div id="menu" class="navbar navbar-inverse navbar-fixed-top">
+<nav id="menu" class="navbar navbar-inverse navbar-fixed-top">
+	<header class="container-fluid">
 	
 		<div class="navbar-header">
 			<span class="navbar-brand">SocialMe</span>
@@ -26,14 +26,14 @@
 					</ul>
 			</s:else>
 			
+			<s:if test="%{#session.LOGGEDINUSER != null}">
+				<ul class="nav navbar-nav">
+					<li class="nav"><a href="<s:url action="showOwnProfile"/>">My Profile</a></li>
+					<li class="nav"><a href="<s:url action="search"/>">Search</a></li>
+				</ul>
+			</s:if>
+			
 		</div>
-	
-		<s:if test="%{#session.LOGGEDINUSER != null}">
-			<ul class="nav navbar-nav">
-				<li class="nav"><a href="<s:url action="showOwnProfile"/>">My Profile</a></li>
-				<li class="nav"><a href="<s:url action="search"/>">Search</a></li>
-			</ul>
-		</s:if>
 		
-	</div>
-</header>
+	</header>
+</nav>
