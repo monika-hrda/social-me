@@ -6,6 +6,7 @@
     
 <struts>
 	<constant name="struts.devMode" value="true"></constant>
+	<constant name="struts.custom.i18n.resources" value="global"/>
 	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
 	 
 	 <!-- constant to define result path locations to project root directory -->
@@ -75,18 +76,24 @@
 	    </action>
 	    
 	    <action name="showProfilePosts" class="mhrda.socialme.actions.ShowProfileAction" method="showProfilePosts">
+	    	<interceptor-ref name="store">
+        		<param name="operationMode">RETRIEVE</param>
+    		</interceptor-ref>
+    		<interceptor-ref name="authStack" />
 	    	<result name="success">/pages/show-profile-posts.jsp</result>
+	    	<result name="input">/pages/error-create-post.jsp</result>
 	    </action>
 	    
 	    <action name="createPost" class="mhrda.socialme.actions.PostAction" method="createPost">
-	    	<interceptor-ref name="authStack"/>
-	    	<interceptor-ref name="fileUpload">
-	    		<param name="maximumSize">2097152</param>
-	    		<param name="allowedTypes">
-	    			image/png,image/gif,image/jpeg,image/pjpeg
-	    		</param>
+	    	<interceptor-ref name="store">
+        		<param name="operationMode">STORE</param>
+    		</interceptor-ref>
+	    	<interceptor-ref name="authStack">
+	    		<param name="fileUpload.maximumSize">2097152</param>
+	    		<param name="fileUpload.allowedTypes">image/png,image/gif,image/jpeg,image/pjpeg</param>
 	    	</interceptor-ref>
 	    	<result name="success" type="redirect">/showProfile.action</result>
+	    	<result name="input" type="redirect">/showProfile.action</result>
 	    </action>
 	    
 	    <action name="showProfileAbout" class="mhrda.socialme.actions.ShowProfileAction" method="showProfileAbout">

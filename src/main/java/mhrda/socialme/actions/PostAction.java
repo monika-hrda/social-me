@@ -1,12 +1,12 @@
 package mhrda.socialme.actions;
 
 import java.io.File;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.interceptor.ServletRequestAware;
 
 import com.opensymphony.xwork2.ModelDriven;
+import com.opensymphony.xwork2.ValidationAware;
 
 import mhrda.socialme.entities.Post;
 import mhrda.socialme.entities.User;
@@ -14,7 +14,7 @@ import mhrda.socialme.interceptors.UserAware;
 import mhrda.socialme.utilities.FileStorageLocations;
 import mhrda.socialme.utilities.ImageHandler;
 
-public class PostAction extends BaseAction implements UserAware, ModelDriven<Post>, ServletRequestAware {
+public class PostAction extends BaseAction implements UserAware, ModelDriven<Post>, ServletRequestAware, ValidationAware {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -34,20 +34,27 @@ public class PostAction extends BaseAction implements UserAware, ModelDriven<Pos
 		post.setForUser(getUserDAO().getUserById(currentProfileUserId));
 		
 		if (image != null) {
-			String storageRoot = request.getServletContext().getRealPath("/");
-			String subFolders = FileStorageLocations.POSTIMAGEFOLDER;
 			
-			ImageHandler imageHandler = new ImageHandler();
-			imageHandler.saveImageWithThumbnail(image, storageRoot, subFolders, imageFileName);
-			
-			//If anything went wrong saving the large file, this will be null.
-			if (imageHandler.getSavedImageLocation() != null) {
-				post.setPostImageFileName(imageHandler.getSavedImageLocation());
-			}
-			
-			//If anything went wrong saving the thumbnail, this will be null.
-			if (imageHandler.getSavedImageLocationThumb() != null) {
-				post.setPostImageFileNameThumb(imageHandler.getSavedImageLocationThumb());
+			try {
+				String storageRoot = request.getServletContext().getRealPath("/");
+				String subFolders = FileStorageLocations.POSTIMAGEFOLDER;
+				
+				ImageHandler imageHandler = new ImageHandler();
+				imageHandler.saveImageWithThumbnail(image, storageRoot, subFolders, imageFileName);
+				
+				//If anything went wrong saving the large file, this will be null.
+				if (imageHandler.getSavedImageLocation() != null) {
+					post.setPostImageFileName(imageHandler.getSavedImageLocation());
+				}
+				
+				//If anything went wrong saving the thumbnail, this will be null.
+				if (imageHandler.getSavedImageLocationThumb() != null) {
+					post.setPostImageFileNameThumb(imageHandler.getSavedImageLocationThumb());
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				addActionError(e.getMessage());
+				return INPUT;
 			}
 		}
 		
