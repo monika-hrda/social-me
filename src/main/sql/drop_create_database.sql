@@ -54,7 +54,8 @@ CREATE TABLE Post (
     by_user_id INT NOT NULL, #This is the user who created the post.
     for_user_id INT NOT NULL, #This is the user the post is for, used in building a user's wall.
     post_text VARCHAR(500),
-    post_image_filename VARCHAR(200),
+    post_image_filename VARCHAR(500),
+	post_image_filename_thumb VARCHAR(500),
     created_time TIMESTAMP NOT NULL,
     FOREIGN KEY (by_user_id) REFERENCES User (id),
     FOREIGN KEY (for_user_id) REFERENCES User (id)

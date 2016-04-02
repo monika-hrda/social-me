@@ -10,6 +10,8 @@ public class Post {
 	private User byUser;
 	private User forUser;
 	private String postText;
+	private String postImageFileName;
+	private String postImageFileNameThumb;
 	private Timestamp createdTime;
 	
 	private Set<Comment> commentsWrittenOnPost = new HashSet<Comment>();
@@ -44,6 +46,22 @@ public class Post {
 
 	public void setPostText(String postText) {
 		this.postText = postText;
+	}
+
+	public String getPostImageFileName() {
+		return postImageFileName;
+	}
+
+	public void setPostImageFileName(String postImageFileName) {
+		this.postImageFileName = postImageFileName;
+	}
+
+	public String getPostImageFileNameThumb() {
+		return postImageFileNameThumb;
+	}
+
+	public void setPostImageFileNameThumb(String postImageFileNameThumb) {
+		this.postImageFileNameThumb = postImageFileNameThumb;
 	}
 
 	public Timestamp getCreatedTime() {

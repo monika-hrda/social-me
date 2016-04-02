@@ -79,6 +79,13 @@
 	    </action>
 	    
 	    <action name="createPost" class="mhrda.socialme.actions.PostAction" method="createPost">
+	    	<interceptor-ref name="authStack"/>
+	    	<interceptor-ref name="fileUpload">
+	    		<param name="maximumSize">2097152</param>
+	    		<param name="allowedTypes">
+	    			image/png,image/gif,image/jpeg,image/pjpeg
+	    		</param>
+	    	</interceptor-ref>
 	    	<result name="success" type="redirect">/showProfile.action</result>
 	    </action>
 	    

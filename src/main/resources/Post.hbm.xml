@@ -25,6 +25,14 @@
             <column name="post_text" />
         </property>
         
+        <property name="postImageFileName" type="java.lang.String">
+        	<column name="post_image_filename" />
+        </property>
+        
+        <property name="postImageFileNameThumb" type="java.lang.String">
+        	<column name="post_image_filename_thumb" />
+        </property>
+        
         <property name="createdTime" type="timestamp">
             <column name="created_time" />
         </property>

@@ -37,9 +37,10 @@
 					
 					<div><h4>Write something..</h4></div>
 					
-					<s:form action="createPost" method="post">
-						<s:textarea name="postText" rows="5" />
+					<s:form action="createPost" method="post" enctype="multipart/form-data">
 						<s:hidden name="currentProfileUserId" value="%{profileUser.userId}" />
+						<s:textarea name="postText" rows="5" />
+						<s:file name="image" label="Add Image" />
 						<s:submit value="Post" />
 					</s:form>
 						
@@ -57,7 +58,7 @@
 						</tr>
 						<tr>
 							<td>
-							"<s:property value="#post.postText"/>"
+							<s:property value="#post.postText"/>
 							</td>
 						</tr>
 						<tr>
