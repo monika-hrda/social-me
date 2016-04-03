@@ -11,6 +11,9 @@ public class User {
 	private String pwd;
     private String email;
     
+    private String profileImageFilename;
+    private String profileImageFilenameThumb;
+    
     private Set<Friendship> friendshipsWhereUserIsRequester = new HashSet<Friendship>(); //list of friendships initiated / requested by the user
     private Set<Friendship> friendshipsWhereUserIsResponder = new HashSet<Friendship>(); //list of friendships where the user is a responder
     private Set<Post> postsCreatedByUser = new HashSet<Post>();
@@ -46,6 +49,18 @@ public class User {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public String getProfileImageFilename() {
+		return profileImageFilename;
+	}
+	public void setProfileImageFilename(String profileImageFilename) {
+		this.profileImageFilename = profileImageFilename;
+	}
+	public String getProfileImageFilenameThumb() {
+		return profileImageFilenameThumb;
+	}
+	public void setProfileImageFilenameThumb(String profileImageFilenameThumb) {
+		this.profileImageFilenameThumb = profileImageFilenameThumb;
 	}
 	public Set<Friendship> getFriendshipsWhereUserIsRequester() {
 		return friendshipsWhereUserIsRequester;

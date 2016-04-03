@@ -61,6 +61,16 @@ public class UserDAOImpl implements UserDAO {
 		}
 		return userId;
 	}
+	
+	@Override
+	public void updateUser(User user) {
+		Session session = sf.getCurrentSession();
+		try {
+			session.update(user);
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		}
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override

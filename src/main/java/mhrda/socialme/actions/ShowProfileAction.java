@@ -70,6 +70,11 @@ public class ShowProfileAction extends BaseAction implements UserAware, SessionA
 		return SUCCESS;
 	}
 	
+	public String showEditProfile() throws Exception {
+		configureProfileToView();
+		return SUCCESS;
+	}
+	
 	/**
 	 * This action is only used when the user clicks on "Profile" from the top menu.
 	 * It removes the last-viewed profileUser from the session, then it redirects

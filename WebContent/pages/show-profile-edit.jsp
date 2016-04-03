@@ -15,7 +15,7 @@
 		<link href="${pageContext.request.contextPath}/css/socialme.css" type="text/css" rel="stylesheet" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-		<title>SocialMe | About</title>
+		<title>SocialMe | Edit profile</title>
 	</head>
 	
 	<body>
@@ -31,31 +31,16 @@
 				
 				<section id="main" class="col-md-10">
 					
-					<div class="page-header col-md-12">						
-						<div>
-							<h3 class="col-md-10">
-								<s:property value="profileUser.firstName" />&nbsp;<s:property value="profileUser.lastName" />
-								<small> - About</small>
-							</h3>
-						</div>
+					<s:actionerror theme="bootstrap" />
+					<s:fielderror theme="bootstrap" />
 					
-						<div class="text-right col-md-2">
-							<s:if test="%{profileUser.userId == loggedInUser.userId}">								
-								<a class="btn btn-primary" href="<s:url action="showEditProfile"/>" role="button">Edit Profile</a>
-							</s:if>
-						</div>
-					</div>
-										
-					<div class="col-md-12">
-						<p>
-							<s:push value="profileUser">		
-					 			<div>Id: <s:property value="userId" /></div>
-								<div>Email: <s:property value="email" /></div>
-								<div>Password: <s:property value="pwd" /></div>
-							</s:push>
-						</p>
-					</div>
-					
+					<s:form action="saveProfile" theme="bootstrap" class="well form-horizontal" label="Edit Profile Details" method="post" enctype="multipart/form-data">
+						<s:textfield name="firstName" value="%{profileUser.firstName}" label="First Name" tooltip="Enter your first name here. Make sure your friends can find you!"/>
+						<s:textfield name="lastName" value="%{profileUser.lastName}" label="Last Name" tooltip="Enter your last name here."/>
+						<s:file id="profilePic" name="profilePic" label="Profile Picture" />
+						<s:submit value="Save Changes" class="btn btn-success pull-right"/>
+					</s:form>
+									
 				</section>
 				
 			</section>

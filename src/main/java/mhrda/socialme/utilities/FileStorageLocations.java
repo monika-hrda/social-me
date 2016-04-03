@@ -4,6 +4,9 @@ package mhrda.socialme.utilities;
 
 public class FileStorageLocations {
 	
+	//Static site images
+	public static final String STATICIMAGEFOLDER = "images/";
+	
 	//Uploaded images
 	public static final String PROFILEIMAGEFOLDER = "Uploads/Profile/";
 	public static final String POSTIMAGEFOLDER = "Uploads/Post/";

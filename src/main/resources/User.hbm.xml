@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- Hibernate Mapping XML file -->
-
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
@@ -27,6 +25,14 @@
         
         <property name="email" type="java.lang.String">
             <column name="email" />
+        </property>
+        
+        <property name="profileImageFilename" type="java.lang.String">
+        	<column name="profile_image_filename" />
+        </property>
+        
+        <property name="profileImageFilenameThumb" type="java.lang.String">
+        	<column name="profile_image_filename_thumb" />
         </property>
         
         <set name="friendshipsWhereUserIsRequester" table="FRIENDSHIP" inverse="true" cascade="save-update"> 

@@ -104,6 +104,27 @@
 		    <result name="success">/pages/show-profile-about.jsp</result>
 	    </action>
 	    
+	    <action name="showEditProfile" class="mhrda.socialme.actions.ShowProfileAction" method="showEditProfile">
+	    	<interceptor-ref name="store">
+        		<param name="operationMode">RETRIEVE</param>
+    		</interceptor-ref>
+    		<interceptor-ref name="authStack" />
+		    <result name="success">/pages/show-profile-edit.jsp</result>
+		    <result name="input">/pages/show-profile-edit.jsp</result>
+	    </action>
+	    
+	    <action name="saveProfile" class="mhrda.socialme.actions.EditProfileAction" method="saveProfile">
+	    	<interceptor-ref name="store">
+        		<param name="operationMode">STORE</param>
+    		</interceptor-ref>
+	    	<interceptor-ref name="authStack">
+	    		<param name="fileUpload.maximumSize">2097152</param>
+	    		<param name="fileUpload.allowedTypes">image/png,image/gif,image/jpeg,image/pjpeg</param>
+	    	</interceptor-ref>
+		    <result name="success" type="redirect">/showProfileAbout.action</result>
+		    <result name="input" type="redirect">/showEditProfile.action</result>
+	    </action>
+	    
 	    <action name="showProfileFriends" class="mhrda.socialme.actions.ShowProfileAction" method="showProfileFriends">
 	    	<result name="success">/pages/show-friends.jsp</result>
 	    </action>
