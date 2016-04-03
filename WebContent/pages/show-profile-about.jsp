@@ -13,6 +13,8 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="${pageContext.request.contextPath}/css/socialme.css" type="text/css" rel="stylesheet" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 		<title>SocialMe | About</title>
 	</head>
 	

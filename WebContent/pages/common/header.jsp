@@ -5,7 +5,7 @@
 <nav id="menu" class="navbar navbar-inverse navbar-fixed-top">
 	<header class="container">
 	
-		<div class="navbar-header col-md-8">			
+		<div class="navbar-header col-md-8 col-sm-6">			
 			
 			<button type="button"
 					class="btn btn-success navbar-toggle collapsed"
@@ -14,13 +14,15 @@
 					aria-expanded="false">
 				<span class="sr-only">Toggle navigation</span>
 				<span class="glyphicon glyphicon-chevron-down"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
 			</button>
 			
 			<span class="navbar-brand">SocialMe</span>
 			
 		</div>
 		
-		<div class="col-md-4" id="signed-in">
+		<div class="col-md-4 col-sm-6" id="signed-in">
 		
 			<s:if test="%{#session.LOGGEDINUSER != null}">
 				<p class="navbar-text">
@@ -40,7 +42,7 @@
 			<s:if test="%{#session.LOGGEDINUSER != null}">
 				<ul class="nav navbar-nav">
 					<li class="nav"><a href="<s:url action="showOwnProfile"/>">My Profile</a></li>
-					<li class="nav"><a href="<s:url action="search"/>">Search</a></li>
+					<li class="nav"><a href="<s:url action="showSearch"/>">Search</a></li>
 				</ul>
 			</s:if>
 		
