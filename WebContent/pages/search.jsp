@@ -13,6 +13,8 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="${pageContext.request.contextPath}/css/socialme.css" type="text/css" rel="stylesheet" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 		<title>SocialMe | Search for Friends</title>
 	</head>
 	
@@ -22,19 +24,19 @@
 		<s:include value="common/header.jsp" />
 				
 			<section id="body" class="container">
-			
-				<h3>Find your Friends on SocialMe</h3>
 				
-				<s:form action="search" method="post"> <%-- theme="simple" to display textfields in one row --%>
-					<table>
-						<%-- <tr><td colspan="3"><h3>Find your Friends on SocialMe</h3></td></tr> --%>
-						<tr>
-							<td><s:textfield name="firstName" label="First Name" /></td>
-							<td><s:textfield name="lastName" label="Last Name" /></td>
-							<td><s:submit value="Search" /></td>
-						</tr>
-					</table>
-				</s:form>
+				<div class="page-header">
+					<h4 class="text-center">Find your Friends on SocialMe</h4>
+				</div>
+				
+				<div class="col-md-10">
+					<s:form action="search" method="post" theme="bootstrap" class="form-horizontal">
+						<s:textfield name="firstName" label="First Name" placeholder="First Name" />							
+						<s:textfield name="lastName" label="Last Name" placeholder="Last Name"/>
+						<s:submit value="Search" class="btn btn-primary pull-right" />
+					</s:form>
+				</div>
+				
 				
 			</section>
 		

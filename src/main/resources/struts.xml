@@ -56,6 +56,10 @@
 		    <result name="input">/pages/register.jsp</result>
 	    </action>
 	    
+	    <action name="showSearch">
+		    <result>/pages/search.jsp</result>
+	    </action>
+	    
 	    <action name="search" class="mhrda.socialme.actions.SearchAction">
 		    <result name="success">/pages/search-results.jsp</result>
 		    <result name="error">/pages/error.jsp</result>   <!-- zmen -->

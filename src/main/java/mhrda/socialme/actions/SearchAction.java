@@ -27,8 +27,12 @@ public class SearchAction extends BaseAction implements ModelDriven<User>, UserA
 		System.out.println("inside SearchAction execute");
 		
 		if((user.getFirstName() == null || user.getFirstName().trim().isEmpty()) && 
-				(user.getLastName() == null || user.getLastName().trim().isEmpty())) 
+				(user.getLastName() == null || user.getLastName().trim().isEmpty())) {
+//			addActionError("Don't leave these empty. Type the name of a user you are looking for.");
+			addFieldError("firstName", "Type the first name of the user you are looking for.");
+			addFieldError("lastName", "Type the last name of the user you are looking for.");
 			return INPUT;
+		}
 		
         setFoundUsers(getUserDAO().findUsers(user.getFirstName(), user.getLastName()));
         if(!getFoundUsers().isEmpty()) {

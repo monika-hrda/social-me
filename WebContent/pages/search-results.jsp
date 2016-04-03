@@ -13,6 +13,8 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="${pageContext.request.contextPath}/css/socialme.css" type="text/css" rel="stylesheet" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 		<title>SocialMe | Search Results</title>
 	</head>
 	
@@ -23,14 +25,17 @@
 		
 			<section id="body" class="container">
 				
-				<h3>Search Results</h3>
+				<div class="page-header">
+					<h4 class="text-center">Search Results</h4>
+				</div>
 				
 				<s:if test="%{foundUsers.isEmpty()}">
-					<em>No results. Try to broaden your search criteria.</em><br/>
+					<span class="col-md-4"></span>
+					<span class="col-md-8"><em>No results. Try to broaden your search criteria.</em><br/></span>
 				</s:if>
 				
 				<s:else>
-				<table>
+				<table class="table">
 					<tr>
 						<th>Name</th>
 						<th>Email</th>
@@ -79,8 +84,7 @@
 							<td><s:property value="key.userId"/></td>
 							<td>
 								<s:a href="%{acceptFriendLink}">Accept</s:a>
-							</td>
-							<td>
+								<span></span>
 								<s:a href="%{rejectFriendLink}">Reject</s:a>
 							</td>
 						</tr>
