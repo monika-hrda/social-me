@@ -31,7 +31,7 @@
 				
 				<section id="main" class="col-md-10">
 										
-					<div><h4>There was a problem uploading your image. Please <a href="<s:url action="showProfile"/>">go back</a> and try again..</h4></div>
+					<div><h4>There was a problem with your post. Please <a href="<s:url action="showProfile"/>">go back</a> and try again..</h4></div>
 					
 					<s:actionerror theme="bootstrap" />
 					<s:fielderror theme="bootstrap" />

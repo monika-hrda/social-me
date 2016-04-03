@@ -30,6 +30,11 @@ public class PostAction extends BaseAction implements UserAware, ModelDriven<Pos
 	
 	public String createPost() throws Exception {
 		
+		if (getImage() == null && post.getPostText().trim().isEmpty()) {
+			addActionError("Write something or upload an image.");
+			return INPUT;
+		}
+		
 		post.setByUser(loggedInUser);
 		post.setForUser(getUserDAO().getUserById(currentProfileUserId));
 		
