@@ -1,10 +1,13 @@
 package mhrda.socialme.actions;
 
 import java.io.File;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
+import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.ValidationAware;
@@ -14,7 +17,7 @@ import mhrda.socialme.interceptors.UserAware;
 import mhrda.socialme.utilities.FileStorageLocations;
 import mhrda.socialme.utilities.ImageHandler;
 
-public class EditProfileAction extends BaseAction implements ModelDriven<User>, UserAware, ServletRequestAware, ValidationAware {
+public class EditProfileAction extends BaseAction implements ModelDriven<User>, UserAware, SessionAware, ServletRequestAware, ValidationAware {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -26,6 +29,7 @@ public class EditProfileAction extends BaseAction implements ModelDriven<User>, 
 	private String profilePicFileName;
 	
 	private HttpServletRequest request;
+	private SessionMap<String, Object> sessionAttributes;
 	
 	public String saveProfile() throws Exception {
 		
@@ -52,6 +56,9 @@ public class EditProfileAction extends BaseAction implements ModelDriven<User>, 
 				if (imageHandler.getSavedImageLocationThumb() != null) {
 					updateUser.setProfileImageFilenameThumb(imageHandler.getSavedImageLocationThumb());
 				}
+				
+				addActionMessage("Your profile picture has been updated successfully.");
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 				addActionError(e.getMessage());
@@ -68,6 +75,11 @@ public class EditProfileAction extends BaseAction implements ModelDriven<User>, 
 			e.printStackTrace();
 			addActionError(e.getMessage());
 			return INPUT;
+		}
+		
+		if (!(updateUser.getFirstName().equals(loggedInUser.getFirstName())) || !(updateUser.getLastName().equals(loggedInUser.getLastName()))) {
+			sessionAttributes.put("LOGGEDINUSER", updateUser);
+			addActionMessage("Your profile details have been updated successfully.");
 		}
 		
 		return SUCCESS;
@@ -114,6 +126,11 @@ public class EditProfileAction extends BaseAction implements ModelDriven<User>, 
 	@Override
 	public void setServletRequest(HttpServletRequest request) {
 		this.request = request;
+	}
+
+	@Override
+	public void setSession(Map<String, Object> sessionAttributes) {
+		this.sessionAttributes = (SessionMap<String, Object>) sessionAttributes;
 	}
 	
 }

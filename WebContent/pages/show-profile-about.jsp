@@ -31,6 +31,8 @@
 				
 				<section id="main" class="col-md-10">
 					
+					<s:actionmessage theme="bootstrap" />
+					
 					<div class="page-header col-md-12">						
 						<div>
 							<h3 class="col-md-10">
@@ -45,7 +47,7 @@
 							</s:if>
 						</div>
 					</div>
-										
+					
 					<div class="col-md-12">
 						<p>
 							<s:push value="profileUser">		

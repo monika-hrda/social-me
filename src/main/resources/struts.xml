@@ -101,6 +101,10 @@
 	    </action>
 	    
 	    <action name="showProfileAbout" class="mhrda.socialme.actions.ShowProfileAction" method="showProfileAbout">
+	    	<interceptor-ref name="store">
+        		<param name="operationMode">RETRIEVE</param>
+    		</interceptor-ref>
+    		<interceptor-ref name="authStack" />
 		    <result name="success">/pages/show-profile-about.jsp</result>
 	    </action>
 	    
