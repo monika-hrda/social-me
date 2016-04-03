@@ -29,12 +29,14 @@ public class EditProfileAction extends BaseAction implements ModelDriven<User>, 
 	
 	public String saveProfile() throws Exception {
 		
-		//Maintains database columns that cannot be changed through the UI
-		updateUser.setEmail(loggedInUser.getEmail());
-		updateUser.setPwd(loggedInUser.getPwd());
-		updateUser.setUserId(loggedInUser.getUserId());
+		User currentUser = getUserDAO().getUserById(getLoggedInUser().getUserId());
 		
-		if (profilePic != null) {
+		//Maintains database columns that cannot be changed through the UI
+		updateUser.setEmail(currentUser.getEmail());
+		updateUser.setPwd(currentUser.getPwd());
+		updateUser.setUserId(currentUser.getUserId());
+		
+		if (getProfilePic() != null) {
 			
 			try {
 				String storageRoot = request.getServletContext().getRealPath("/");
@@ -55,6 +57,9 @@ public class EditProfileAction extends BaseAction implements ModelDriven<User>, 
 				addActionError(e.getMessage());
 				return INPUT;
 			}
+		} else {
+			updateUser.setProfileImageFilename(currentUser.getProfileImageFilename());
+			updateUser.setProfileImageFilenameThumb(currentUser.getProfileImageFilenameThumb());
 		}
 		
 		try {

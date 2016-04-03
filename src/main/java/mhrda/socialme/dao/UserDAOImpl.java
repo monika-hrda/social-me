@@ -66,7 +66,7 @@ public class UserDAOImpl implements UserDAO {
 	public void updateUser(User user) {
 		Session session = sf.getCurrentSession();
 		try {
-			session.update(user);
+			session.merge(user);
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		}
