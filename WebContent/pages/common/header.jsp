@@ -2,7 +2,7 @@
 <%@ taglib uri="/struts-tags" prefix="s" %>
 <%@ taglib uri="/struts-bootstrap-tags" prefix="sb" %>
 
-<nav id="menu" class="navbar navbar-inverse navbar-fixed-top">
+<nav id="menu" class="navbar navbar-inverse">
 	<header class="container">
 	
 		<div class="navbar-header col-md-8 col-sm-6">			
