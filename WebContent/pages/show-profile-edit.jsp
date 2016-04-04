@@ -35,8 +35,8 @@
 					<s:fielderror theme="bootstrap" />
 					
 					<s:form action="saveProfile" theme="bootstrap" class="well form-horizontal" label="Edit Profile Details" method="post" enctype="multipart/form-data">
-						<s:textfield name="firstName" value="%{profileUser.firstName}" label="First Name" tooltip="Enter your first name here. Make sure your friends can find you!"/>
-						<s:textfield name="lastName" value="%{profileUser.lastName}" label="Last Name" tooltip="Enter your last name here."/>
+						<s:textfield name="firstName" value="%{#session.LOGGEDINUSER.firstName}" label="First Name" tooltip="Enter your first name here. Make sure your friends can find you!"/>
+						<s:textfield name="lastName" value="%{#session.LOGGEDINUSER.lastName}" label="Last Name" tooltip="Enter your last name here."/>
 						<s:file id="profilePic" name="profilePic" label="Profile Picture" />
 						<s:submit value="Save Changes" class="btn btn-success pull-right"/>
 					</s:form>
