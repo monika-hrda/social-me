@@ -5,16 +5,19 @@
 
 <html lang="en">
 	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
 		<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->		
-		<sb:head/>
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<![endif]-->
+		
 		<link href="${pageContext.request.contextPath}/css/socialme.css" type="text/css" rel="stylesheet" />
+		
+		<!-- The order is important.  jquery must be before <sb:head/> which adds bootstrap script tags -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<sb:head/>
+		
 		<title>SocialMe | Friend Requests</title>
 	</head>
 	
@@ -30,11 +33,13 @@
 				</section>
 				
 				<section id="main" class="col-md-10">
-		
-					<h3>
-						<s:property value="profileUser.firstName" />&nbsp;<s:property value="profileUser.lastName" />
-						<small> - Friend Requests</small>
-					</h3>
+					
+					<div class="page-header">
+						<h3>
+							<s:property value="profileUser.firstName" />&nbsp;<s:property value="profileUser.lastName" />
+							<small> - Friend Requests</small>
+						</h3>
+					</div>
 					
 					<h4>Friend Requests (<s:property value="numberOfFriendRequests"/>):</h4>
 					
