@@ -9,3 +9,26 @@
 		</div>
 	</nav>
 </footer>
+
+<!-- 
+It's recommended to add JQuery to the bottom of a page, which is why it's in the Footer.
+
+See the answer from awvidmer - they had the same problem as I do so this is the solution:
+http://stackoverflow.com/questions/11533542/twitter-bootstrap-add-active-class-to-li
+ -->
+ 
+ <script type="text/javascript">
+$(document).ready(function() {
+	  var rawhref = window.location.href;	  
+	  var newpage = ((window.location.href.match(/([^\/]*)\/?$/)[1]));
+	  
+	  if ((rawhref.indexOf('showProfile') != -1) || (rawhref.indexOf('showFriend') != -1) || (rawhref.indexOf('showEdit') != -1)) {
+		newpage = "Profile"
+	  }
+	  else if (rawhref.indexOf('showSearch') != -1 || (rawhref.indexOf('search') != -1)){
+		newpage = "Search"
+	  }
+	  
+	  $(".nav li a:contains('" + newpage + "')").parent().addClass('active');
+	});	
+</script>

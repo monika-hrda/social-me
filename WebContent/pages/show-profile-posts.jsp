@@ -33,10 +33,11 @@
 				</section>
 				
 				<section id="main" class="col-md-10">
+				
 					<div class="page-header">
 						<h3>
 							<s:property value="profileUser.firstName" />&nbsp;<s:property value="profileUser.lastName" />
-							<small> - Profile</small>
+							<small> - Posts</small>
 						</h3>
 					</div>
 					

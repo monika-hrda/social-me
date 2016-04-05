@@ -29,7 +29,7 @@
 					Signed in as <s:property value="#session.LOGGEDINUSER.firstName" />&nbsp;<s:property value="#session.LOGGEDINUSER.lastName" />
 				</p>
 				<a class="btn btn-default navbar-btn" href="<s:url action="logout"/>" role="button">
-					<span class="glyphicon glyphicon-log-in"></span> Log out</a>
+					<span class="glyphicon glyphicon-log-out"></span> Log out</a>
 			</s:if>
 			<s:else>
 				<a class="btn btn-default navbar-btn" href="<s:url action="showLogin"/>" role="button">Login</a>
@@ -41,7 +41,7 @@
 			
 			<s:if test="%{#session.LOGGEDINUSER != null}">
 				<ul class="nav navbar-nav">
-					<li class="nav"><a href="<s:url action="showOwnProfile"/>">My Profile</a></li>
+					<li class="nav"><a href="<s:url action="showOwnProfile"/>">Profile</a></li>
 					<li class="nav"><a href="<s:url action="showSearch"/>">Search</a></li>
 				</ul>
 			</s:if>
