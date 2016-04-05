@@ -37,34 +37,36 @@
 					<div class="page-header">
 						<h3>
 							<s:property value="profileUser.firstName" />&nbsp;<s:property value="profileUser.lastName" />
-							<small> - Friends</small>
+							<small> - Friends (<s:property value="numberOfFriends"/>)</small>
 						</h3>
 					</div>
 					
-					<h4>Friends (<s:property value="numberOfFriends"/>):</h4>
-					
 					<s:if test="%{profileUserFriends.isEmpty()}">
-						<em>You are not connected to anyone on SocialMe. <a href="<s:url action="search"/>">Find friends.</a></em><br/>
+						<em>You are not connected to anyone on SocialMe. <a href="<s:url action="showSearch"/>">Find friends.</a></em><br/>
 					</s:if>
 					
 					<s:else>
-					<table>
-						<tr>
-							<th>Id</th>
-							<th>Name</th>
-						</tr>
+					<div class="list-group">
 						<s:iterator value="profileUserFriends">
 							<s:url action="showProfile" var="showProfileLink">
 								<s:param name="profileId" value="%{userId}" />
 							</s:url>
-							<tr>
-								<td><s:property value="userId"/></td>
-								<td>
-									<s:a href="%{showProfileLink}"><s:property value="firstName"/>&nbsp;<s:property value="lastName"/></s:a>
-								</td>
-							</tr>
+							
+							<div class="list-group-item">
+								<s:if test="%{profileImageFilenameThumb != null}">
+									<img class="profile-pic-small" 
+										 src="${pageContext.request.contextPath}/<s:property value='profileImageFilenameThumb' />" />
+								</s:if>
+								<s:else>
+									<img class="profile-pic-small" 
+										 src="${pageContext.request.contextPath}/images/HeadSilhouette.png" />
+								</s:else>
+								<s:a href="%{showProfileLink}">
+									<s:property value="firstName"/>&nbsp;<s:property value="lastName"/>
+								</s:a>
+							</div>
 						</s:iterator>
-					</table>
+					</div>
 					</s:else>
 					
 				</section>

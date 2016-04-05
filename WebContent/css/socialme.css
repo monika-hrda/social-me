@@ -22,3 +22,7 @@
     color: white;
 }
 
+.profile-pic-small {
+	max-height:40px;
+	padding-right:5px;
+}
