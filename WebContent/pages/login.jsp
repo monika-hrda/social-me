@@ -32,10 +32,6 @@
 					<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
 				</div>
 				
-				<s:actionerror theme="bootstrap"/>
-				<s:actionmessage theme="bootstrap"/>
-				<s:fielderror theme="bootstrap"/>
-				
 				<div class="col-md-8 col-md-offset-2">
 					<ul class="nav nav-tabs nav-justified">
 						<li class="active"><a href="#login">Login</a></li>
@@ -46,7 +42,10 @@
 				<div class="tab-content col-md-8 col-md-offset-2">
 					<div id="login" class="tab-pane fade in active">
 						<h4>Welcome! Please log in below or click "Register" to sign up</h4>
-						<s:form action="login" method="post" role="form">
+						
+						<s:actionerror theme="bootstrap"/>
+						
+						<s:form action="login" method="post" theme="bootstrap" role="form">
 							<div class="form-group">
 								<s:label for="email" value="Email" />
 								<s:textfield name="email" class="form-control" />
@@ -60,13 +59,45 @@
 							</div>
 						</s:form>
 					</div>
+					<div id="register" class="tab-pane fade">
+						<h4>Register to start making friends on SocialMe</h4>
+						<s:form action="register" method="post" role="form">
+							<div class="form-group">
+								<s:label for="firstName" value="First Name"/>
+								<s:textfield name="firstName" class="form-control" />
+							</div>
+							<div class="form-group">
+								<s:label for="lastName" value="Last Name"/>
+								<s:textfield name="lastName" class="form-control" />
+							</div>
+							<div class="form-group">
+								<s:label for="email" value="Email"/>
+								<s:textfield name="email" class="form-control" />
+							</div>
+							<div class="form-group">
+								<s:label for="pwd" value="Password"/>
+								<s:password name="pwd" class="form-control" />
+							</div>
+								<%-- <s:radio list="{'male','female'}" name="gender" /> --%>							
+							<div class="form-group">
+								<s:submit value="Register" class="btn btn-primary" />
+							</div>
+						</s:form>
+					</div>
 				</div>
-				
-				<h3>Don't have an account yet? <a href="<s:url action="signup"/>">Register here.</a></h3>
 				
 			</section>
 		
 			<s:include value="common/footer.jsp" />
 		</div>
+		
+		<script>
+		$(document).ready(function(){
+			$(".nav-tabs a").click(function(){
+				$(this).tab('show');
+			});
+		});
+		</script>
+		
 	</body>
 </html>

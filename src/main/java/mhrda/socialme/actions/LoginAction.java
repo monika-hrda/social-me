@@ -22,7 +22,11 @@ public class LoginAction extends BaseAction implements ModelDriven<User>, Sessio
 		//Hash the entered password before checking credentials against the database.
 		user.setPwd(GeneralUtilities.toSHA1(user.getPwd()));
 		user = getUserDAO().getUserByCredentials(getUser().getEmail(), getUser().getPwd());
-        if(user == null) return ERROR;
+		
+        if(user == null) {
+        	addActionError("Invalid Email/Password. Please try again.");
+        	return ERROR;
+        }
         else {
         	sessionAttributes.put("LOGGEDINUSER", user);
         	return SUCCESS;
@@ -35,7 +39,7 @@ public class LoginAction extends BaseAction implements ModelDriven<User>, Sessio
 		}
 		return SUCCESS;
 	}
-
+	
 	public User getUser() {
 		return user;
 	}
