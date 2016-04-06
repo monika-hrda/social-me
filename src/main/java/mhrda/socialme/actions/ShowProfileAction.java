@@ -82,7 +82,9 @@ public class ShowProfileAction extends BaseAction implements UserAware, SessionA
 	 * and so shows the logged-in-user's profile.
 	 */
 	public String clearSessionProfile() throws Exception {
-		sessionAttributes.remove(lastViewedUserProfileKey);
+		if (sessionAttributes.containsKey(lastViewedUserProfileKey)) {
+			sessionAttributes.remove(lastViewedUserProfileKey);
+		}
 		return SUCCESS;
 	}
 	

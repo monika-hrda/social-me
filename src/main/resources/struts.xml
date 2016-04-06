@@ -35,7 +35,7 @@
 	        
 	    <action name="login" class="mhrda.socialme.actions.LoginAction">
 	    	<interceptor-ref name="defaultStack"></interceptor-ref>
-		    <result name="success" type="redirect">/showProfile.action</result>
+		    <result name="success" type="redirect">/showOwnProfile.action</result>
 		    <result name="error">/pages/login.jsp</result>
 		    <result name="input">/pages/login.jsp</result>
 	    </action>
