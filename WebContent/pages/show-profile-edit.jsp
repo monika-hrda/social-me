@@ -42,20 +42,31 @@
 							class="well form-horizontal" 
 							label="Edit Profile Details" 
 							method="post" 
-							enctype="multipart/form-data">
-						<s:textfield name="firstName" 
-									 value="%{#session.LOGGEDINUSER.firstName}" 
-									 label="First Name" 
-									 tooltip="Enter your first name here. Make sure your friends can find you!"/>
-						<s:textfield name="lastName" 
-									 value="%{#session.LOGGEDINUSER.lastName}" 
-									 label="Last Name" 
-									 tooltip="Enter your last name here."/>
-						<s:file id="profilePic" 
-								name="profilePic" 
-								label="Profile Picture" />
+							enctype="multipart/form-data"
+							role="form">
+						<div class="form-group">
+							<s:textfield name="firstName" 
+										 value="%{#session.LOGGEDINUSER.firstName}" 
+										 label="First Name" 
+										 tooltip="Enter your first name here. Make sure your friends can find you!"/>
+						</div>
+						<div class="form-group">
+							<s:textfield name="lastName" 
+										 value="%{#session.LOGGEDINUSER.lastName}" 
+										 label="Last Name" 
+										 tooltip="Enter your last name here."/>
+						</div>
+						<div class="form-group">
+							<s:file id="profilePic" 
+									name="profilePic" 
+									label="Profile Picture" />
+							<div class="col-md-3 col-sm-3"></div>
+							<div class="col-md-9 col-sm-9">
+								<small class="text-muted">The uploaded picture will replace your current profile picture!</small>
+							</div>
+						</div>
 						<s:submit value="Save Changes" 
-								  class="btn btn-success pull-right"/>
+								  class="btn btn-primary pull-right"/>
 					</s:form>
 									
 				</section>
