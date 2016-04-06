@@ -25,6 +25,11 @@
 #body { padding-bottom: 80px; }
 
 .profile-pic-small {
-	max-height:40px;
-	padding-right:5px;
+	max-height: 40px;
+	padding-right: 10px;
+}
+
+.request-time {
+	padding-right: 10px;
+	color: grey;
 }

@@ -37,25 +37,16 @@
 					<div class="page-header">
 						<h3>
 							<s:property value="profileUser.firstName" />&nbsp;<s:property value="profileUser.lastName" />
-							<small> - Friend Requests</small>
+							<small> - Friend Requests (<s:property value="numberOfFriendRequests"/>)</small>
 						</h3>
 					</div>
-					
-					<h4>Friend Requests (<s:property value="numberOfFriendRequests"/>):</h4>
 					
 					<s:if test="%{friendRequests.isEmpty()}">
 						<em>You have no friend requests.</em><br/>
 					</s:if>
 					
 					<s:else>
-					<table>
-						<tr>
-							<th>FriendshipId</th>
-							<th>UserId</th>
-							<th>Name</th>
-							<th>Requested on</th>
-						</tr>
-						
+					<div class="list-group">
 						<s:iterator value="friendRequests">
 						
 							<s:url action="showProfile" var="showProfileLink">
@@ -68,25 +59,30 @@
 								<s:param name="requestedFriendshipId" value="%{friendshipId}" />
 							</s:url>
 							
-							<tr>
-								<td><s:property value="friendshipId"/></td>
-								<td><s:property value="friendRequester.userId"/></td>
-								<td>
-									<s:a href="%{showProfileLink}"><s:property value="friendRequester.firstName"/>&nbsp;<s:property value="friendRequester.lastName"/></s:a>
-								</td>
-								<td>
-									<s:date name="requestTime" format="dd/MM/yyyy hh:mm a" nice="true" />
-								</td>
-								<td>
-									<s:a href="%{acceptFriendLink}">Accept</s:a>
-								</td>
-								<td>
-									<s:a href="%{rejectFriendLink}">Reject</s:a>
-								</td>
-							</tr>
+							<div class="list-group-item">
+								<s:if test="%{profileImageFilenameThumb != null}">
+									<img class="profile-pic-small" 
+										 src="${pageContext.request.contextPath}/<s:property value='profileImageFilenameThumb' />" />
+								</s:if>
+								<s:else>
+									<img class="profile-pic-small" 
+										 src="${pageContext.request.contextPath}/images/HeadSilhouette.png" />
+								</s:else>
+								<s:a href="%{showProfileLink}">
+									<s:property value="friendRequester.firstName"/>&nbsp;<s:property value="friendRequester.lastName"/>
+								</s:a>
+								
+								<span class="pull-right">
+									<span>
+										<small class="request-time">Requested <s:date name="requestTime" format="dd/MM/yyyy hh:mm a" nice="true" /></small>
+									</span>
+									<s:a href="%{acceptFriendLink}" class="btn btn-success" role="button">Accept</s:a>
+									<s:a href="%{rejectFriendLink}" class="btn btn-danger" role="button">Reject</s:a>
+								</span>
+							</div>
 							
 						</s:iterator>
-					</table>
+					</div>
 					</s:else>
 					
 				</section>
