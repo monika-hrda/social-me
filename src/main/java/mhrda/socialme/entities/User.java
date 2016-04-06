@@ -19,6 +19,7 @@ public class User {
     private Set<Post> postsCreatedByUser = new HashSet<Post>();
     private Set<Post> postsCreatedForUser = new HashSet<Post>();
     private Set<Comment> commentsWrittenByUser = new HashSet<Comment>();
+    private Set<Like> likesFromUser = new HashSet<Like>();
     
 	public int getUserId() {
 		return userId;
@@ -92,10 +93,11 @@ public class User {
 	public void setCommentsWrittenByUser(Set<Comment> commentsWrittenByUser) {
 		this.commentsWrittenByUser = commentsWrittenByUser;
 	}
+	public Set<Like> getLikesFromUser() {
+		return likesFromUser;
+	}
+	public void setLikesFromUser(Set<Like> likesFromUser) {
+		this.likesFromUser = likesFromUser;
+	}
 
-//		//preferred way to add friendship to 'setFriendships..' or to 'getFriendships...add(..)'
-//		public void addFriendshipWhereUserIsRequester(Friendship friendship) {
-//		friendship.setFriendRequesterId(this.getUserId());
-//		friendshipsWhereUserIsRequester.add(friendship);		
-//	}
 }

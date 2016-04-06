@@ -41,6 +41,11 @@
         	<key column="post_id" />
         	<one-to-many class="mhrda.socialme.entities.Comment" />
         </set>
+        
+        <set name="likesOnPost" table="LIKES" inverse="true" cascade="save-update">
+        	<key column="post_id" />
+        	<one-to-many class="mhrda.socialme.entities.Like" />
+        </set>
 		
 	</class>
 </hibernate-mapping>

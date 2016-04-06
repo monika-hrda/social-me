@@ -15,6 +15,7 @@ public class Post {
 	private Timestamp createdTime;
 	
 	private Set<Comment> commentsWrittenOnPost = new HashSet<Comment>();
+	private Set<Like> likesOnPost = new HashSet<Like>();
 
 	public int getPostId() {
 		return postId;
@@ -78,6 +79,14 @@ public class Post {
 
 	public void setCommentsWrittenOnPost(Set<Comment> commentsWrittenOnPost) {
 		this.commentsWrittenOnPost = commentsWrittenOnPost;
+	}
+
+	public Set<Like> getLikesOnPost() {
+		return likesOnPost;
+	}
+
+	public void setLikesOnPost(Set<Like> likesOnPost) {
+		this.likesOnPost = likesOnPost;
 	}
 	
 }

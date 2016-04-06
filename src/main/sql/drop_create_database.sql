@@ -76,3 +76,15 @@ CREATE TABLE Comments (
     FOREIGN KEY (post_id) REFERENCES Post (id),
     FOREIGN KEY (user_id) REFERENCES User (id)
 );
+
+/*
+This table stores the likes on posts.
+It is purposely plural because 'like' is a reserved keyword
+*/
+CREATE TABLE Likes (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    post_id INT NOT NULL,
+    user_id INT NOT NULL,
+    FOREIGN KEY (post_id) REFERENCES Post (id),
+    FOREIGN KEY (user_id) REFERENCES User (id)
+);

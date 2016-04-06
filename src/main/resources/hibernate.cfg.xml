@@ -35,5 +35,6 @@
         <mapping resource="FriendshipStatus.hbm.xml" />
         <mapping resource="Post.hbm.xml" />
         <mapping resource="Comment.hbm.xml" />
+        <mapping resource="Like.hbm.xml" />
     </session-factory>
 </hibernate-configuration>
