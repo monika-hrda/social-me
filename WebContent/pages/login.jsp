@@ -24,7 +24,7 @@
 	<body>
 		<div id="page">
 		
-			<section class="container">
+			<section id="body" class="container">
 			
 				<div class="jumbotron">
 					<h1>Welcome to SocialMe!</h1>
@@ -61,7 +61,10 @@
 					</div>
 					<div id="register" class="tab-pane fade">
 						<h4>Register to start making friends on SocialMe</h4>
-						<s:form action="register" method="post" role="form">
+						
+						<s:actionerror theme="bootstrap"/>
+						
+						<s:form action="register" method="post" theme="bootstrap" role="form">
 							<div class="form-group">
 								<s:label for="firstName" value="First Name"/>
 								<s:textfield name="firstName" class="form-control" />

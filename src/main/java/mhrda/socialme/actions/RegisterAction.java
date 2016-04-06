@@ -19,13 +19,12 @@ public class RegisterAction extends BaseAction implements ModelDriven<User>, Ses
 	
 	@Override
 	public String execute() throws Exception {
-		System.out.println("inside RegisterAction execute");
  
         long numberOfExistingUsers = getUserDAO().testUserExists(user.getEmail());  //checks whether user with the email address exists already
         
         if (numberOfExistingUsers>0) {
-        	System.out.println("inside RegisterAction: user with given email address exists already; cannot register new user");
-        	return ERROR;   //TODO add special note about email/user existing already
+        	addActionError("This email address is already being used on SocialMe!");
+        	return ERROR;
         }
         
        	int id = 0;
@@ -42,8 +41,7 @@ public class RegisterAction extends BaseAction implements ModelDriven<User>, Ses
         
         if (id>0) {
         	sessionAttributes.put("LOGGEDINUSER", user);
-        	System.out.println("inside RegisterAction: new user registered successfully");
-        	return SUCCESS;
+        	return SUCCESS;  //TODO actionMessage about successful registration - to be placed to show-profile-edit.jsp
         } else return ERROR;
 	}
 

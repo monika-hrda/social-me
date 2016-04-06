@@ -46,15 +46,16 @@
 	    	<result name="input" type="redirect">/showLogin.action</result>
 	    </action>
 	    
-	    <action name="signup">
+	    <action name="showRegister">
 	    	<interceptor-ref name="defaultStack"></interceptor-ref>
 	        <result>/pages/register.jsp</result>
 	    </action>
 	    
 	    <action name="register" class="mhrda.socialme.actions.RegisterAction">
 	    	<interceptor-ref name="defaultStack"></interceptor-ref>
+			<!-- to be changed, possibly to showEditProfile action, with a success action message -->
 		    <result name="success">/pages/register-success.jsp</result>
-		    <result name="error">/pages/register-error.jsp</result>   <!-- zmen -->
+		    <result name="error">/pages/register.jsp</result>
 		    <result name="input">/pages/register.jsp</result>
 	    </action>
 	    
