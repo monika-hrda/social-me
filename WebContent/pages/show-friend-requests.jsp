@@ -59,25 +59,32 @@
 								<s:param name="requestedFriendshipId" value="%{friendshipId}" />
 							</s:url>
 							
-							<div class="list-group-item">
-								<s:if test="%{profileImageFilenameThumb != null}">
-									<img class="profile-pic-small" 
-										 src="${pageContext.request.contextPath}/<s:property value='profileImageFilenameThumb' />" />
-								</s:if>
-								<s:else>
-									<img class="profile-pic-small" 
-										 src="${pageContext.request.contextPath}/images/HeadSilhouette.png" />
-								</s:else>
-								<s:a href="%{showProfileLink}">
-									<s:property value="friendRequester.firstName"/>&nbsp;<s:property value="friendRequester.lastName"/>
-								</s:a>
+							<div class="list-group-item clearfix">
+								<div class="col-md-1 col-xs-3">
+									<s:if test="%{friendRequester.profileImageFilenameThumb != null}">
+										<img class="profile-pic-small" 
+											 src="${pageContext.request.contextPath}/<s:property value='friendRequester.profileImageFilenameThumb' />" />
+									</s:if>
+									<s:else>
+										<img class="profile-pic-small" 
+											 src="${pageContext.request.contextPath}/images/HeadSilhouette.png" />
+									</s:else>
+								</div>
+								
+								<div class="col-md-4 col-xs-9">
+									<s:a href="%{showProfileLink}">
+										<s:property value="friendRequester.firstName"/>&nbsp;<s:property value="friendRequester.lastName"/>
+									</s:a>
+								</div>
 								
 								<span class="pull-right">
 									<span>
 										<small class="request-time">Requested <s:date name="requestTime" format="dd/MM/yyyy hh:mm a" nice="true" /></small>
 									</span>
-									<s:a href="%{acceptFriendLink}" class="btn btn-success" role="button">Accept</s:a>
-									<s:a href="%{rejectFriendLink}" class="btn btn-danger" role="button">Reject</s:a>
+									<span class="text-nowrap">
+										<s:a href="%{acceptFriendLink}" class="btn btn-success" role="button">Accept</s:a>
+										<s:a href="%{rejectFriendLink}" class="btn btn-danger" role="button">Reject</s:a>
+									</span>
 								</span>
 							</div>
 							

@@ -52,18 +52,22 @@
 								<s:param name="profileId" value="%{userId}" />
 							</s:url>
 							
-							<div class="list-group-item">
-								<s:if test="%{profileImageFilenameThumb != null}">
-									<img class="profile-pic-small" 
-										 src="${pageContext.request.contextPath}/<s:property value='profileImageFilenameThumb' />" />
-								</s:if>
-								<s:else>
-									<img class="profile-pic-small" 
-										 src="${pageContext.request.contextPath}/images/HeadSilhouette.png" />
-								</s:else>
-								<s:a href="%{showProfileLink}">
-									<s:property value="firstName"/>&nbsp;<s:property value="lastName"/>
-								</s:a>
+							<div class="list-group-item clearfix">
+								<div class="col-md-1 col-xs-1">
+									<s:if test="%{profileImageFilenameThumb != null}">
+										<img class="profile-pic-small" 
+											 src="${pageContext.request.contextPath}/<s:property value='profileImageFilenameThumb' />" />
+									</s:if>
+									<s:else>
+										<img class="profile-pic-small" 
+											 src="${pageContext.request.contextPath}/images/HeadSilhouette.png" />
+									</s:else>
+								</div>
+								<div class="col-md-11 col-xs-11">
+									<s:a href="%{showProfileLink}">
+										<s:property value="firstName"/>&nbsp;<s:property value="lastName"/>
+									</s:a>
+								</div>
 							</div>
 						</s:iterator>
 					</div>
