@@ -156,6 +156,14 @@
 	    	<result name="success" type="redirect">/showProfile.action</result>
 	    </action>
 	    
+	    <action name="createLike" class="mhrda.socialme.actions.LikeAction" method="createLike">
+	    	<result name="success" type="redirect">/showProfile.action</result>
+	    </action>
+	    
+	    <action name="deleteLike" class="mhrda.socialme.actions.LikeAction" method="deleteLike">
+	    	<result name="success" type="redirect">/showProfile.action</result>
+	    </action>
+	    
 	</package>
 	
 </struts>

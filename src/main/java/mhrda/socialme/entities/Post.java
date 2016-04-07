@@ -16,6 +16,16 @@ public class Post {
 	
 	private Set<Comment> commentsWrittenOnPost = new HashSet<Comment>();
 	private Set<Like> likesOnPost = new HashSet<Like>();
+	
+	public boolean likedBy(User user) {
+		
+		for (Like like : likesOnPost) {
+			if (like.getLikeUser().getUserId() == user.getUserId()) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 	public int getPostId() {
 		return postId;

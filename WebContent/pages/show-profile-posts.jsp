@@ -69,6 +69,31 @@
 						</tr>
 						<tr>
 							<td>
+								<span>Likes: <s:property value='#post.likesOnPost.size()' />.</span>
+							</td>
+							
+							<td>
+								<s:url action="createLike" var="createLikeLink">
+									<s:param name="likePostId" value="%{#post.postId}" />
+								</s:url>
+								<s:url action="deleteLike" var="deleteLikeLink">
+									<s:param name="likePostId" value="%{#post.postId}" />
+								</s:url>
+								
+								<s:if test="%{#post.likedBy(#session.LOGGEDINUSER)}">
+									<s:a href="%{deleteLikeLink}">
+										Unlike
+									</s:a>
+								</s:if>
+								<s:else>
+									<s:a href="%{createLikeLink}">
+										Like
+									</s:a>
+								</s:else>
+							</td>
+						</tr>
+						<tr>
+							<td>
 								<s:iterator var="comment" value="#post.commentsWrittenOnPost">
 									<tr>
 										<td>
