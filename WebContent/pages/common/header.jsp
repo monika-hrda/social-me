@@ -16,6 +16,7 @@
 				<span class="glyphicon glyphicon-chevron-down"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
 			</button>
 			
 			<span class="navbar-brand">SocialMe</span>
@@ -42,6 +43,7 @@
 			<s:if test="%{#session.LOGGEDINUSER != null}">
 				<ul class="nav navbar-nav">
 					<li class="nav"><a href="<s:url action="showOwnProfile"/>">Profile</a></li>
+					<li class="nav"><a href="<s:url action="showFeed"/>">Feed</a></li>
 					<li class="nav"><a href="<s:url action="showSearch"/>">Search</a></li>
 				</ul>
 			</s:if>

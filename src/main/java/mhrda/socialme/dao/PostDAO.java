@@ -13,4 +13,6 @@ public interface PostDAO {
 	
 	Post getPostById(int postId);
 	
+	List<Post> getPostsForFeedOf(User loggedInUser);
+	
 }

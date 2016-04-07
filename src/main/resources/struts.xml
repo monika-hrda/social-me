@@ -164,6 +164,10 @@
 	    	<result name="success" type="redirect">/showProfile.action</result>
 	    </action>
 	    
+	    <action name="showFeed" class="mhrda.socialme.actions.FeedAction" method="showFeed">
+	    	<result name="success">/pages/show-feed.jsp</result>
+	    </action>
+	    
 	</package>
 	
 </struts>

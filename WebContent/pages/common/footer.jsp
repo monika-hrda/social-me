@@ -25,6 +25,10 @@ $(document).ready(function() {
 	  if ((rawhref.indexOf('showProfile') != -1) || (rawhref.indexOf('showFriend') != -1) || (rawhref.indexOf('showEdit') != -1)) {
 		newpage = "Profile"
 	  }
+	  else if (rawhref.indexOf('showFeed') != -1){
+			newpage = "Feed"
+		  }
+	  
 	  else if (rawhref.indexOf('showSearch') != -1 || (rawhref.indexOf('search') != -1)){
 		newpage = "Search"
 	  }
