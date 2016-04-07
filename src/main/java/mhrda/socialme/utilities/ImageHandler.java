@@ -11,7 +11,7 @@ import org.apache.commons.io.FilenameUtils;
 
 public class ImageHandler {
 	
-	public static final int THUMBNAIL_MAX_DIMENSION = 250;
+	public static final double THUMBNAIL_MAX_DIMENSION = 250;
 	private String savedImageLocation;
 	private String savedImageLocationThumb;
 	
@@ -88,9 +88,9 @@ public class ImageHandler {
 		
 		Size newSize = getThumbnailDimensions(new Size(originalImage.getWidth(), originalImage.getHeight()));
 		
-		BufferedImage resizedImage = new BufferedImage(newSize.getWidth(), newSize.getHeight(), type);
+		BufferedImage resizedImage = new BufferedImage((int)newSize.getWidth(), (int)newSize.getHeight(), type);
 		Graphics2D g = resizedImage.createGraphics();
-		g.drawImage(originalImage, 0, 0, newSize.getWidth(), newSize.getHeight(), null);
+		g.drawImage(originalImage, 0, 0, (int)newSize.getWidth(), (int)newSize.getHeight(), null);
 		g.dispose();
 		
 		return resizedImage;
@@ -103,8 +103,8 @@ public class ImageHandler {
 	 */
 	private Size getThumbnailDimensions(Size originalSize) {
 		
-		int width = originalSize.getWidth();
-		int height = originalSize.getHeight();
+		double width = originalSize.getWidth();
+		double height = originalSize.getHeight();
 		
 		Size newSize = new Size();
 		double scaleFactor;
