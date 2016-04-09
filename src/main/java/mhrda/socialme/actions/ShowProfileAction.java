@@ -34,27 +34,26 @@ public class ShowProfileAction extends BaseAction implements UserAware, SessionA
 	@Override
 	public String execute() throws Exception {
 		configureProfileToView();
-		if (profileUser.getUserId() != loggedInUser.getUserId()) {
-			if (!isFriend(getProfileUser())) {
-				return ERROR;
-			}
-		}
+		if(!hasPermissionToView()) return ERROR;
 		return SUCCESS;
 	}
 	
 	public String showProfilePosts() throws Exception {
 		configureProfileToView();
+		if(!hasPermissionToView()) return ERROR;
 		setProfileUserPosts(getPostDAO().getPostsForProfile(getProfileUser()));
 		return SUCCESS;
 	}
 	
 	public String showProfileAbout() throws Exception {
 		configureProfileToView();
+		if(!hasPermissionToView()) return ERROR;
 		return SUCCESS;
 	}
 	
 	public String showProfileFriends() throws Exception {
 		configureProfileToView();
+		if(!hasPermissionToView()) return ERROR;
 		setProfileUserFriends(getFriendshipDAO().getExistingFriendsOf(getProfileUser()));
 		setNumberOfFriends(getProfileUserFriends().size());
 		return SUCCESS;
@@ -77,6 +76,9 @@ public class ShowProfileAction extends BaseAction implements UserAware, SessionA
 	
 	public String showEditProfile() throws Exception {
 		configureProfileToView();
+		if (profileUser.getUserId() != loggedInUser.getUserId()) {
+			return ERROR;  //making sure that logged-in user can edit their own details ONLY
+		}
 		return SUCCESS;
 	}
 	
@@ -126,6 +128,14 @@ public class ShowProfileAction extends BaseAction implements UserAware, SessionA
 				sessionAttributes.put(lastViewedUserProfileKey, getLoggedInUser().getUserId());
 			}
 		}
+	}
+	
+	private boolean hasPermissionToView() {
+		if (profileUser.getUserId() != loggedInUser.getUserId()) {
+			if (!isFriend(getProfileUser())) {
+				return false;
+			}
+		} return true;
 	}
 	
 	private boolean isFriend(User profileUser) {

@@ -90,6 +90,7 @@
     		<interceptor-ref name="authStack" />
 	    	<result name="success">/pages/show-profile-posts.jsp</result>
 	    	<result name="input">/pages/error-create-post.jsp</result>
+	    	<result name="error" type="redirect">/showProfile.action</result>
 	    </action>
 	    
 	    <action name="createPost" class="mhrda.socialme.actions.PostAction" method="createPost">
@@ -110,6 +111,7 @@
     		</interceptor-ref>
     		<interceptor-ref name="authStack" />
 		    <result name="success">/pages/show-profile-about.jsp</result>
+		    <result name="error" type="redirect">/showProfile.action</result>
 	    </action>
 	    
 	    <action name="showEditProfile" class="mhrda.socialme.actions.ShowProfileAction" method="showEditProfile">
@@ -119,6 +121,7 @@
     		<interceptor-ref name="authStack" />
 		    <result name="success">/pages/show-profile-edit.jsp</result>
 		    <result name="input">/pages/show-profile-edit.jsp</result>
+		    <result name="error" type="redirect">/showProfile.action</result>
 	    </action>
 	    
 	    <action name="saveProfile" class="mhrda.socialme.actions.EditProfileAction" method="saveProfile">
@@ -135,6 +138,7 @@
 	    
 	    <action name="showProfileFriends" class="mhrda.socialme.actions.ShowProfileAction" method="showProfileFriends">
 	    	<result name="success">/pages/show-friends.jsp</result>
+	    	<result name="error" type="redirect">/showProfile.action</result>
 	    </action>
 	    
 	    <action name="showFriendRequests" class="mhrda.socialme.actions.ShowProfileAction" method="showFriendRequests">
