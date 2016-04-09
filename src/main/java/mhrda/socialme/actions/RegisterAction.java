@@ -48,7 +48,8 @@ public class RegisterAction extends BaseAction implements ModelDriven<User>, Ses
         
         if (id>0) {
         	sessionAttributes.put("LOGGEDINUSER", user);
-        	return SUCCESS;  //TODO actionMessage about successful registration - to be placed to show-profile-edit.jsp
+        	addActionMessage("Thank you for registering with SocialMe. Would you like to edit your details or upload a profile picture?");
+        	return SUCCESS;
         } else return ERROR;
 	}
 

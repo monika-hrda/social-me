@@ -34,6 +34,7 @@
 				
 				<section id="main" class="col-md-10">
 					
+					<s:actionmessage theme="bootstrap" />
 					<s:actionerror theme="bootstrap" />
 					<s:fielderror theme="bootstrap" />
 					
@@ -62,6 +63,7 @@
 									label="Profile Picture" />
 							<div class="col-md-3 col-sm-3"></div>
 							<div class="col-md-9 col-sm-9">
+								<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
 								<small class="text-muted">The uploaded picture will replace your current profile picture!</small>
 							</div>
 						</div>

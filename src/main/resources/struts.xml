@@ -52,9 +52,11 @@
 	    </action>
 	    
 	    <action name="register" class="mhrda.socialme.actions.RegisterAction">
+	    	<interceptor-ref name="store">
+        		<param name="operationMode">STORE</param>
+    		</interceptor-ref>
 	    	<interceptor-ref name="defaultStack"></interceptor-ref>
-			<!-- to be changed, possibly to showEditProfile action, with a success action message -->
-		    <result name="success">/pages/register-success.jsp</result>
+		    <result name="success" type="redirect">/showEditProfile.action</result>
 		    <result name="error">/pages/register.jsp</result>
 		    <result name="input">/pages/register.jsp</result>
 	    </action>
@@ -141,7 +143,7 @@
 	    
 	    <action name="requestFriend" class="mhrda.socialme.actions.FriendsAction" method="requestFriend">
 	    	<result name="success" type="redirect">/showProfile.action</result> <!-- to be changed -->
-	    	<result name="error">/pages/register-error.jsp</result> <!-- zmen, create interceptor for exceptions -->
+	    	<result name="error">/pages/error.jsp</result> <!-- zmen, create interceptor for exceptions -->
 	    </action>
 	    
 	    <action name="acceptFriend" class="mhrda.socialme.actions.FriendsAction" method="acceptFriend">
