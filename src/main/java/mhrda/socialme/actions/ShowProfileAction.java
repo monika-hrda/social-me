@@ -62,6 +62,9 @@ public class ShowProfileAction extends BaseAction implements UserAware, SessionA
 	
 	public String showFriendRequests() throws Exception {
 		configureProfileToView();
+		if (profileUser.getUserId() != loggedInUser.getUserId()) {
+			return ERROR;  //making sure that logged-in user can view their own friend requests ONLY
+		}
 		setFriendRequests(getFriendshipDAO().getFriendRequests(getProfileUser()));
 		setNumberOfFriendRequests(getFriendRequests().size());
 		return SUCCESS;

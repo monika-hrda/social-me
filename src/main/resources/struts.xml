@@ -139,6 +139,7 @@
 	    
 	    <action name="showFriendRequests" class="mhrda.socialme.actions.ShowProfileAction" method="showFriendRequests">
 	    	<result name="success">/pages/show-friend-requests.jsp</result>
+	    	<result name="error" type="redirect">/showProfile.action</result>
 	    </action>
 	    
 	    <action name="requestFriend" class="mhrda.socialme.actions.FriendsAction" method="requestFriend">
