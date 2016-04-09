@@ -25,5 +25,7 @@ public interface FriendshipDAO {
 	List<User> getRespondersFor(User user);
 	
 	Map<User, Integer> getRequestersFor(User user); //mapping Users (friendRequesters) to friendshipId
+	
+	Friendship getFriendshipBetweenUsers(User loggedInUser, User checkUser);
 
 }

@@ -36,9 +36,9 @@
 					
 					<s:actionmessage theme="bootstrap" />
 					
-					<div class="page-header col-md-12">						
-						<div>
-							<h3 class="col-md-10">
+					<div class="page-header col-md-12">
+						<div class="col-md-10">
+							<h3>
 								<s:property value="profileUser.firstName" />&nbsp;<s:property value="profileUser.lastName" />
 								<small> - About</small>
 							</h3>
@@ -48,6 +48,9 @@
 							<s:if test="%{profileUser.userId == loggedInUser.userId}">								
 								<a href="<s:url action="showEditProfile"/>" role="button" class="btn btn-primary">Edit Profile</a>
 							</s:if>
+							<s:else>
+								<s:include value="common/profile-friendship-control.jsp" />
+							</s:else>
 						</div>
 					</div>
 					

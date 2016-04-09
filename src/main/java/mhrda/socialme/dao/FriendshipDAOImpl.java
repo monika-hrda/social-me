@@ -151,4 +151,24 @@ public class FriendshipDAOImpl implements FriendshipDAO {
 		return requestersMap;
 	}
 
+	@Override
+	public Friendship getFriendshipBetweenUsers(User loggedInUser, User checkUser) {
+		Session session = sf.getCurrentSession();
+		Query friendQuery = session.createQuery("from Friendship f where " + 
+				"(f.friendRequester = :loggedInUser and f.friendResponder = :checkUser) or " + 
+				"(f.friendRequester = :checkUser and f.friendResponder = :loggedInUser)");
+		friendQuery.setParameter("loggedInUser", loggedInUser);
+		friendQuery.setParameter("checkUser", checkUser);
+		
+		Friendship foundFriendship = null;
+		
+		try {
+			foundFriendship = (Friendship) friendQuery.uniqueResult();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		}
+		
+		return foundFriendship;
+	}
+
 }

@@ -34,11 +34,17 @@
 				
 				<section id="main" class="col-md-10">
 				
-					<div class="page-header">
-						<h3>
-							<s:property value="profileUser.firstName" />&nbsp;<s:property value="profileUser.lastName" />
-							<small> - Posts</small>
-						</h3>
+					<div class="page-header col-md-12">
+						<div class="col-md-10">
+							<h3>
+								<s:property value="profileUser.firstName" />&nbsp;<s:property value="profileUser.lastName" />
+								<small> - Posts</small>
+							</h3>
+						</div>
+						
+						<div class="text-right col-md-2">
+							<s:include value="common/profile-friendship-control.jsp" />
+						</div>
 					</div>
 					
 					<div><h4>Write something..</h4></div>

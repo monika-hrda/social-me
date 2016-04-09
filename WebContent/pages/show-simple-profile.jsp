@@ -28,15 +28,20 @@
 		
 			<section id="body" class="container">
 		
-				<div class="page-header">
-					<h3>
-						<s:property value="profileUser.firstName" />&nbsp;<s:property value="profileUser.lastName" />
-					</h3>
+				<div class="page-header col-md-12">
+					<div class="col-md-9">
+						<h3>
+							<s:property value="profileUser.firstName" />&nbsp;<s:property value="profileUser.lastName" />
+						</h3>
+					</div>
+					
+					<div class="text-right col-md-3">
+						<s:include value="common/profile-friendship-control.jsp" />
+					</div>
 				</div>
 				
 				<div>You are not connected on SocialMe.</div>
 				<div>Would you like to add <s:property value="profileUser.firstName" /> as a friend?</div>
-				<div>Add Friend</div>
 				
 				<!-- Needs work! -->
 				<!-- Different scenarios - you are to accept/reject friendship request, are waiting for a response, or can add a friend -->

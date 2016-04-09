@@ -27,6 +27,8 @@ public class ShowProfileAction extends BaseAction implements UserAware, SessionA
 	private List<Friendship> friendRequests;
 	private int numberOfFriendRequests;
 	
+	private Friendship friendshipWithProfileUser;
+	
 	private SessionMap<String, Object> sessionAttributes;
 
 	@Override
@@ -85,6 +87,11 @@ public class ShowProfileAction extends BaseAction implements UserAware, SessionA
 		if (sessionAttributes.containsKey(lastViewedUserProfileKey)) {
 			sessionAttributes.remove(lastViewedUserProfileKey);
 		}
+		return SUCCESS;
+	}
+	
+	public String checkFriendship() throws Exception {
+		friendshipWithProfileUser = getFriendshipDAO().getFriendshipBetweenUsers(loggedInUser, profileUser);
 		return SUCCESS;
 	}
 	
@@ -179,6 +186,14 @@ public class ShowProfileAction extends BaseAction implements UserAware, SessionA
 		this.numberOfFriendRequests = numberOfFriendRequests;
 	}
 	
+	public Friendship getFriendshipWithProfileUser() {
+		return friendshipWithProfileUser;
+	}
+
+	public void setFriendshipWithProfileUser(Friendship friendshipWithProfileUser) {
+		this.friendshipWithProfileUser = friendshipWithProfileUser;
+	}
+
 	@Override
 	public void setSession(Map<String, Object> sessionAttributes) {
 		this.sessionAttributes = (SessionMap<String, Object>) sessionAttributes;

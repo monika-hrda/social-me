@@ -168,6 +168,8 @@
 	    	<result name="success">/pages/show-feed.jsp</result>
 	    </action>
 	    
+	    <action name="checkFriendship" class="mhrda.socialme.actions.ShowProfileAction" method="checkFriendship" />
+	    
 	</package>
 	
 </struts>
