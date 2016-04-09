@@ -31,32 +31,37 @@
 				<div class="col-md-8 col-md-offset-2">
 					<ul class="nav nav-tabs nav-justified">
 						<li><a href="<s:url action="showLogin"/>">Login</a></li>
-						<li class="active"><a href="<s:url action="showRegister"/>">Register</a></li>
+						<li class="active"><a href="<s:url action="showRegister"/>" id="grey-tab">Register</a></li>
 					</ul>
 				</div>
 				
 				<div class="tab-content col-md-8 col-md-offset-2">
 					<div id="register" class="tab-pane fade in active">
-						<h4>Register to start making friends on SocialMe</h4>
 						
 						<s:actionerror theme="bootstrap"/>
 						
-						<s:form action="register" method="post" theme="bootstrap" role="form">
-							<div class="form-group">
+						<s:form action="register" 
+								method="post" 
+								theme="bootstrap" 
+								class="well form-horizontal" 
+								label="Register to start making friends on SocialMe"
+								role="form">
+								
+							<div class="form-group col-md-8 col-md-offset-2 pull-right">
 								<s:textfield name="firstName" label="First Name" class="form-control" />
 							</div>
-							<div class="form-group">
+							<div class="form-group col-md-8 col-md-offset-2 pull-right">
 								<s:textfield name="lastName" label="Last Name" class="form-control" />
 							</div>
-							<div class="form-group">
+							<div class="form-group col-md-8 col-md-offset-2 pull-right">
 								<s:textfield name="email" label="Email" class="form-control" />
 							</div>
-							<div class="form-group">
+							<div class="form-group col-md-8 col-md-offset-2 pull-right">
 								<s:password name="pwd" label="Password" class="form-control" />
 							</div>
 								<%-- <s:radio list="{'male','female'}" name="gender" /> --%>							
-							<div class="form-group">
-								<s:submit value="Register" class="btn btn-primary" />
+							<div class="form-group col-md-8 col-md-offset-2 pull-right">
+								<s:submit value="Register" class="btn btn-primary pull-right" />
 							</div>
 						</s:form>
 					</div>
@@ -67,14 +72,6 @@
 				
 			<s:include value="common/footer.jsp" />
 		</div>
-		
-		<script>
-		$(document).ready(function(){
-			$(".nav-tabs a").click(function(){
-				$(this).tab('show');
-			});
-		});
-		</script>
 		
 	</body>
 </html>
