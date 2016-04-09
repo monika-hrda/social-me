@@ -43,20 +43,16 @@
 						
 						<s:form action="register" method="post" theme="bootstrap" role="form">
 							<div class="form-group">
-								<s:label for="firstName" value="First Name"/>
-								<s:textfield name="firstName" class="form-control" />
+								<s:textfield name="firstName" label="First Name" class="form-control" />
 							</div>
 							<div class="form-group">
-								<s:label for="lastName" value="Last Name"/>
-								<s:textfield name="lastName" class="form-control" />
+								<s:textfield name="lastName" label="Last Name" class="form-control" />
 							</div>
 							<div class="form-group">
-								<s:label for="email" value="Email"/>
-								<s:textfield name="email" class="form-control" />
+								<s:textfield name="email" label="Email" class="form-control" />
 							</div>
 							<div class="form-group">
-								<s:label for="pwd" value="Password"/>
-								<s:password name="pwd" class="form-control" />
+								<s:password name="pwd" label="Password" class="form-control" />
 							</div>
 								<%-- <s:radio list="{'male','female'}" name="gender" /> --%>							
 							<div class="form-group">

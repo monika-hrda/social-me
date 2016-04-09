@@ -46,12 +46,10 @@
 								theme="bootstrap" 
 								role="form">
 							<div class="form-group">
-								<s:label for="email" value="Email" />
-								<s:textfield name="email" class="form-control" />
+								<s:textfield name="email" label="Email" class="form-control" />
 							</div>
 							<div class="form-group">
-								<s:label for="pwd" value="Password" />
-								<s:password name="pwd" class="form-control" />
+								<s:password name="pwd" label="Password" class="form-control" />
 							</div>
 							<div class="form-group">
 								<s:submit value="Login" class="btn btn-primary" />
