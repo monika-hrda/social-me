@@ -170,6 +170,10 @@
 	    
 	    <action name="checkFriendship" class="mhrda.socialme.actions.ShowProfileAction" method="checkFriendship" />
 	    
+	    <action name="unfriend" class="mhrda.socialme.actions.ShowProfileAction" method="unfriend">
+	    	<result name="success" type="redirect">/showProfile.action</result>
+	    </action>
+	    
 	</package>
 	
 </struts>

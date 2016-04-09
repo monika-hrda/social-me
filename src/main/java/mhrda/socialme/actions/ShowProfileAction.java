@@ -95,6 +95,12 @@ public class ShowProfileAction extends BaseAction implements UserAware, SessionA
 		return SUCCESS;
 	}
 	
+	public String unfriend() throws Exception {
+		String unfriendId = ServletActionContext.getRequest().getParameter("unfriendId");
+		getFriendshipDAO().deleteFriendshipById(Integer.parseInt(unfriendId));
+		return SUCCESS;
+	}
+	
 	/**
 	 * This method centralizes the logic of which user's profile we are viewing.
 	 * If the request contains a "?profileId=N", then profile N is used and stored in the session for later.

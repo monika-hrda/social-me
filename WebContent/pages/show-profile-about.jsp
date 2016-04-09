@@ -16,6 +16,8 @@
 		
 		<!-- The order is important.  jquery must be before <sb:head/> which adds bootstrap script tags -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+		<script src="${pageContext.request.contextPath}/scripts/bootbox.min.js"></script>
+		<script src="${pageContext.request.contextPath}/scripts/siteScripts.js" type="text/javascript"></script>
 		<sb:head/>
 		
 		<title>SocialMe | About</title>

@@ -49,7 +49,7 @@
 				
 				<s:else>
 					<s:hidden name="hiddenFriendshipId" value="%{#checkFriendshipResult.friendshipWithProfileUser.friendshipId}" />
-					<s:a id="unfriendButton" class="btn btn-danger" role="button">Unfriend</s:a>
+					<a id="unfriendButton" class="btn btn-danger" role="button">Unfriend</a>
 				</s:else>
 			</s:else>
 		</s:if>
