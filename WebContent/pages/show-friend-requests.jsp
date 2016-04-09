@@ -41,6 +41,8 @@
 						</h3>
 					</div>
 					
+					<s:actionmessage theme="bootstrap"/>
+					
 					<s:if test="%{friendRequests.isEmpty()}">
 						<em>You have no friend requests.</em><br/>
 					</s:if>
@@ -54,9 +56,11 @@
 							</s:url>
 							<s:url action="acceptFriend" var="acceptFriendLink">
 								<s:param name="requestedFriendshipId" value="%{friendshipId}" />
+								<s:param name="source" value="{'friendReq'}" />
 							</s:url>
 							<s:url action="rejectFriend" var="rejectFriendLink">
 								<s:param name="requestedFriendshipId" value="%{friendshipId}" />
+								<s:param name="source" value="{'friendReq'}" />
 							</s:url>
 							
 							<div class="list-group-item clearfix">

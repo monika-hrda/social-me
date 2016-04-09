@@ -142,21 +142,31 @@
 	    </action>
 	    
 	    <action name="showFriendRequests" class="mhrda.socialme.actions.ShowProfileAction" method="showFriendRequests">
+	    	<interceptor-ref name="store">
+        		<param name="operationMode">RETRIEVE</param>
+    		</interceptor-ref>
+    		<interceptor-ref name="authStack" />
 	    	<result name="success">/pages/show-friend-requests.jsp</result>
 	    	<result name="error" type="redirect">/showProfile.action</result>
 	    </action>
 	    
 	    <action name="requestFriend" class="mhrda.socialme.actions.FriendsAction" method="requestFriend">
-	    	<result name="success" type="redirect">/showProfile.action</result> <!-- to be changed -->
+	    	<result name="success" type="redirect">/showProfile.action</result>
 	    	<result name="error">/pages/error.jsp</result> <!-- zmen, create interceptor for exceptions -->
 	    </action>
 	    
 	    <action name="acceptFriend" class="mhrda.socialme.actions.FriendsAction" method="acceptFriend">
-	    	<result name="success" type="redirect">/showFriendRequests.action</result> <!-- to be changed -->
+	    	<interceptor-ref name="store">
+        		<param name="operationMode">STORE</param>
+    		</interceptor-ref>
+    		<interceptor-ref name="authStack" />
+	    	<result name="success" type="redirect">/showProfile.action</result>
+	    	<result name="requestPage" type="redirect">/showFriendRequests.action</result>
 	    </action>
 	    
 	    <action name="rejectFriend" class="mhrda.socialme.actions.FriendsAction" method="rejectFriend">
-	    	<result name="success" type="redirect">/showFriendRequests.action</result> <!-- to be changed -->
+	    	<result name="success" type="redirect">/showProfile.action</result>
+	    	<result name="requestPage" type="redirect">/showFriendRequests.action</result>
 	    </action>
 	    
 	    <action name="createComment" class="mhrda.socialme.actions.CommentAction" method="createComment">
