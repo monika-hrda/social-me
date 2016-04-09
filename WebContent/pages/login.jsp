@@ -26,16 +26,12 @@
 		
 			<section id="body" class="container">
 			
-				<div class="jumbotron">
-					<h1>Welcome to SocialMe!</h1>
-					<p>It's time to get social.</p>
-					<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
-				</div>
+				<s:include value="common/jumbotron.jsp" />
 				
 				<div class="col-md-8 col-md-offset-2">
 					<ul class="nav nav-tabs nav-justified">
-						<li class="active"><a href="#login">Login</a></li>
-						<li><a href="#register">Register</a></li>
+						<li class="active"><a href="<s:url action="showLogin"/>">Login</a></li>
+						<li><a href="<s:url action="showRegister"/>">Register</a></li>
 					</ul>
 				</div>
 				
@@ -45,7 +41,10 @@
 						
 						<s:actionerror theme="bootstrap"/>
 						
-						<s:form action="login" method="post" theme="bootstrap" role="form">
+						<s:form action="login" 
+								method="post" 
+								theme="bootstrap" 
+								role="form">
 							<div class="form-group">
 								<s:label for="email" value="Email" />
 								<s:textfield name="email" class="form-control" />
@@ -56,34 +55,6 @@
 							</div>
 							<div class="form-group">
 								<s:submit value="Login" class="btn btn-primary" />
-							</div>
-						</s:form>
-					</div>
-					<div id="register" class="tab-pane fade">
-						<h4>Register to start making friends on SocialMe</h4>
-						
-						<s:actionerror theme="bootstrap"/>
-						
-						<s:form action="register" method="post" theme="bootstrap" role="form">
-							<div class="form-group">
-								<s:label for="firstName" value="First Name"/>
-								<s:textfield name="firstName" class="form-control" />
-							</div>
-							<div class="form-group">
-								<s:label for="lastName" value="Last Name"/>
-								<s:textfield name="lastName" class="form-control" />
-							</div>
-							<div class="form-group">
-								<s:label for="email" value="Email"/>
-								<s:textfield name="email" class="form-control" />
-							</div>
-							<div class="form-group">
-								<s:label for="pwd" value="Password"/>
-								<s:password name="pwd" class="form-control" />
-							</div>
-								<%-- <s:radio list="{'male','female'}" name="gender" /> --%>							
-							<div class="form-group">
-								<s:submit value="Register" class="btn btn-primary" />
 							</div>
 						</s:form>
 					</div>

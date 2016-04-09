@@ -24,25 +24,61 @@
 	<body>
 		<div id="page">
 		
-		<s:include value="common/header.jsp" />
-		
 			<section id="body" class="container">
-		
-				<h3>Register to start making friends on SocialMe</h3>
+			
+				<s:include value="common/jumbotron.jsp" />
 				
-				<s:form action="register" method="post">
-					<s:textfield name="firstName" label="First Name" />
-					<s:textfield name="lastName" label="Last Name" />
-					<s:textfield name="email" label="Email" />
-					<s:password name="pwd" label="Password" />
-					<%-- <s:radio list="{'male','female'}" name="gender" /> --%>
+				<div class="col-md-8 col-md-offset-2">
+					<ul class="nav nav-tabs nav-justified">
+						<li><a href="<s:url action="showLogin"/>">Login</a></li>
+						<li class="active"><a href="<s:url action="showRegister"/>">Register</a></li>
+					</ul>
+				</div>
+				
+				<div class="tab-content col-md-8 col-md-offset-2">
+					<div id="register" class="tab-pane fade in active">
+						<h4>Register to start making friends on SocialMe</h4>
+						
+						<s:actionerror theme="bootstrap"/>
+						
+						<s:form action="register" method="post" theme="bootstrap" role="form">
+							<div class="form-group">
+								<s:label for="firstName" value="First Name"/>
+								<s:textfield name="firstName" class="form-control" />
+							</div>
+							<div class="form-group">
+								<s:label for="lastName" value="Last Name"/>
+								<s:textfield name="lastName" class="form-control" />
+							</div>
+							<div class="form-group">
+								<s:label for="email" value="Email"/>
+								<s:textfield name="email" class="form-control" />
+							</div>
+							<div class="form-group">
+								<s:label for="pwd" value="Password"/>
+								<s:password name="pwd" class="form-control" />
+							</div>
+								<%-- <s:radio list="{'male','female'}" name="gender" /> --%>							
+							<div class="form-group">
+								<s:submit value="Register" class="btn btn-primary" />
+							</div>
+						</s:form>
+					</div>
 					
-					<s:submit value="Register" />
-				</s:form>
+				</div>
 		
 			</section>
-			
-		<s:include value="common/footer.jsp" />
+				
+			<s:include value="common/footer.jsp" />
 		</div>
+		
+		<script>
+		$(document).ready(function(){
+			$(".nav-tabs a").click(function(){
+				$(this).tab('show');
+			});
+		});
+		</script>
+		
 	</body>
 </html>
