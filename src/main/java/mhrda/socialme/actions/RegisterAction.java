@@ -24,6 +24,13 @@ public class RegisterAction extends BaseAction implements ModelDriven<User>, Ses
         
         if (numberOfExistingUsers>0) {
         	addActionError("This email address is already being used on SocialMe!");
+        	addFieldError("email", "This email address is already being used on SocialMe!");
+        	return ERROR;
+        }
+        
+        if (!(user.getPwd().equals(user.getConfirmPwd()))) {
+        	addActionError("Both entered passwords must match.");
+        	addFieldError("confirmPwd", "Both entered passwords must match.");
         	return ERROR;
         }
         

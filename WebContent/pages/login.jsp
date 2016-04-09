@@ -38,8 +38,6 @@
 				<div class="tab-content col-md-8 col-md-offset-2">
 					<div id="login" class="tab-pane fade in active">
 						
-						<s:actionerror theme="bootstrap"/>
-						
 						<s:form action="login" 
 								method="post" 
 								theme="bootstrap" 
@@ -47,6 +45,8 @@
 								label="Please log in below or click \"Register\" to sign up"
 								role="form">
 								
+							<s:actionerror theme="bootstrap"/>
+							
 							<div class="form-group col-md-8 col-md-offset-2">
 								<s:textfield name="email" label="Email" class="form-control" />
 							</div>

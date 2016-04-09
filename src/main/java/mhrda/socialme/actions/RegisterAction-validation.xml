@@ -51,6 +51,22 @@
 		</field-validator>
 	</field>
 	
+	<field name="confirmPwd">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>
+				Please enter your password again.
+			</message>
+		</field-validator>
+		<field-validator type="stringlength">
+			<param name="minLength">6</param>
+			<param name="trim">true</param>
+			<message>
+				Password must be at least ${minLength} characters long.
+			</message>
+		</field-validator>
+	</field>
+	
 	<field name="email">
 		<field-validator type="requiredstring">
 			<param name="trim">true</param>

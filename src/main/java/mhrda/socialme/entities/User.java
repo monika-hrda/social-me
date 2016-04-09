@@ -9,6 +9,7 @@ public class User {
 	private String firstName;
 	private String lastName;
 	private String pwd;
+	private String confirmPwd;
     private String email;
     
     private String profileImageFilename;
@@ -44,6 +45,12 @@ public class User {
 	}
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
+	}
+	public String getConfirmPwd() {
+		return confirmPwd;
+	}
+	public void setConfirmPwd(String confirmPwd) {
+		this.confirmPwd = confirmPwd;
 	}
 	public String getEmail() {
 		return email;

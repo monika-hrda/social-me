@@ -38,8 +38,6 @@
 				<div class="tab-content col-md-8 col-md-offset-2">
 					<div id="register" class="tab-pane fade in active">
 						
-						<s:actionerror theme="bootstrap"/>
-						
 						<s:form action="register" 
 								method="post" 
 								theme="bootstrap" 
@@ -47,6 +45,8 @@
 								label="Register to start making friends on SocialMe"
 								role="form">
 								
+							<s:actionerror theme="bootstrap"/>
+							
 							<div class="form-group col-md-8 col-md-offset-2 pull-right">
 								<s:textfield name="firstName" label="First Name" class="form-control" />
 							</div>
@@ -58,6 +58,9 @@
 							</div>
 							<div class="form-group col-md-8 col-md-offset-2 pull-right">
 								<s:password name="pwd" label="Password" class="form-control" />
+							</div>
+							<div class="form-group col-md-8 col-md-offset-2 pull-right">
+								<s:password name="confirmPwd" label="Confirm Password" class="form-control" />
 							</div>
 								<%-- <s:radio list="{'male','female'}" name="gender" /> --%>							
 							<div class="form-group col-md-8 col-md-offset-2 pull-right">
