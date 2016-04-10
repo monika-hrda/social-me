@@ -23,6 +23,10 @@
     color: #f2f2f2;
 }
 
+#menu-directory {
+    color: #f2f2f2;
+}
+
 #menu .navbar-nav li a:hover {
     color: white;
 }

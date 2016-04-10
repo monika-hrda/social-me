@@ -191,6 +191,16 @@
 	    	<result name="success" type="redirect">/showProfile.action</result>
 	    </action>
 	    
+	    <action name="showDirectory" class="mhrda.socialme.actions.DirectoryAction" method="view">
+	    	<interceptor-ref name="defaultStack"></interceptor-ref>
+	    	<result name="success">/pages/show-directory.jsp</result>
+	    </action>
+	    
+	    <action name="iterateDirectory" class="mhrda.socialme.actions.DirectoryAction" method="getPage">
+	    	<interceptor-ref name="defaultStack"></interceptor-ref>
+	    	<result name="success">/pages/show-directory.jsp</result>
+	    </action>
+	    
 	</package>
 	
 </struts>

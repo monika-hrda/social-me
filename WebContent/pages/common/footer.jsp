@@ -26,9 +26,11 @@ $(document).ready(function() {
 		newpage = "Profile"
 	  }
 	  else if (rawhref.indexOf('showFeed') != -1){
-			newpage = "Feed"
-		  }
-	  
+		newpage = "Feed"
+	  }
+	  else if (rawhref.indexOf('showDirectory') != -1 || (rawhref.indexOf('iterateDirectory') != -1)){
+		newpage = "Directory"
+	  }
 	  else if (rawhref.indexOf('showSearch') != -1 || (rawhref.indexOf('search') != -1)){
 		newpage = "Search"
 	  }
