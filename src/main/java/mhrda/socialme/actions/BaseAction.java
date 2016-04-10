@@ -8,6 +8,8 @@ import mhrda.socialme.dao.FriendshipStatusDAO;
 import mhrda.socialme.dao.FriendshipStatusDAOImpl;
 import mhrda.socialme.dao.LikeDAO;
 import mhrda.socialme.dao.LikeDAOImpl;
+import mhrda.socialme.dao.PaginationDAO;
+import mhrda.socialme.dao.PaginationDAOImpl;
 import mhrda.socialme.dao.PostDAO;
 import mhrda.socialme.dao.PostDAOImpl;
 import mhrda.socialme.dao.UserDAO;
@@ -28,6 +30,7 @@ public class BaseAction extends ActionSupport {
 	private PostDAO postDAO;
 	private CommentDAO commentDAO;
 	private LikeDAO likeDAO;
+	private PaginationDAO paginationDAO;
 	
 	public UserDAO getUserDAO() {
 		if (userDAO == null) {
@@ -75,6 +78,14 @@ public class BaseAction extends ActionSupport {
 			likeDAO = new LikeDAOImpl(sf);
 		}
 		return likeDAO;
+	}
+	
+	public PaginationDAO getPaginationDAO() {
+		if (paginationDAO == null) {
+			SessionFactory sf = HibernateUtil.getSessionFactory();
+			paginationDAO = new PaginationDAOImpl(sf);
+		}
+		return paginationDAO;
 	}
 
 }
