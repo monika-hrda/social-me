@@ -44,21 +44,23 @@
 				</s:if>
 				
 				<s:else>
-					<nav class="text-center">
-						<ul class="pagination">
-							<s:iterator value="#counter">
-								<s:url action="iterateDirectory" var="iterateDirectoryLink">
-									<s:param name="pageNo"><s:property/></s:param>
-								</s:url>
-								
-								<li>
-									<s:a href="%{iterateDirectoryLink}">
-										<s:property />
-									</s:a>
-								</li>
-							</s:iterator>
-						</ul>
-					</nav>
+					<div class="col-md-8 col-md-offset-2 text-center">
+						<s:form action="showDirectory" method="post" class="form-inline" theme="bootstrap">
+							<div class="form-group">
+								<label for="sortBy">Sort by</label>
+								<s:select id="sortBy" name="sortBy" list="{'Last Name', 'First Name'}" />
+							</div>
+							<div class="form-group">
+								<label for="sortOrder">In order</label>
+								<s:select id="sortOrder" name="sortOrder" list="{'ASC','DESC'}" />
+							</div>
+							<div class="form-group">
+								<label for="pageSize">Results per page</label>
+								<s:select id="pageSize" name="pageSize" list="{'10','20'}" />
+							</div>
+							<s:submit value="Sort" class="btn btn-primary" />
+						</s:form>
+					</div>
 					
 					<div class="list-group col-md-8 col-md-offset-2">
 						<s:iterator value="users" id="users" status="stat">
@@ -84,6 +86,27 @@
 								</div>
 							</div>
 						</s:iterator>
+					</div>
+					
+					<div class="col-md-12">
+						<nav class="text-center">
+							<ul class="pagination">
+								<s:iterator value="#counter">
+									<s:url action="iterateDirectory" var="iterateDirectoryLink">
+										<s:param name="pageNo"><s:property/></s:param>
+										<s:param name="sortBy"><s:property value="%{sortBy}" /></s:param>
+										<s:param name="sortOrder"><s:property value="%{sortOrder}" /></s:param>
+										<s:param name="pageSize"><s:property value="%{pageSize}" /></s:param>
+									</s:url>
+									
+									<li>
+										<s:a href="%{iterateDirectoryLink}">
+											<s:property />
+										</s:a>
+									</li>
+								</s:iterator>
+							</ul>
+						</nav>
 					</div>
 				</s:else>
 				

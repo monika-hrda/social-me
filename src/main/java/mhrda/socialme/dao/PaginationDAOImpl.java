@@ -20,9 +20,9 @@ public class PaginationDAOImpl implements PaginationDAO {
 	 * Extracts appropriate records from a table belonging to the page number and 
 	 * returns the same in the form of Page object.
 	 * If there are a column to order by and a sort order provided, then the returned records are ordered.
-	 * Number of records returned can be chosen by providing the pageSize.
+	 * Number of records returned can be chosen by providing the pageSize value.
 	 * This method retrieves the records by calling the constructor of the Page class.
-	 * This method allows retrieving the page when user clicks on page number from a JSP page.
+	 * It allows retrieving the appropriate page when user clicks on page number from a JSP page.
 	 */
 	@Override
 	public Page getPage(int page, String tableName, String sortColumn1, String sortColumn2, String sortOrder, int pageSize) {
