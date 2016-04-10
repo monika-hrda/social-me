@@ -25,14 +25,17 @@ public class PaginationDAOImpl implements PaginationDAO {
 	 * This method allows retrieving the page when user clicks on page number from a JSP page.
 	 */
 	@Override
-	public Page getPage(int page, String tableName, String sortColumn, String sortOrder, int pageSize) {
+	public Page getPage(int page, String tableName, String sortColumn1, String sortColumn2, String sortOrder, int pageSize) {
 		Session session = sf.getCurrentSession();
 		
 		StringBuilder query = new StringBuilder();
 		query.append("from " + tableName);
-		if (sortColumn != null && sortOrder != null) {
-			query.append(" order by " + sortColumn);
+		if (sortColumn1 != null && sortOrder != null) {
+			query.append(" order by " + sortColumn1);
 			query.append(" " + sortOrder);
+			if (sortColumn2 != null) {
+				query.append(", " + sortColumn2 + " " + sortOrder);
+			}
 		}
 		
 		Query paginationQuery = session.createQuery(query.toString());
