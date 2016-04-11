@@ -1,5 +1,6 @@
 package mhrda.socialme.entities;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,6 +12,7 @@ public class User {
 	private String pwd;
 	private String confirmPwd;
     private String email;
+    private Date dob;
     
     private String profileImageFilename;
     private String profileImageFilenameThumb;
@@ -57,6 +59,12 @@ public class User {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public Date getDob() {
+		return dob;
+	}
+	public void setDob(Date dob) {
+		this.dob = dob;
 	}
 	public String getProfileImageFilename() {
 		return profileImageFilename;

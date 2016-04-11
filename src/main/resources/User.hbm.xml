@@ -27,6 +27,10 @@
             <column name="email" />
         </property>
         
+        <property name="dob" type="date">
+        	<column name="birth_date" />
+        </property>
+        
         <property name="profileImageFilename" type="java.lang.String">
         	<column name="profile_image_filename" />
         </property>

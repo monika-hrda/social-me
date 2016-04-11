@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="/struts-tags" prefix="s" %>
 <%@ taglib uri="/struts-bootstrap-tags" prefix="sb" %>
+<%@ taglib uri="/struts-jquery-tags" prefix="sj" %>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -16,6 +17,7 @@
 		
 		<!-- The order is important.  jquery must be before <sb:head/> which adds bootstrap script tags -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+		<sj:head/>
 		<sb:head/>
 		
 		<title>SocialMe | Edit profile</title>
@@ -48,14 +50,33 @@
 						<div class="form-group">
 							<s:textfield name="firstName" 
 										 value="%{#session.LOGGEDINUSER.firstName}" 
-										 label="First Name" 
+										 label="*First Name" 
 										 tooltip="Enter your first name here. Make sure your friends can find you!"/>
 						</div>
 						<div class="form-group">
 							<s:textfield name="lastName" 
 										 value="%{#session.LOGGEDINUSER.lastName}" 
-										 label="Last Name" 
+										 label="*Last Name" 
 										 tooltip="Enter your last name here."/>
+						</div>
+						<div class="form-group" style="padding-bottom: 15px">
+							<div class="col-md-3 col-sm-3 text-right" style="padding-right: 25px">
+								<strong>Email</strong>
+							</div>
+							<div class="col-md-9 col-sm-9">
+								<s:property value="#session.LOGGEDINUSER.email"/>
+							</div>
+						</div>
+						<div class="form-group">
+							<sj:datepicker id="dob"
+										   name="dob"
+										   label="Date of Birth"
+										   appendText=" (mm/dd/yyyy)"
+										   value="#session.LOGGEDINUSER.dob"
+										   changeMonth="true"
+										   changeYear="true"
+										   yearRange="-100:+0"
+										   maxDate="-1" />
 						</div>
 						<div class="form-group">
 							<s:file id="profilePic" 

@@ -10,11 +10,11 @@ CREATE TABLE User (
     password CHAR(40) NOT NULL,
     first_name VARCHAR(30) NOT NULL,
     last_name VARCHAR(30) NOT NULL,
-    gender ENUM('M','F') NOT NULL, #Consider changing to is_male BIT(1)
+    gender ENUM('M','F'), #Consider changing to is_male BIT(1)
     profile_image_filename VARCHAR(500),
     profile_image_filename_thumb VARCHAR(500),
+    birth_date DATE,
     created_date TIMESTAMP,
-    last_login_date TIMESTAMP, 
     UNIQUE (email)
 );
 
@@ -48,12 +48,12 @@ CREATE TABLE Friendship (
 /*
 This table stores wall posts created by a user.
 A wall post can have either text, or an image, or both.
-The web application should validate that one of the two is present (text or image) before saving.
+The web application validates that one of the two is present (text or image) before saving.
 */
 CREATE TABLE Post (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     by_user_id INT NOT NULL, #This is the user who created the post.
-    for_user_id INT NOT NULL, #This is the user the post is for, used in building a user's wall.
+    for_user_id INT NOT NULL, #This is the user the post is for, used in building the user's wall.
     post_text VARCHAR(500),
     post_image_filename VARCHAR(500),
     post_image_filename_thumb VARCHAR(500),

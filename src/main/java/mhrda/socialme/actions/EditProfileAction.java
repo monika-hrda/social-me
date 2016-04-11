@@ -77,11 +77,8 @@ public class EditProfileAction extends BaseAction implements ModelDriven<User>, 
 			return INPUT;
 		}
 		
-		if (!(updateUser.getFirstName().equals(loggedInUser.getFirstName())) || !(updateUser.getLastName().equals(loggedInUser.getLastName()))) {
-			sessionAttributes.put("LOGGEDINUSER", updateUser);
-			addActionMessage("Your profile details have been updated successfully.");
-		}
-		
+		sessionAttributes.put("LOGGEDINUSER", updateUser);
+		addActionMessage("Your profile details have been updated successfully.");
 		return SUCCESS;
 	}
 	

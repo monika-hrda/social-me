@@ -2,15 +2,15 @@ USE SocialMe;
 
 #All passwords are 'password' (without quotes)
 INSERT INTO User 
-    (email, password, first_name, last_name, gender, created_date, last_login_date)
+    (email, password, first_name, last_name, gender, birth_date, created_date)
 VALUES 
-    ('john.smith@email.com', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 'John', 'Smith', 'M', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
-    ('jane.doe@email.com', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 'Jane', 'Doe', 'F', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
-    ('michael.connolly@email.com', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 'Michael', 'Connolly', 'M', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
-    ('paul.johnson@email.com', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 'Paul', 'Johnson', 'M', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
-    ('ann.lee@email.com', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 'Ann', 'Lee', 'F', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
-    ('paddy.robertson@email.com', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 'Paddy', 'Robertson', 'M', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
-    ('mary.gibbons@email.com', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 'Mary', 'Gibbons', 'F', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
+    ('john.smith@email.com', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 'John', 'Smith', 'M', NULL, CURRENT_TIMESTAMP()),
+    ('jane.doe@email.com', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 'Jane', 'Doe', 'F', '1979-04-11', CURRENT_TIMESTAMP()),
+    ('michael.connolly@email.com', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 'Michael', 'Connolly', 'M', NULL, CURRENT_TIMESTAMP()),
+    ('paul.johnson@email.com', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 'Paul', 'Johnson', 'M', NULL, CURRENT_TIMESTAMP()),
+    ('ann.lee@email.com', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 'Ann', 'Lee', 'F', NULL, CURRENT_TIMESTAMP()),
+    ('paddy.robertson@email.com', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 'Paddy', 'Robertson', 'M', NULL, CURRENT_TIMESTAMP()),
+    ('mary.gibbons@email.com', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 'Mary', 'Gibbons', 'F', NULL, CURRENT_TIMESTAMP());
 
 INSERT INTO Friendship 
     (user_a_id, user_b_id, friendship_status_id, request_time, response_time)
