@@ -35,7 +35,11 @@
 						<div class="col-md-12">
 							<div class="col-md-2">        	
 					            <s:if test="%{profileUser.profileImageFilenameThumb != null}">
-									<img class="profilePicMedium img-thumbnail" src="${pageContext.request.contextPath}/<s:property value='profileUser.profileImageFilenameThumb' />" />
+									<a target="_blank" 
+									   href="${pageContext.request.contextPath}/<s:property value='profileUser.profileImageFilename' />">
+										<img class="profilePicMedium img-thumbnail" 
+											 src="${pageContext.request.contextPath}/<s:property value='profileUser.profileImageFilenameThumb' />" />
+									</a>
 								</s:if>
 								<s:else>
 									<img class="profilePicMedium img-thumbnail" src="${pageContext.request.contextPath}/images/HeadSilhouette.png" />
