@@ -40,6 +40,10 @@ public class EditProfileAction extends BaseAction implements ModelDriven<User>, 
 		updateUser.setPwd(currentUser.getPwd());
 		updateUser.setUserId(currentUser.getUserId());
 		
+		if (currentUser.getDob() != null && updateUser.getDob() == null) {
+			updateUser.setDob(currentUser.getDob());
+		}
+		
 		if (getProfilePic() != null) {
 			
 			try {

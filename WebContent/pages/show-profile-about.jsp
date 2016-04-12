@@ -30,48 +30,92 @@
 		
 			<section id="body" class="container">
 			
+				<section id="profile-header">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="col-md-2">        	
+					            <s:if test="%{profileUser.profileImageFilenameThumb != null}">
+					            	<a target="_blank" 
+									   href="${pageContext.request.contextPath}/<s:property value='profileUser.profileImageFilename' />">
+										<img class="profilePicMedium img-thumbnail" 
+											 src="${pageContext.request.contextPath}/<s:property value='profileUser.profileImageFilenameThumb' />" />
+									</a>
+								</s:if>
+								<s:else>
+									<img class="profilePicMedium img-thumbnail" src="${pageContext.request.contextPath}/images/HeadSilhouette.png" />
+								</s:else>
+							</div>
+							<div class="col-md-8">
+								<h3>
+									<s:property value="profileUser.firstName" />&nbsp;<s:property value="profileUser.lastName" />
+									<small> - About</small>
+								</h3>
+							</div>
+						
+							<div class="text-right col-md-2">
+								<s:if test="%{profileUser.userId == loggedInUser.userId}">								
+									<a href="<s:url action="showEditProfile"/>" role="button" class="btn btn-primary">Edit Profile</a>
+								</s:if>
+								<s:else>
+									<s:include value="common/profile-friendship-control.jsp" />
+								</s:else>
+							</div>
+						</div>
+					</div>
+				</section>
+			
 				<section id="sidebar" role="navigation" class="col-md-2">
-					<s:include value="common/profileMenu.jsp" />
+					<div>
+						<s:include value="common/profileMenu.jsp" />
+					</div>
 				</section>
 				
+										
 				<section id="main" class="col-md-10">
-					
+				
 					<s:actionmessage theme="bootstrap" />
 					
-					<div class="page-header col-md-12">
-						<div class="col-md-10">
-							<h3>
-								<s:property value="profileUser.firstName" />&nbsp;<s:property value="profileUser.lastName" />
-								<small> - About</small>
-							</h3>
-						</div>
-					
-						<div class="text-right col-md-2">
-							<s:if test="%{profileUser.userId == loggedInUser.userId}">								
-								<a href="<s:url action="showEditProfile"/>" role="button" class="btn btn-primary">Edit Profile</a>
-							</s:if>
-							<s:else>
-								<s:include value="common/profile-friendship-control.jsp" />
-							</s:else>
-						</div>
-					</div>
-					
-					<div class="col-md-12">
-						<p>
-							<s:push value="profileUser">		
-					 			<div>Id: <s:property value="userId" /></div>
-								<div>Email: <s:property value="email" /></div>
-								<div>Password: <s:property value="pwd" /></div>
-							</s:push>
-						</p>
-					</div>
+					<p>
+						<s:push value="profileUser">		
+							
+				 			<div id="well-about" class="well col-md-12">
+				 				<span class="col-md-3 col-sm-3">
+									<strong>Name: </strong>
+								</span>
+								<span class="col-md-9 col-sm-9">
+									<s:property value="firstName" />
+									<s:property value="lastName" />
+								</span>
+								
+								<br>
+								<hr>
+								
+								<span class="col-md-3 col-sm-3">
+									<strong>Email: </strong>
+								</span>
+								<span class="col-md-9 col-sm-9">
+									<s:property value="email" />
+								</span>
+								
+								<br>
+								<hr>
+								
+								<span class="col-md-3 col-sm-3">
+									<strong>Date of Birth: </strong>
+								</span>
+								<span class="col-md-9 col-sm-9">
+									<s:date name="dob" format="dd/MM/yyyy" />
+								</span>
+							</div>
+							
+						</s:push>
+					</p>
 					
 				</section>
-				
-			</section>
 			
-			<s:include value="common/footer.jsp" />
-		
+				<s:include value="common/footer.jsp" />
+			
+			</section>
 		</div>
 	</body>
 </html>
