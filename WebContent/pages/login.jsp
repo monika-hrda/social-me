@@ -28,37 +28,42 @@
 			
 				<s:include value="common/header.jsp" />
 				
-				<div class="col-md-8 col-md-offset-2">
-					<ul class="nav nav-tabs nav-justified">
-						<li class="active"><a href="<s:url action="showLogin"/>" id="grey-tab">Login</a></li>
-						<li><a href="<s:url action="showRegister"/>">Register</a></li>
-					</ul>
-				</div>
+				<section id="main-login-register">
 				
-				<div class="tab-content col-md-8 col-md-offset-2">
-					<div id="login" class="tab-pane fade in active">
-						
-						<s:form action="login" 
-								method="post" 
-								theme="bootstrap" 
-								class="well form-horizontal" 
-								label="Please log in below or click \"Register\" to sign up"
-								role="form">
-								
-							<s:actionerror theme="bootstrap"/>
-							
-							<div class="form-group col-md-8 col-md-offset-2">
-								<s:textfield name="email" label="Email" class="form-control" />
-							</div>
-							<div class="form-group col-md-8 col-md-offset-2">
-								<s:password name="pwd" label="Password" class="form-control" />
-							</div>
-							<div class="form-group col-md-8 col-md-offset-2">
-								<s:submit value="Login" class="btn btn-primary pull-right" />
-							</div>
-						</s:form>
+					<div class="col-md-8 col-md-offset-2">
+						<ul class="nav nav-tabs nav-justified">
+							<li class="active"><a href="<s:url action="showLogin"/>" id="grey-tab">Login</a></li>
+							<li><a href="<s:url action="showRegister"/>">Register</a></li>
+						</ul>
 					</div>
-				</div>
+					
+					<div class="tab-content col-md-8 col-md-offset-2">
+						<div id="login" class="tab-pane fade in active">
+							
+							<s:form action="login" 
+									method="post" 
+									id="login-form"
+									theme="bootstrap" 
+									class="well form-horizontal" 
+									label="Please log in below or click \"Register\" to sign up"
+									role="form">
+									
+								<s:actionerror theme="bootstrap"/>
+								
+								<div class="form-group col-md-8 col-md-offset-2">
+									<s:textfield name="email" label="Email" class="form-control" />
+								</div>
+								<div class="form-group col-md-8 col-md-offset-2">
+									<s:password name="pwd" label="Password" class="form-control" />
+								</div>
+								<div class="form-group col-md-8 col-md-offset-2">
+									<s:submit value="Login" class="btn btn-primary pull-right" />
+								</div>
+							</s:form>
+						</div>
+					</div>
+					
+				</section>
 				
 			</section>
 		

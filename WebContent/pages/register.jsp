@@ -28,49 +28,53 @@
 			
 				<s:include value="common/header.jsp" />
 				
-				<div class="col-md-8 col-md-offset-2">
-					<ul class="nav nav-tabs nav-justified">
-						<li><a href="<s:url action="showLogin"/>">Login</a></li>
-						<li class="active"><a href="<s:url action="showRegister"/>" id="grey-tab">Register</a></li>
-					</ul>
-				</div>
+				<section id="main-login-register">
 				
-				<div class="tab-content col-md-8 col-md-offset-2">
-					<div id="register" class="tab-pane fade in active">
-						
-						<s:form action="register" 
-								method="post" 
-								theme="bootstrap" 
-								class="well form-horizontal" 
-								label="Register to start making friends on SocialMe"
-								role="form">
-								
-							<s:actionerror theme="bootstrap"/>
-							
-							<div class="form-group col-md-8 col-md-offset-2 pull-right">
-								<s:textfield name="firstName" label="First Name" class="form-control" />
-							</div>
-							<div class="form-group col-md-8 col-md-offset-2 pull-right">
-								<s:textfield name="lastName" label="Last Name" class="form-control" />
-							</div>
-							<div class="form-group col-md-8 col-md-offset-2 pull-right">
-								<s:textfield name="email" label="Email" class="form-control" />
-							</div>
-							<div class="form-group col-md-8 col-md-offset-2 pull-right">
-								<s:password name="pwd" label="Password" class="form-control" />
-							</div>
-							<div class="form-group col-md-8 col-md-offset-2 pull-right">
-								<s:password name="confirmPwd" label="Confirm Password" class="form-control" />
-							</div>
-								<%-- <s:radio list="{'male','female'}" name="gender" /> --%>							
-							<div class="form-group col-md-8 col-md-offset-2 pull-right">
-								<s:submit value="Register" class="btn btn-primary pull-right" />
-							</div>
-						</s:form>
+					<div class="col-md-8 col-md-offset-2">
+						<ul class="nav nav-tabs nav-justified">
+							<li><a href="<s:url action="showLogin"/>">Login</a></li>
+							<li class="active"><a href="<s:url action="showRegister"/>" id="grey-tab">Register</a></li>
+						</ul>
 					</div>
 					
-				</div>
-		
+					<div class="tab-content col-md-8 col-md-offset-2">
+						<div id="register" class="tab-pane fade in active">
+							
+							<s:form action="register" 
+									method="post" 
+									id="register-form"
+									theme="bootstrap" 
+									class="well form-horizontal" 
+									label="Register to start making friends on SocialMe"
+									role="form">
+									
+								<s:actionerror theme="bootstrap"/>
+								
+								<div class="form-group col-md-8 col-md-offset-2 pull-right">
+									<s:textfield name="firstName" label="First Name" class="form-control" />
+								</div>
+								<div class="form-group col-md-8 col-md-offset-2 pull-right">
+									<s:textfield name="lastName" label="Last Name" class="form-control" />
+								</div>
+								<div class="form-group col-md-8 col-md-offset-2 pull-right">
+									<s:textfield name="email" label="Email" class="form-control" />
+								</div>
+								<div class="form-group col-md-8 col-md-offset-2 pull-right">
+									<s:password name="pwd" label="Password" class="form-control" />
+								</div>
+								<div class="form-group col-md-8 col-md-offset-2 pull-right">
+									<s:password name="confirmPwd" label="Confirm Password" class="form-control" />
+								</div>
+									<%-- <s:radio list="{'male','female'}" name="gender" /> --%>							
+								<div class="form-group col-md-8 col-md-offset-2 pull-right">
+									<s:submit value="Register" class="btn btn-primary pull-right" />
+								</div>
+							</s:form>
+							
+						</div>
+					</div>
+				
+				</section>
 			</section>
 				
 			<s:include value="common/footer.jsp" />

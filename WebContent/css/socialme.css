@@ -3,7 +3,8 @@ html { height: 100%; }
 body { height: 100%; }
 
 #page { min-height: 100%;
-		background-color: #f7f9fd; }
+		background-color: #f7f9fd; 
+}
 
 #body { padding-bottom: 80px; }
 
@@ -15,15 +16,23 @@ body { height: 100%; }
 }
 
 #grey-tab { 
-	background-color: #f5f5f5; 
-	border-bottom-color: #f5f5f5;
+	background-color: #e3e3e3; 
+	border-bottom-color: #e3e3e3;
 }
+
+#login-form { background-color: #eef2f9; }
+
+#login-form legend { color: #337ab7; }
+
+#register-form { background-color: #eef2f9; }
+
+#register-form legend { color: #337ab7; }
+
+#main-login-register { padding-top: 25px; }
 
 #menu { background-color: #337ab7; }
 
-#logo {
-	padding-left: 25px;
-}
+#logo { padding-left: 25px; }
 
 #not-signed-in {
 	padding-top: 15px;
