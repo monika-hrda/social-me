@@ -37,7 +37,15 @@
 				<section id="main" class="col-md-10">
 				
 					<div class="page-header col-md-12">
-						<div class="col-md-10">
+						<div class="col-md-2">        	
+				            <s:if test="%{profileUser.profileImageFilenameThumb != null}">
+								<img class="profilePicMedium img-thumbnail" src="${pageContext.request.contextPath}/<s:property value='profileUser.profileImageFilenameThumb' />" />
+							</s:if>
+							<s:else>
+								<img class="profilePicMedium img-thumbnail" src="${pageContext.request.contextPath}/images/HeadSilhouette.png" />
+							</s:else>
+						</div>
+						<div class="col-md-8">
 							<h3>
 								<s:property value="profileUser.firstName" />&nbsp;<s:property value="profileUser.lastName" />
 								<small> - Posts</small>
