@@ -1,3 +1,12 @@
+html { height: 100%; }
+
+body { height: 100%; }
+
+#page { min-height: 100%;
+		background-color: #f7f9fd; }
+
+#body { padding-bottom: 80px; }
+
 .customHeader {
 	background-image: url(../images/HeaderMain.png); 
 	height: 100px; 
@@ -56,13 +65,14 @@
     color: #f2f2f2;
 }
 
-#body { padding-bottom: 80px; }
-
-#page { background-color: #f7f9fd; }
-
 .profile-pic-small {
 	max-height: 40px;
 	padding-right: 10px;
+}
+
+.profilePicMedium {
+	max-height:120px;
+	background-color: white;
 }
 
 .request-time {
@@ -77,4 +87,12 @@
 .feedArrow {
 	padding-left: 20px;
 	padding-right: 20px;
+}
+
+.feed-comments li {
+	background-color: #f5f5f5;
+}
+
+.heart-like {
+	padding-right: 5px;
 }
