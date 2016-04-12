@@ -28,158 +28,159 @@
 		
 			<section id="body" class="container">
 				
-				<div class="page-header">
+				<div id="custom-page-header">
 					<h4 class="text-center">Search Results</h4>
 				</div>
 				
-				<s:if test="%{foundUsers.isEmpty()}">
-					<span class="col-md-4"></span>
-					<span class="col-md-8"><em>No results. Try to broaden your search criteria.</em><br/></span>
-				</s:if>
-				
-				<s:else>
-				<div class="col-md-10 col-md-offset-1 panel panel-default">
-				<table class="table">
-					<tr>
-						<th> </th>
-						<th> </th>
-						<th>Name</th>
-						<th>Email</th>
-						<th> </th>
-					</tr>
+				<div id="main">
+					<s:if test="%{foundUsers.isEmpty()}">
+						<span class="col-md-4"></span>
+						<span class="col-md-8"><em>No results. Try to broaden your search criteria.</em><br/></span>
+					</s:if>
 					
-					<s:iterator value="foundUsersFriends">
-					
-						<s:url action="showProfile" var="showProfileLink">
-							<s:param name="profileId" value="%{userId}" />
-						</s:url>
-						
+					<s:else>
+					<div class="col-md-10 col-md-offset-1 panel panel-default">
+					<table class="table">
 						<tr>
-							<td></td>
-							<td>
-								<s:if test="%{profileImageFilenameThumb != null}">
-									<img class="profile-pic-small" 
-										 src="${pageContext.request.contextPath}/<s:property value='profileImageFilenameThumb' />" />
-								</s:if>
-								<s:else>
-									<img class="profile-pic-small" 
-										 src="${pageContext.request.contextPath}/images/HeadSilhouette.png" />
-								</s:else>
-							</td>
-							<td>
-								<s:a href="%{showProfileLink}"><s:property value="firstName"/>&nbsp;<s:property value="lastName"/></s:a>
-							</td>
-							<td><s:property value="email"/></td>
-							<td>
-								<s:if test="%{#session.LOGGEDINUSER.userId != userId}">
-									<strong class="btn btn-primary disabled" role="button">Friend</strong>
-								</s:if>				
-							</td>
+							<th> </th>
+							<th> </th>
+							<th>Name</th>
+							<th>Email</th>
+							<th> </th>
 						</tr>
 						
-					</s:iterator>
-					
-					<s:iterator value="foundUsersRequestersMap">
-					
-						<s:url action="showProfile" var="showProfileLink">
-							<s:param name="profileId" value="%{key.userId}" />
-						</s:url>
-						<s:url action="acceptFriend" var="acceptFriendLink">
-							<s:param name="requestedFriendshipId" value="%{value}" />
-						</s:url>
-						<s:url action="rejectFriend" var="rejectFriendLink">
-							<s:param name="requestedFriendshipId" value="%{value}" />
-						</s:url>
+						<s:iterator value="foundUsersFriends">
 						
-						<tr>
-							<td></td>
-							<td>
-								<s:if test="%{key.profileImageFilenameThumb != null}">
-									<img class="profile-pic-small" 
-										 src="${pageContext.request.contextPath}/<s:property value='key.profileImageFilenameThumb' />" />
-								</s:if>
-								<s:else>
-									<img class="profile-pic-small" 
-										 src="${pageContext.request.contextPath}/images/HeadSilhouette.png" />
-								</s:else>
-							</td>
-							<td>
-								<s:a href="%{showProfileLink}"><s:property value="key.firstName"/>&nbsp;<s:property value="key.lastName"/></s:a>
-							</td>
-							<td></td>
-							<td>
-								<s:a href="%{acceptFriendLink}" class="btn btn-success" role="button">Accept</s:a>
-								<span></span>
-								<s:a href="%{rejectFriendLink}" class="btn btn-danger" role="button">Reject</s:a>
-							</td>
-						</tr>
+							<s:url action="showProfile" var="showProfileLink">
+								<s:param name="profileId" value="%{userId}" />
+							</s:url>
+							
+							<tr>
+								<td></td>
+								<td>
+									<s:if test="%{profileImageFilenameThumb != null}">
+										<img class="profile-pic-small" 
+											 src="${pageContext.request.contextPath}/<s:property value='profileImageFilenameThumb' />" />
+									</s:if>
+									<s:else>
+										<img class="profile-pic-small" 
+											 src="${pageContext.request.contextPath}/images/HeadSilhouette.png" />
+									</s:else>
+								</td>
+								<td>
+									<s:a href="%{showProfileLink}"><s:property value="firstName"/>&nbsp;<s:property value="lastName"/></s:a>
+								</td>
+								<td><s:property value="email"/></td>
+								<td>
+									<s:if test="%{#session.LOGGEDINUSER.userId != userId}">
+										<strong class="btn btn-primary disabled" role="button">Friend</strong>
+									</s:if>				
+								</td>
+							</tr>
+							
+						</s:iterator>
 						
-					</s:iterator>
-					
-					<s:iterator value="foundUsersResponders">
-					
-						<s:url action="showProfile" var="showProfileLink">
-							<s:param name="profileId" value="%{userId}" />
-						</s:url>
+						<s:iterator value="foundUsersRequestersMap">
 						
-						<tr>
-							<td></td>
-							<td>
-								<s:if test="%{profileImageFilenameThumb != null}">
-									<img class="profile-pic-small" 
-										 src="${pageContext.request.contextPath}/<s:property value='profileImageFilenameThumb' />" />
-								</s:if>
-								<s:else>
-									<img class="profile-pic-small" 
-										 src="${pageContext.request.contextPath}/images/HeadSilhouette.png" />
-								</s:else>
-							</td>
-							<td>
-								<s:a href="%{showProfileLink}"><s:property value="firstName"/>&nbsp;<s:property value="lastName"/></s:a>
-							</td>
-							<td></td>
-							<td>
-								<strong class="btn btn-primary disabled" role="button">Friend request sent</strong>			
-							</td>
-						</tr>
+							<s:url action="showProfile" var="showProfileLink">
+								<s:param name="profileId" value="%{key.userId}" />
+							</s:url>
+							<s:url action="acceptFriend" var="acceptFriendLink">
+								<s:param name="requestedFriendshipId" value="%{value}" />
+							</s:url>
+							<s:url action="rejectFriend" var="rejectFriendLink">
+								<s:param name="requestedFriendshipId" value="%{value}" />
+							</s:url>
+							
+							<tr>
+								<td></td>
+								<td>
+									<s:if test="%{key.profileImageFilenameThumb != null}">
+										<img class="profile-pic-small" 
+											 src="${pageContext.request.contextPath}/<s:property value='key.profileImageFilenameThumb' />" />
+									</s:if>
+									<s:else>
+										<img class="profile-pic-small" 
+											 src="${pageContext.request.contextPath}/images/HeadSilhouette.png" />
+									</s:else>
+								</td>
+								<td>
+									<s:a href="%{showProfileLink}"><s:property value="key.firstName"/>&nbsp;<s:property value="key.lastName"/></s:a>
+								</td>
+								<td></td>
+								<td>
+									<s:a href="%{acceptFriendLink}" class="btn btn-success" role="button">Accept</s:a>
+									<span></span>
+									<s:a href="%{rejectFriendLink}" class="btn btn-danger" role="button">Reject</s:a>
+								</td>
+							</tr>
+							
+						</s:iterator>
 						
-					</s:iterator>
-					
-					<s:iterator value="foundUsersNoRelationship">
-					
-						<s:url action="showProfile" var="showProfileLink">
-							<s:param name="profileId" value="%{userId}" />
-						</s:url>
-						<s:url action="requestFriend" var="requestFriendLink">
-							<s:param name="addFriendUserId" value="%{userId}" />
-						</s:url>
+						<s:iterator value="foundUsersResponders">
 						
-						<tr>
-							<td></td>
-							<td>
-								<s:if test="%{profileImageFilenameThumb != null}">
-									<img class="profile-pic-small" 
-										 src="${pageContext.request.contextPath}/<s:property value='profileImageFilenameThumb' />" />
-								</s:if>
-								<s:else>
-									<img class="profile-pic-small" 
-										 src="${pageContext.request.contextPath}/images/HeadSilhouette.png" />
-								</s:else>
-							</td>
-							<td>
-								<s:a href="%{showProfileLink}"><s:property value="firstName"/>&nbsp;<s:property value="lastName"/></s:a>
-							</td>
-							<td></td>
-							<td>
-								<s:a href="%{requestFriendLink}" class="btn btn-primary" role="button">Add Friend</s:a>			
-							</td>
-						</tr>
+							<s:url action="showProfile" var="showProfileLink">
+								<s:param name="profileId" value="%{userId}" />
+							</s:url>
+							
+							<tr>
+								<td></td>
+								<td>
+									<s:if test="%{profileImageFilenameThumb != null}">
+										<img class="profile-pic-small" 
+											 src="${pageContext.request.contextPath}/<s:property value='profileImageFilenameThumb' />" />
+									</s:if>
+									<s:else>
+										<img class="profile-pic-small" 
+											 src="${pageContext.request.contextPath}/images/HeadSilhouette.png" />
+									</s:else>
+								</td>
+								<td>
+									<s:a href="%{showProfileLink}"><s:property value="firstName"/>&nbsp;<s:property value="lastName"/></s:a>
+								</td>
+								<td></td>
+								<td>
+									<strong class="btn btn-primary disabled" role="button">Friend request sent</strong>			
+								</td>
+							</tr>
+							
+						</s:iterator>
 						
-					</s:iterator>
-				</table>
+						<s:iterator value="foundUsersNoRelationship">
+						
+							<s:url action="showProfile" var="showProfileLink">
+								<s:param name="profileId" value="%{userId}" />
+							</s:url>
+							<s:url action="requestFriend" var="requestFriendLink">
+								<s:param name="addFriendUserId" value="%{userId}" />
+							</s:url>
+							
+							<tr>
+								<td></td>
+								<td>
+									<s:if test="%{profileImageFilenameThumb != null}">
+										<img class="profile-pic-small" 
+											 src="${pageContext.request.contextPath}/<s:property value='profileImageFilenameThumb' />" />
+									</s:if>
+									<s:else>
+										<img class="profile-pic-small" 
+											 src="${pageContext.request.contextPath}/images/HeadSilhouette.png" />
+									</s:else>
+								</td>
+								<td>
+									<s:a href="%{showProfileLink}"><s:property value="firstName"/>&nbsp;<s:property value="lastName"/></s:a>
+								</td>
+								<td></td>
+								<td>
+									<s:a href="%{requestFriendLink}" class="btn btn-primary" role="button">Add Friend</s:a>			
+								</td>
+							</tr>
+							
+						</s:iterator>
+					</table>
+					</div>
+					</s:else>
 				</div>
-				</s:else>
-				
 			</section>
 		
 		<s:include value="common/footer.jsp" />

@@ -28,11 +28,11 @@
 
 			<section id="body" class="container">
 				
-				<div class="page-header">
+				<div id="custom-page-header">
 					<h4 class="text-center">News Feed</h4>
 				</div>
 				
-				<div class="col-md-10 col-md-offset-1">
+				<div id="main" class="col-md-10 col-md-offset-1">
 				<s:iterator var="post" value="feedPosts">
 					<div class="panel panel-primary">
 						<div class="panel-heading">

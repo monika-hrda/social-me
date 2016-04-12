@@ -28,11 +28,11 @@
 				
 			<section id="body" class="container">
 				
-				<div class="page-header">
+				<div id="custom-page-header">
 					<h4 class="text-center">Find your Friends on SocialMe</h4>
 				</div>
 				
-				<div class="col-md-10">
+				<div id="main" class="col-md-10">
 					<s:form action="search" method="post" theme="bootstrap" class="form-horizontal">
 						<s:textfield name="firstName" label="First Name" placeholder="First Name" />							
 						<s:textfield name="lastName" label="Last Name" placeholder="Last Name"/>
