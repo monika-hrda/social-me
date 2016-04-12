@@ -72,7 +72,6 @@
 										   name="dob"
 										   label="Date of Birth"
 										   appendText=" (mm/dd/yyyy)"
-										   value="#session.LOGGEDINUSER.dob"
 										   changeMonth="true"
 										   changeYear="true"
 										   yearRange="-100:+0"
