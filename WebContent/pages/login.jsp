@@ -26,7 +26,7 @@
 		
 			<section id="body" class="container">
 			
-				<s:include value="common/jumbotron.jsp" />
+				<s:include value="common/header.jsp" />
 				
 				<div class="col-md-8 col-md-offset-2">
 					<ul class="nav nav-tabs nav-justified">

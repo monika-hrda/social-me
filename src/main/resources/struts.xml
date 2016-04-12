@@ -43,7 +43,6 @@
 	    <action name="logout" class="mhrda.socialme.actions.LoginAction" method="logout">
 	    	<interceptor-ref name="defaultStack"></interceptor-ref>
 	    	<result name="success" type="redirect">/showLogin.action</result>
-	    	<result name="input" type="redirect">/showLogin.action</result>
 	    </action>
 	    
 	    <action name="showRegister">
