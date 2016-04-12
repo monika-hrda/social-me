@@ -122,7 +122,7 @@
 							</div>
 						</div>
 						
-						<div class="panel-footer">
+						<div class="panel-footer" id="likes-comments-panel">
 							<div class="row">
 							
 										<!-- NUMBER OF LIKES ON POST AND A CHANCE TO LIKE / UNLIKE THE POST -->

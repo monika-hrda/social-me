@@ -62,92 +62,181 @@
 				</section>
 				
 				<section id="main" class="col-md-10">
-					<div><h4>Write something..</h4></div>
 					
-					<s:form action="createPost" method="post" enctype="multipart/form-data" theme="bootstrap">
+					<s:form action="createPost" 
+							id="createPost"
+							theme="bootstrap"
+							class="well"
+							method="post" 
+							enctype="multipart/form-data"
+							role="form">
 						<s:hidden name="currentProfileUserId" value="%{profileUser.userId}" />
-						<s:textarea name="postText" rows="5" />
-						<s:file name="image" />
-						<s:submit value="Post" />
+							<s:textarea name="postText" rows="5" placeholder="Write something and / or upload a picture.." />
+							<s:file id="image"
+									name="image" />
+							<s:submit value="Post"
+									  class="btn btn-primary" />
 					</s:form>
-						
-					<h4>Profile Posts:</h4>
 					
-					<table>
 					<s:iterator var="post" value="profileUserPosts">
-						<tr>
-							<td>
-							From: <s:property value="#post.byUser.firstName"/>&nbsp;<s:property value="#post.byUser.lastName"/>
-							</td>
-							<td>
-							On: <s:date name="#post.createdTime" format="dd/MM/yyyy hh:mm a" />
-							</td>
-						</tr>
-						<tr>
-							<td>
-							<s:property value="#post.postText"/>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<span>Likes: <s:property value='#post.likesOnPost.size()' />.</span>
-							</td>
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<div class="row">
+									<div class="col-xs-8">
+										<p class="panel-title">
+										
+													<!-- PROFILE PICTURE OF POST SENDER -->
+												
+											<s:if test="%{#post.byUser.profileImageFilenameThumb != null}">
+												<img class="profile-pic-small" 
+													 src="${pageContext.request.contextPath}/<s:property value='#post.byUser.profileImageFilenameThumb' />" />
+											</s:if>
+											<s:else>
+												<img class="profile-pic-small" 
+													 src="${pageContext.request.contextPath}/images/HeadSilhouette.png" />
+											</s:else>
+											
+													<!-- NAME OF POST SENDER -->
+													
+											<s:url action="showProfile" var="showProfileLink">
+												<s:param name="profileId" value="%{#post.byUser.userId}" />
+											</s:url>
+											<s:a href="%{showProfileLink}">
+												<s:property value="#post.byUser.firstName"/>&nbsp;<s:property value="#post.byUser.lastName"/>
+											</s:a>
+											
+										</p>
+									</div>
+									
+													<!-- DATE AND TIME POST WAS CREATED -->
+													
+									<div class="col-xs-4">
+										<p class="text-right">
+											<s:date name="#post.createdTime" format="dd/MM/yyyy hh:mm a" />
+										</p>
+									</div>
+									
+								</div>
+							</div>
 							
-							<td>
-								<s:url action="createLike" var="createLikeLink">
-									<s:param name="likePostId" value="%{#post.postId}" />
-								</s:url>
-								<s:url action="deleteLike" var="deleteLikeLink">
-									<s:param name="likePostId" value="%{#post.postId}" />
-								</s:url>
+							<div class="panel-body">
+								<div class="row">
 								
-								<s:if test="%{#post.likedBy(#session.LOGGEDINUSER)}">
-									<s:a href="%{deleteLikeLink}">
-										Unlike
-									</s:a>
-								</s:if>
-								<s:else>
-									<s:a href="%{createLikeLink}">
-										Like
-									</s:a>
-								</s:else>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<s:iterator var="comment" value="#post.commentsWrittenOnPost">
-									<tr>
-										<td>
-										<s:property value="#comment.commentUser.firstName"/>&nbsp;<s:property value="#comment.commentUser.lastName"/>&nbsp;commented:
-										</td>
-										<td>
-										On: <s:date name="#comment.createdTime" format="dd/MM/yyyy hh:mm a" />
-										</td>
-									</tr>
-									<tr>
-										<td>
-										"<s:property value="#comment.commentText"/>"
-										</td>
-									</tr>
-								</s:iterator>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<s:form action="createComment" method="post">
-									<s:textarea name="commentText" rows="2" />
-									<s:hidden name="currentPostId" value="%{postId}" />
-									<s:submit value="Comment" />
-								</s:form>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<hr/>
-							</td>
-						</tr>
+													<!-- POST TEXT -->
+													
+									<div class="col-xs-6">
+										<strong><s:property value="#post.postText"/></strong>
+									</div>
+									
+													<!-- POST IMAGE -->
+													
+									<div class="col-xs-6 text-right">
+										<s:if test="%{#post.postImageFileNameThumb != null}">
+											<a target="_blank" 
+											   href="${pageContext.request.contextPath}/<s:property value='#post.postImageFileName' />">
+												<img src="${pageContext.request.contextPath}/<s:property value='#post.postImageFileNameThumb' />"
+													 class="img-thumbnail" />
+											</a>
+										</s:if>
+									</div>
+								</div>
+							</div>
+							
+							<div id="likes-comments-panel" class="panel-footer">
+								<div class="row">
+									
+											<!-- NUMBER OF LIKES ON POST AND A CHANCE TO LIKE / UNLIKE THE POST -->
+								
+									<div class="col-xs-4">
+										<span class="heart-like">
+											<span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+											<span class="sr-only">Likes:</span>
+											<s:property value='#post.likesOnPost.size()' />
+										</span>
+										
+										<s:url action="createLike" var="createLikeLink">
+											<s:param name="likePostId" value="%{#post.postId}" />
+										</s:url>
+										<s:url action="deleteLike" var="deleteLikeLink">
+											<s:param name="likePostId" value="%{#post.postId}" />
+										</s:url>
+										
+										<s:if test="%{#post.likedBy(#session.LOGGEDINUSER)}">
+											<s:a href="%{deleteLikeLink}">Unlike</s:a>
+										</s:if>
+										<s:else>
+											<s:a href="%{createLikeLink}">Like</s:a>
+										</s:else>
+									</div>
+									<br/>
+									
+											<!-- COMMENTS ON POST -->
+						
+									<ul class="list-group feed-comments">
+										<s:iterator var="comment" value="#post.commentsWrittenOnPost">
+											<li class="list-group-item feed-comment">
+												<div class="row">
+													
+																<!-- PROFILE PICTURE OF THE USER COMMENTING -->
+													
+													<div class="col-md-1">
+														<s:if test="%{#comment.commentUser.profileImageFilenameThumb != null}">
+															<img class="profile-pic-small" 
+																 src="${pageContext.request.contextPath}/<s:property value='#comment.commentUser.profileImageFilenameThumb' />" />
+														</s:if>
+														<s:else>
+															<img class="profile-pic-small" 
+																 src="${pageContext.request.contextPath}/images/HeadSilhouette.png" />
+														</s:else>
+													</div>
+														
+																<!-- CLICKABLE NAME OF USER COMMENTING AND COMMENT TEXT -->
+																
+													<div class="col-md-8">
+														<s:url action="showProfile" var="showProfileLink">
+															<s:param name="profileId" value="%{#comment.commentUser.userId}" />
+														</s:url>
+														<strong>
+															<s:a href="%{showProfileLink}">
+																<s:property value="#comment.commentUser.firstName"/>
+																<s:property value="#comment.commentUser.lastName"/>
+															</s:a>
+														</strong>
+														<s:property value="#comment.commentText"/>
+													</div>
+													
+																<!-- DATE AND TIME COMMENT WAS CREATED -->
+													
+													<div class="col-md-3">
+														<p class="text-right">
+															<small class="comment-time">
+																~ <s:date name="#comment.createdTime" format="dd/MM/yyyy hh:mm a" />
+															</small>
+														</p>
+													</div>
+													
+												</div>
+											</li>
+										</s:iterator>
+									</ul>
+								
+															<!-- A FORM TO POST A COMMENT -->
+								
+									<div class="text-center">
+										<s:form action="createComment" method="post" theme="bootstrap" class="form-inline" role="form">
+											<s:hidden name="currentPostId" value="%{postId}" />
+											<div class="form-group">
+												<s:label for="commentText" value="Comment Text" class="sr-only"/>
+												<s:textarea name="commentText" rows="2" cols="60" class="form-control" />
+											</div>
+											<s:submit value="Comment" class="btn btn-primary" />
+										</s:form>
+									</div>
+								
+								</div>
+							</div>
+						</div>
 					</s:iterator>
-					</table>
 				</section>
 			</section>
 

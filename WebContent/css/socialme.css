@@ -61,6 +61,10 @@ body { height: 100%; }
     color: white;
 }
 
+#menu .navbar-nav .navbar-inverse li a:active {
+	background-color: #215684;
+}
+
 #menu-directory {
     color: #f2f2f2;
 }
@@ -93,6 +97,18 @@ body { height: 100%; }
 	background-color: white;
 }
 
+#createPost {
+	background-color: #eef2f9;
+}
+
+#saveProfile {
+	background-color: #eef2f9;
+}
+
+#likes-comments-panel {
+	background-color: #eef2f9;
+}
+
 .request-time {
 	padding-right: 10px;
 	color: grey;
@@ -108,7 +124,7 @@ body { height: 100%; }
 }
 
 .feed-comments li {
-	background-color: #f5f5f5;
+	background-color: #eef2f9;
 }
 
 .heart-like {

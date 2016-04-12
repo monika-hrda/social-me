@@ -41,6 +41,7 @@
 					<s:fielderror theme="bootstrap" />
 					
 					<s:form action="saveProfile" 
+							id="saveProfile"
 							theme="bootstrap" 
 							class="well form-horizontal" 
 							label="Edit Profile Details" 
