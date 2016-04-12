@@ -28,18 +28,47 @@
 		
 			<section id="body" class="container">
 			
+				<section id="profile-header">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="col-md-2">        	
+					            <s:if test="%{profileUser.profileImageFilenameThumb != null}">
+					            	<a target="_blank" 
+									   href="${pageContext.request.contextPath}/<s:property value='profileUser.profileImageFilename' />">
+										<img class="profilePicMedium img-thumbnail" 
+											 src="${pageContext.request.contextPath}/<s:property value='profileUser.profileImageFilenameThumb' />" />
+									</a>
+								</s:if>
+								<s:else>
+									<img class="profilePicMedium img-thumbnail" src="${pageContext.request.contextPath}/images/HeadSilhouette.png" />
+								</s:else>
+							</div>
+							<div class="col-md-8">
+								<h3>
+									<s:property value="profileUser.firstName" />&nbsp;<s:property value="profileUser.lastName" />
+									<small> - Friend Requests (<s:property value="numberOfFriendRequests"/>)</small>
+								</h3>
+							</div>
+						
+							<div class="text-right col-md-2">
+								<s:if test="%{profileUser.userId == loggedInUser.userId}">								
+									<a href="<s:url action="showEditProfile"/>" role="button" class="btn btn-primary">Edit Profile</a>
+								</s:if>
+								<s:else>
+									<s:include value="common/profile-friendship-control.jsp" />
+								</s:else>
+							</div>
+						</div>
+					</div>
+				</section>
+				
 				<section id="sidebar" role="navigation" class="col-md-2">
-					<s:include value="common/profileMenu.jsp" />
+					<div>
+						<s:include value="common/profileMenu.jsp" />
+					</div>
 				</section>
 				
 				<section id="main" class="col-md-10">
-					
-					<div class="page-header">
-						<h3>
-							<s:property value="profileUser.firstName" />&nbsp;<s:property value="profileUser.lastName" />
-							<small> - Friend Requests (<s:property value="numberOfFriendRequests"/>)</small>
-						</h3>
-					</div>
 					
 					<s:actionmessage theme="bootstrap"/>
 					
