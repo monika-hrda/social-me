@@ -24,7 +24,7 @@
 	<body>
 		<div id="page">
 		
-		<s:include value="common/header.jsp" />
+			<s:include value="common/header.jsp" />
 		
 			<section id="body" class="container">
 				
@@ -38,11 +38,13 @@
 				</s:if>
 				
 				<s:else>
+				<div class="col-md-10 col-md-offset-1 panel panel-default">
 				<table class="table">
 					<tr>
+						<th> </th>
+						<th> </th>
 						<th>Name</th>
 						<th>Email</th>
-						<th>Id</th>
 						<th> </th>
 					</tr>
 					
@@ -53,14 +55,24 @@
 						</s:url>
 						
 						<tr>
+							<td></td>
+							<td>
+								<s:if test="%{profileImageFilenameThumb != null}">
+									<img class="profile-pic-small" 
+										 src="${pageContext.request.contextPath}/<s:property value='profileImageFilenameThumb' />" />
+								</s:if>
+								<s:else>
+									<img class="profile-pic-small" 
+										 src="${pageContext.request.contextPath}/images/HeadSilhouette.png" />
+								</s:else>
+							</td>
 							<td>
 								<s:a href="%{showProfileLink}"><s:property value="firstName"/>&nbsp;<s:property value="lastName"/></s:a>
 							</td>
 							<td><s:property value="email"/></td>
-							<td><s:property value="userId"/></td>
 							<td>
 								<s:if test="%{#session.LOGGEDINUSER.userId != userId}">
-									<strong>Friend</strong>
+									<strong class="btn btn-primary disabled" role="button">Friend</strong>
 								</s:if>				
 							</td>
 						</tr>
@@ -80,15 +92,25 @@
 						</s:url>
 						
 						<tr>
+							<td></td>
+							<td>
+								<s:if test="%{key.profileImageFilenameThumb != null}">
+									<img class="profile-pic-small" 
+										 src="${pageContext.request.contextPath}/<s:property value='key.profileImageFilenameThumb' />" />
+								</s:if>
+								<s:else>
+									<img class="profile-pic-small" 
+										 src="${pageContext.request.contextPath}/images/HeadSilhouette.png" />
+								</s:else>
+							</td>
 							<td>
 								<s:a href="%{showProfileLink}"><s:property value="key.firstName"/>&nbsp;<s:property value="key.lastName"/></s:a>
 							</td>
-							<td><s:property value="key.email"/></td>
-							<td><s:property value="key.userId"/></td>
+							<td></td>
 							<td>
-								<s:a href="%{acceptFriendLink}">Accept</s:a>
+								<s:a href="%{acceptFriendLink}" class="btn btn-success" role="button">Accept</s:a>
 								<span></span>
-								<s:a href="%{rejectFriendLink}">Reject</s:a>
+								<s:a href="%{rejectFriendLink}" class="btn btn-danger" role="button">Reject</s:a>
 							</td>
 						</tr>
 						
@@ -101,13 +123,23 @@
 						</s:url>
 						
 						<tr>
+							<td></td>
+							<td>
+								<s:if test="%{profileImageFilenameThumb != null}">
+									<img class="profile-pic-small" 
+										 src="${pageContext.request.contextPath}/<s:property value='profileImageFilenameThumb' />" />
+								</s:if>
+								<s:else>
+									<img class="profile-pic-small" 
+										 src="${pageContext.request.contextPath}/images/HeadSilhouette.png" />
+								</s:else>
+							</td>
 							<td>
 								<s:a href="%{showProfileLink}"><s:property value="firstName"/>&nbsp;<s:property value="lastName"/></s:a>
 							</td>
-							<td><s:property value="email"/></td>
-							<td><s:property value="userId"/></td>
+							<td></td>
 							<td>
-								<strong>Friend request sent</strong>			
+								<strong class="btn btn-primary disabled" role="button">Friend request sent</strong>			
 							</td>
 						</tr>
 						
@@ -123,18 +155,29 @@
 						</s:url>
 						
 						<tr>
+							<td></td>
+							<td>
+								<s:if test="%{profileImageFilenameThumb != null}">
+									<img class="profile-pic-small" 
+										 src="${pageContext.request.contextPath}/<s:property value='profileImageFilenameThumb' />" />
+								</s:if>
+								<s:else>
+									<img class="profile-pic-small" 
+										 src="${pageContext.request.contextPath}/images/HeadSilhouette.png" />
+								</s:else>
+							</td>
 							<td>
 								<s:a href="%{showProfileLink}"><s:property value="firstName"/>&nbsp;<s:property value="lastName"/></s:a>
 							</td>
-							<td><s:property value="email"/></td>
-							<td><s:property value="userId"/></td>
+							<td></td>
 							<td>
-								<s:a href="%{requestFriendLink}">Add Friend</s:a>			
+								<s:a href="%{requestFriendLink}" class="btn btn-primary" role="button">Add Friend</s:a>			
 							</td>
 						</tr>
 						
 					</s:iterator>
 				</table>
+				</div>
 				</s:else>
 				
 			</section>
