@@ -14,7 +14,6 @@ public class FriendsAction extends BaseAction implements UserAware {
 	private User loggedInUser;
 		
 	public String requestFriend() throws Exception {
-		System.out.println("inside requestFriend action");
 		String addFriendUserId = ServletActionContext.getRequest().getParameter("addFriendUserId");
 		User addFriendUser = getUserDAO().getUserById(Integer.parseInt(addFriendUserId));
 		FriendshipStatus status = getFriendshipStatusDAO().getFriendshipStatusByName("requested");

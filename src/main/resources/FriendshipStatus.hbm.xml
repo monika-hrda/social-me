@@ -14,7 +14,7 @@
             <column name="name" />
         </property>
         
-        <set name="friendshipsByStatus" table="FRIENDSHIP" inverse="true" cascade="save-update"> <!-- cascade="save-update" ? -->
+        <set name="friendshipsByStatus" table="FRIENDSHIP" inverse="true" cascade="save-update">
         	<key column="friendship_status_id" />
         	<one-to-many class="mhrda.socialme.entities.Friendship" />
         </set>

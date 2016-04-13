@@ -31,8 +31,7 @@ public class UserDAOImpl implements UserDAO {
 		Session session = sf.getCurrentSession();
 		Query query = session.createQuery("from User where id=:userId");
 		query.setInteger("userId", userId);
-		User user = (User) query.uniqueResult();		
-		System.out.println("User Retrieved from DB:" + user);
+		User user = (User) query.uniqueResult();
 		return user;
 	}
 	
@@ -42,7 +41,6 @@ public class UserDAOImpl implements UserDAO {
 		Query query = session.createQuery("select count(*) from User where email=:email");
 		query.setString("email", email);
 		long countExistingUsers = (long) query.uniqueResult();
-		System.out.println("(inside UserDAOImpl) How many users with email " + email + " exist already? : " + countExistingUsers);
 		return countExistingUsers;
 	}
 
@@ -87,10 +85,6 @@ public class UserDAOImpl implements UserDAO {
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		}
-        for (User foundUser : foundUsers) {
-        	System.out.println("Users found by search: ");
-        	System.out.println(foundUser.getFirstName() + " " + foundUser.getLastName());
-        }
 		return foundUsers;
 	}
 

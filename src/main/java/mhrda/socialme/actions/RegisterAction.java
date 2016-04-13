@@ -36,7 +36,7 @@ public class RegisterAction extends BaseAction implements ModelDriven<User>, Ses
         
        	int id = 0;
        	
-       	//Create a one-way hash of the user's password before saving to the database.
+       	//Creates a one-way hash of the user's password before saving to the database.
        	//Passwords cannot be recovered. User can only set a new password if forgotten.
        	user.setPwd(GeneralUtilities.toSHA1(user.getPwd()));
        	
