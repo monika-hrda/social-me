@@ -23,12 +23,6 @@ CREATE TABLE Friendship_Status (
     name VARCHAR(20)
 );
 
-INSERT INTO Friendship_Status
-    (id, name)
-VALUES
-    (1, 'requested'),
-    (2, 'accepted');
-
 /*This table stores the relationships between pairs of users.
 user_a_id stores the id of the user who initiated the relationship (made a friend request).
 user_b_id stores the id of the other party in the relationship.
