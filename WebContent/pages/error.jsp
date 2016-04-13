@@ -30,7 +30,7 @@
 				
 				<div id="main">
 					<span class="col-md-4"></span>
-					<span class="col-md-8"><h4>Something went wrong. Please try again.</h4><br/></span>
+					<span class="col-md-8">Something went wrong. Please try again.<br/></span>
 				</div>
 		
 			</section>
