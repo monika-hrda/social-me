@@ -136,9 +136,11 @@
 									
 									<s:url action="createLike" var="createLikeLink">
 										<s:param name="likePostId" value="%{#post.postId}" />
+										<s:param name="source" value="{'feed'}" />
 									</s:url>
 									<s:url action="deleteLike" var="deleteLikeLink">
 										<s:param name="likePostId" value="%{#post.postId}" />
+										<s:param name="source" value="{'feed'}" />
 									</s:url>
 									
 									<s:if test="%{#post.likedBy(#session.LOGGEDINUSER)}">
@@ -205,6 +207,7 @@
 								<div class="text-center">
 									<s:form action="createComment" method="post" theme="bootstrap" class="form-inline" role="form">
 										<s:hidden name="currentPostId" value="%{postId}" />
+										<s:hidden name="source" value="feed" />
 										<div class="form-group">
 											<s:label for="commentText" value="Comment Text" class="sr-only"/>
 											<s:textarea name="commentText" rows="2" cols="60" class="form-control" />

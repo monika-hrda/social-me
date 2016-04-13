@@ -5,7 +5,7 @@
     "http://struts.apache.org/dtds/struts-2.3.dtd">
     
 <struts>
-	<constant name="struts.devMode" value="true"></constant>
+	<constant name="struts.devMode" value="false"></constant>
 	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
 	 
 	 <!-- constant to define result path locations to project root directory -->
@@ -151,7 +151,7 @@
 	    
 	    <action name="requestFriend" class="mhrda.socialme.actions.FriendsAction" method="requestFriend">
 	    	<result name="success">/pages/ajax-result-friend-requested.jsp</result>
-	    	<result name="error">/pages/error.jsp</result> <!-- zmen, create interceptor for exceptions -->
+	    	<result name="error">/pages/error.jsp</result>
 	    </action>
 	    
 	    <action name="acceptFriend" class="mhrda.socialme.actions.FriendsAction" method="acceptFriend">
@@ -172,14 +172,17 @@
 	    
 	    <action name="createComment" class="mhrda.socialme.actions.CommentAction" method="createComment">
 	    	<result name="success" type="redirect">/showProfile.action</result>
+	    	<result name="feed" type="redirect">/showFeed.action</result>
 	    </action>
 	    
 	    <action name="createLike" class="mhrda.socialme.actions.LikeAction" method="createLike">
 	    	<result name="success" type="redirect">/showProfile.action</result>
+	    	<result name="feed" type="redirect">/showFeed.action</result>
 	    </action>
 	    
 	    <action name="deleteLike" class="mhrda.socialme.actions.LikeAction" method="deleteLike">
 	    	<result name="success" type="redirect">/showProfile.action</result>
+	    	<result name="feed" type="redirect">/showFeed.action</result>
 	    </action>
 	    
 	    <action name="showFeed" class="mhrda.socialme.actions.FeedAction" method="showFeed">

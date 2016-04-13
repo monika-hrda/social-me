@@ -13,11 +13,15 @@ public class CommentAction extends BaseAction implements UserAware, ModelDriven<
 	private User loggedInUser;
 	private int currentPostId;
 	private Comment newComment = new Comment();
-	
-	public String createComment() throws Exception {
+	String source;
+
+	public String createComment() throws Exception {		
 		newComment.setCommentUser(loggedInUser);
 		newComment.setPost(getPostDAO().getPostById(currentPostId));
 		getCommentDAO().createComment(newComment);
+		if (source != null && source.equals("feed")) {
+			return "feed";
+		}
 		return SUCCESS;
 	}
 
@@ -37,6 +41,14 @@ public class CommentAction extends BaseAction implements UserAware, ModelDriven<
 
 	public void setCurrentPostId(int currentPostId) {
 		this.currentPostId = currentPostId;
+	}
+	
+	public String getSource() {
+		return source;
+	}
+
+	public void setSource(String source) {
+		this.source = source;
 	}
 
 }

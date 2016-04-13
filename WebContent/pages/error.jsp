@@ -22,6 +22,18 @@
 	</head>
 	
 	<body>
-		<h4>Something went wrong. Please try again.</h4>
+		<div id="page">
+		
+			<s:include value="common/header.jsp" />
+		
+			<section id="body" class="container">
+				
+				<div id="main">
+					<span class="col-md-4"></span>
+					<span class="col-md-8"><h4>Something went wrong. Please try again.</h4><br/></span>
+				</div>
+		
+			</section>
+		</div>
 	</body>
 </html>
