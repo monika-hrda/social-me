@@ -53,12 +53,7 @@
 							</div>
 						
 							<div class="text-right col-md-2">
-								<s:if test="%{profileUser.userId == loggedInUser.userId}">								
-									<a href="<s:url action="showEditProfile"/>" role="button" class="btn btn-primary">Edit Profile</a>
-								</s:if>
-								<s:else>
-									<s:include value="common/profile-friendship-control.jsp" />
-								</s:else>
+								<s:include value="common/profile-friendship-control.jsp" />
 							</div>
 						</div>
 					</div>
