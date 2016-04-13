@@ -12,9 +12,10 @@ public class FriendsAction extends BaseAction implements UserAware {
 	private static final long serialVersionUID = 1L;
 	
 	private User loggedInUser;
-		
+	private String addFriendUserId;
+	
 	public String requestFriend() throws Exception {
-		String addFriendUserId = ServletActionContext.getRequest().getParameter("addFriendUserId");
+		addFriendUserId = ServletActionContext.getRequest().getParameter("addFriendUserId");
 		User addFriendUser = getUserDAO().getUserById(Integer.parseInt(addFriendUserId));
 		FriendshipStatus status = getFriendshipStatusDAO().getFriendshipStatusByName("requested");
 		if (loggedInUser == null || addFriendUser == null || status == null)
@@ -60,6 +61,14 @@ public class FriendsAction extends BaseAction implements UserAware {
 	
 	public User getLoggedInUser() {
 		return this.loggedInUser;
+	}
+	
+	public String getAddFriendUserId() {
+		return addFriendUserId;
+	}
+
+	public void setAddFriendUserId(String addFriendUserId) {
+		this.addFriendUserId = addFriendUserId;
 	}
 	
 }

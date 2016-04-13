@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="/struts-tags" prefix="s" %>
+<%@ taglib uri="/struts-jquery-tags" prefix="sj" %>
 
 <!-- This code is re-used in 5 different pages, so it is centralised in one place. -->
 
@@ -17,7 +18,7 @@
 				<s:url action="requestFriend" var="requestFriendLink">
 					<s:param name="addFriendUserId" value="%{profileUser.userId}" />
 				</s:url>
-				<s:a href="%{requestFriendLink}" class="btn btn-primary" role="button">Add Friend</s:a>
+				<sj:a href="%{requestFriendLink}" cssClass="btn btn-primary" role="button" targets="ajaxResults">Add Friend</sj:a>
 			</s:if>
 			
 			<s:else>

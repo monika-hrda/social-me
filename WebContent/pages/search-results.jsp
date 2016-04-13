@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="/struts-tags" prefix="s" %>
 <%@ taglib uri="/struts-bootstrap-tags" prefix="sb" %>
+<%@ taglib uri="/struts-jquery-tags" prefix="sj" %>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -16,6 +17,7 @@
 		
 		<!-- The order is important.  jquery must be before <sb:head/> which adds bootstrap script tags -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+		<sj:head/>
 		<sb:head/>
 		
 		<title>SocialMe | Search Results</title>
@@ -172,7 +174,9 @@
 								</td>
 								<td></td>
 								<td>
-									<s:a href="%{requestFriendLink}" class="btn btn-primary" role="button">Add Friend</s:a>			
+									<div id="ajaxResults">
+									<sj:a cssClass="btn btn-primary" role="button" href="%{requestFriendLink}" targets="ajaxResults">Add Friend</sj:a>
+									</div>	
 								</td>
 							</tr>
 							

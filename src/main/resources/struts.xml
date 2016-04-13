@@ -150,7 +150,7 @@
 	    </action>
 	    
 	    <action name="requestFriend" class="mhrda.socialme.actions.FriendsAction" method="requestFriend">
-	    	<result name="success" type="redirect">/showProfile.action</result>
+	    	<result name="success">/pages/ajax-result-friend-requested.jsp</result>
 	    	<result name="error">/pages/error.jsp</result> <!-- zmen, create interceptor for exceptions -->
 	    </action>
 	    

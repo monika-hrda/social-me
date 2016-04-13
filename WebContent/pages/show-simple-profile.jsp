@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="/struts-tags" prefix="s" %>
 <%@ taglib uri="/struts-bootstrap-tags" prefix="sb" %>
+<%@ taglib uri="/struts-jquery-tags" prefix="sj" %>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -16,6 +17,7 @@
 		
 		<!-- The order is important.  jquery must be before <sb:head/> which adds bootstrap script tags -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+		<sj:head/>
 		<sb:head/>
 		
 		<title>SocialMe | Profile Unavailable</title>
@@ -48,12 +50,9 @@
 							</div>
 						
 							<div class="text-right col-md-2">
-								<s:if test="%{profileUser.userId == loggedInUser.userId}">								
-									<a href="<s:url action="showEditProfile"/>" role="button" class="btn btn-primary">Edit Profile</a>
-								</s:if>
-								<s:else>
+								<div id="ajaxResults">
 									<s:include value="common/profile-friendship-control.jsp" />
-								</s:else>
+								</div>
 							</div>
 						</div>
 					</div>
