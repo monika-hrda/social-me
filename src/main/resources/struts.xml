@@ -159,13 +159,15 @@
         		<param name="operationMode">STORE</param>
     		</interceptor-ref>
     		<interceptor-ref name="authStack" />
-	    	<result name="success" type="redirect">/showProfile.action</result>
-	    	<result name="requestPage" type="redirect">/showFriendRequests.action</result>
+	    	<result name="success">/pages/ajax-result-friend.jsp</result> <!-- source: search results -->
+	    	<result name="requestPage" type="redirect">/showFriendRequests.action</result> <!-- source: friend requests -->
+	    	<result name="simple" type="redirect">/showProfile.action</result> <!-- source: simple profile -->
 	    </action>
 	    
 	    <action name="rejectFriend" class="mhrda.socialme.actions.FriendsAction" method="rejectFriend">
-	    	<result name="success" type="redirect">/showProfile.action</result>
-	    	<result name="requestPage" type="redirect">/showFriendRequests.action</result>
+	    	<result name="success">/pages/ajax-result-rejected.jsp</result> <!-- source: search results -->
+	    	<result name="requestPage" type="redirect">/showFriendRequests.action</result> <!-- source: friend requests -->
+	    	<result name="simple" type="redirect">/showProfile.action</result> <!-- source: simple profile -->
 	    </action>
 	    
 	    <action name="createComment" class="mhrda.socialme.actions.CommentAction" method="createComment">

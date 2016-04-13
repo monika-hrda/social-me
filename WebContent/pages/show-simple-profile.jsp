@@ -42,14 +42,14 @@
 									<img class="profilePicMedium img-thumbnail" src="${pageContext.request.contextPath}/images/HeadSilhouette.png" />
 								</s:else>
 							</div>
-							<div class="col-md-8">
+							<div class="col-md-7">
 								<h3>
 									<s:property value="profileUser.firstName" />&nbsp;<s:property value="profileUser.lastName" />
 									<small> - About</small>
 								</h3>
 							</div>
 						
-							<div class="text-right col-md-2">
+							<div class="text-right col-md-3">
 								<div id="ajaxResults">
 									<s:include value="common/profile-friendship-control.jsp" />
 								</div>

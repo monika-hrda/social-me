@@ -13,6 +13,8 @@ public class FriendsAction extends BaseAction implements UserAware {
 	
 	private User loggedInUser;
 	private String addFriendUserId;
+	private int requestedFriendshipId;
+	private String source;
 	
 	public String requestFriend() throws Exception {
 		addFriendUserId = ServletActionContext.getRequest().getParameter("addFriendUserId");
@@ -25,8 +27,8 @@ public class FriendsAction extends BaseAction implements UserAware {
 	}
 	
 	public String acceptFriend() throws Exception {
-		int requestedFriendshipId = Integer.parseInt(ServletActionContext.getRequest().getParameter("requestedFriendshipId"));
-		String source = ServletActionContext.getRequest().getParameter("source");		
+		requestedFriendshipId = Integer.parseInt(ServletActionContext.getRequest().getParameter("requestedFriendshipId"));
+		source = ServletActionContext.getRequest().getParameter("source");		
 		if (requestedFriendshipId != 0) {
 			FriendshipStatus newStatus = getFriendshipStatusDAO().getFriendshipStatusByName("accepted");
 			getFriendshipDAO().actionFriendRequest(requestedFriendshipId, newStatus, new Timestamp(System.currentTimeMillis()));
@@ -36,19 +38,25 @@ public class FriendsAction extends BaseAction implements UserAware {
 				addActionMessage("You just made a new friend!");
 				return "requestPage";
 			}
+			if (source.equals("simple")) {
+				return "simple";
+			}
 		}
 		return SUCCESS;
 	}
 	
 	public String rejectFriend() throws Exception {
-		int requestedFriendshipId = Integer.parseInt(ServletActionContext.getRequest().getParameter("requestedFriendshipId"));
-		String source = ServletActionContext.getRequest().getParameter("source");		
+		requestedFriendshipId = Integer.parseInt(ServletActionContext.getRequest().getParameter("requestedFriendshipId"));
+		source = ServletActionContext.getRequest().getParameter("source");		
 		if (requestedFriendshipId != 0) {
 			getFriendshipDAO().deleteFriendshipById(requestedFriendshipId);
 		}
 		if (source != null) {
 			if (source.equals("friendReq")) {
 				return "requestPage";
+			}
+			if (source.equals("simple")) {
+				return "simple";
 			}
 		}
 		return SUCCESS;
@@ -69,6 +77,22 @@ public class FriendsAction extends BaseAction implements UserAware {
 
 	public void setAddFriendUserId(String addFriendUserId) {
 		this.addFriendUserId = addFriendUserId;
+	}
+
+	public int getRequestedFriendshipId() {
+		return requestedFriendshipId;
+	}
+
+	public void setRequestedFriendshipId(int requestedFriendshipId) {
+		this.requestedFriendshipId = requestedFriendshipId;
+	}
+
+	public String getSource() {
+		return source;
+	}
+
+	public void setSource(String source) {
+		this.source = source;
 	}
 	
 }

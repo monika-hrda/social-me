@@ -111,9 +111,11 @@
 								</td>
 								<td></td>
 								<td>
-									<s:a href="%{acceptFriendLink}" class="btn btn-success" role="button">Accept</s:a>
-									<span></span>
-									<s:a href="%{rejectFriendLink}" class="btn btn-danger" role="button">Reject</s:a>
+									<div id="ajaxAcceptResults">
+										<sj:a href="%{acceptFriendLink}" cssClass="btn btn-success" role="button" targets="ajaxAcceptResults">Accept</sj:a>
+										<span></span>
+										<sj:a href="%{rejectFriendLink}" cssClass="btn btn-danger" role="button" targets="ajaxAcceptResults">Reject</sj:a>
+									</div>
 								</td>
 							</tr>
 							

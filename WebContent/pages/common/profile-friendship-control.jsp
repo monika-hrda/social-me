@@ -36,10 +36,12 @@
 						<s:url action="acceptFriend" var="acceptFriendLink">
 							<s:param name="requestedFriendshipId" 
 									 value="%{#checkFriendshipResult.friendshipWithProfileUser.friendshipId}" />
+							<s:param name="source" value="{'simple'}" />
 						</s:url>
 						<s:url action="rejectFriend" var="rejectFriendLink">
 							<s:param name="requestedFriendshipId" 
 									 value="%{#checkFriendshipResult.friendshipWithProfileUser.friendshipId}" />
+							<s:param name="source" value="{'simple'}" />
 						</s:url>
 						<s:a href="%{acceptFriendLink}" class="btn btn-success" role="button">Accept Friend</s:a>
 						<s:a href="%{rejectFriendLink}" class="btn btn-danger" role="button">Reject</s:a>
