@@ -27,26 +27,38 @@
 		<s:include value="common/header.jsp" />
 		
 			<section id="body" class="container">
-		
-				<div class="page-header col-md-12">
-					<div class="col-md-9">
-						<h3>
-							<s:property value="profileUser.firstName" />&nbsp;<s:property value="profileUser.lastName" />
-						</h3>
-					</div>
-					
-					<div class="text-right col-md-3">
-						<s:include value="common/profile-friendship-control.jsp" />
-					</div>
-				</div>
 				
-				<div>You are not connected on SocialMe.</div>
-				<div>Would you like to add <s:property value="profileUser.firstName" /> as a friend?</div>
+				<section id="profile-header">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="col-md-2">        	
+					            <s:if test="%{profileUser.profileImageFilenameThumb != null}">
+									<img class="profilePicMedium img-thumbnail" 
+										 src="${pageContext.request.contextPath}/<s:property value='profileUser.profileImageFilenameThumb' />" />
+								</s:if>
+								<s:else>
+									<img class="profilePicMedium img-thumbnail" src="${pageContext.request.contextPath}/images/HeadSilhouette.png" />
+								</s:else>
+							</div>
+							<div class="col-md-8">
+								<h3>
+									<s:property value="profileUser.firstName" />&nbsp;<s:property value="profileUser.lastName" />
+									<small> - About</small>
+								</h3>
+							</div>
+						
+							<div class="text-right col-md-2">
+								<s:if test="%{profileUser.userId == loggedInUser.userId}">								
+									<a href="<s:url action="showEditProfile"/>" role="button" class="btn btn-primary">Edit Profile</a>
+								</s:if>
+								<s:else>
+									<s:include value="common/profile-friendship-control.jsp" />
+								</s:else>
+							</div>
+						</div>
+					</div>
+				</section>
 				
-				<!-- Needs work! -->
-				<!-- Different scenarios - you are to accept/reject friendship request, are waiting for a response, or can add a friend -->
-				<!-- There should be no left-side navbar with the simple profile .. this will be solved when Bootstrap is involved -->
-		
 			</section>
 		
 		<s:include value="common/footer.jsp" />
